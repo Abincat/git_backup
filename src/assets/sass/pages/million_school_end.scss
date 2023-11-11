@@ -1,0 +1,167 @@
+.million_school_end {
+    width: 100%;
+
+    .top {
+        // 上方布條+煙火
+        display: flex;
+        position: relative;
+
+        .top_cloth {
+            position: absolute;
+            left: 50%;
+            top: -20px;
+            transform: translateX(-50%);
+        }
+
+        .top_fireworks_left {
+            position: absolute;
+            left: 80px;
+            top: 10px;
+
+            // border: 1px solid red;
+        }
+
+        .top_fireworks_right {
+            position: absolute;
+            right: 100px;
+            top: 140px;
+
+            // border: 1px solid red;
+        }
+    }
+
+    .down {
+        // 氣球 | 結算 | 氣球
+        display: flex;
+        position: relative;
+
+        .down_bolloon_left {
+            position: absolute;
+            bottom: 100px;
+        }
+
+        .down_bolloon_right {
+            position: absolute;
+            right: 0;
+        }
+
+        .member {
+            border: 1px solid black;
+            background-color: rgba(255, 255, 255, 0.8);
+            width: 600px;
+            height: 260px;
+            margin: 390px auto 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            border-radius: 30px;
+
+            .playerimg {
+                border-radius: 50%;
+                margin: 0 auto;
+                position: absolute;
+                left: 50%;
+                top: -120px;
+                transform: translateX(-50%);
+
+                img {
+                    width: 110px;
+                    height: 110px;
+                    border-radius: 50%;
+                }
+            }
+
+            .banner {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                top: -30px;
+            }
+
+            .banner_text {
+                position: absolute;
+                color: white;
+                font-size: 36px;
+                left: 50%;
+                transform: translateX(-50%);
+                top: 4px;
+                font-weight: $fw600;
+            }
+
+
+            .username {
+                font-size: $fs32;
+                text-align: center;
+                color: $primary-color-1;
+                padding-top: 100px;
+            }
+
+            .bottom {
+                // border: 1px solid red;
+                display: flex;
+                justify-content: space-around;
+                // margin: 40px 0;
+                padding: 50px 0;
+
+
+                .score {
+                    text-align: center;
+                    color: $primary-color-1;
+                    display: flex;
+
+                    &::after {
+                        content: '';
+                        border-right: 2px solid $primary-color-2;
+                        margin-left: 124px;
+                    }
+
+                    p {
+                        font-size: $fs24;
+                    }
+                }
+
+
+
+                .rank {
+                    text-align: center;
+                    color: $primary-color-1;
+
+                    p {
+                        font-size: $fs24;
+                    }
+
+
+
+                }
+            }
+
+
+        }
+    }
+
+    .button {
+        margin: 30px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .mil-link {
+            display: grid;
+            grid-template-rows: auto auto;
+            text-decoration: none;
+            color: white;
+            width: 200px;
+            height: 60px;
+            padding: 20px 40px;
+
+            border-radius: 48px;
+            margin: 0 auto;
+            background-color: $primary-color-1;
+
+            font-size: $fs24;
+            text-align: center;
+
+        }
+    }
+}

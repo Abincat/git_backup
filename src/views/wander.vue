@@ -1,8 +1,6 @@
 <template>
     <layout>
         <template #section-right-content>
-            <userinfo></userinfo>
-
             <div class="wander">
                 <div class="container">
                     <div class="return">
@@ -47,12 +45,11 @@
 <script>
 //import 這頁需要的元件
 import layout from '@/components/layout.vue'
-import userinfo from '@/components/userInfo.vue'
 
 export default {
     components: {
-        layout,
-        userinfo
+        layout
+
     }
 }
 </script>

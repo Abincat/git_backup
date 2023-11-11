@@ -1,9 +1,7 @@
 <template>
     <layout>
         <template #section-right-content>
-            <userinfo></userinfo>
-
-            <div class=" mypage_edit">
+            <div class="mypage_edit">
                 <div class="information">
                     <form class="information_write">
                         <div class="head_sticker">
@@ -111,7 +109,7 @@
                                     src="../assets/images/mypage_edit/TibameCAT_leave_catch.png" alt="">
                                 <img class="TibameCAT_leave" src="../assets/images/mypage_edit/TibameCAT_leave.png" alt="">
                                 <img class="ball" src="../assets/images/mypage_edit/ball.png" alt="">
-                                <button class="clickme" id="clickme">Click Me!</button>
+                                <button class="clickme" @click="ball_animation" id="clickme">Click Me!</button>
                             </div>
                         </div>
                     </div>
@@ -203,8 +201,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="submit">
-                    <input type="submit" value="儲存變更">
+                <div>
+                    <router-link :to="{ name: 'mypage' }" class="submit">
+                        <input type="submit" value="儲存變更">
+                    </router-link>
                 </div>
             </div>
         </template>
@@ -217,41 +217,51 @@
 
 //import 這頁需要的元件
 import layout from '@/components/layout.vue'
-import userinfo from '@/components/userInfo.vue'
 import { gsap } from 'gsap'
-
-import ScrollTrigger from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
-
-
 
 
 export default {
     components: {
-        layout,
-        userinfo
+        layout
+    },
+    data() {
+        return {};
+    },
+    methods: {
+        ball_animation() {
+            gsap.to(".ball", {
+                y: -300,
+                duration: 1,
+                yoyo: true,
+                scale: 1.5,
+                repeat: 1,
+                rotation: 360,
+                onComplete: () => {
+                    gsap.to(".clickme", {
+                        opacity: 1
+                    });
+                    gsap.to(".TibameCAT_leave_catch", {
+                        opacity: 1
+                    });
+                    gsap.to(".TibameCAT_leave", {
+                        opacity: 0
+                    });
+                }
+            });
+            gsap.to(".clickme", {
+                opacity: 0
+            });
+            gsap.to(".TibameCAT_leave_catch", {
+                opacity: 0
+            });
+            gsap.to(".TibameCAT_leave", {
+                opacity: 1
+            });
+        }
+
     }
-    // data() {
-    //     return {};
-    // },
-    // method() {
-    //     const ball =
-    //         gsap.to(".ball", {
-    //             y: -300,
-    //             duration: 1,
-    //             yoyo: true,
-    //             scale: 1.5,
-    //             repeat: 1,
-    //             rotation: 360,
-    //             paused: true,
-    //         })
+};
 
-    //     let clickme = document.querySelector("clickme");
-    //     document.querySelector("#clickme").onclick = () => ball.restart();
-    // }
-
-}
 
 
 </script>

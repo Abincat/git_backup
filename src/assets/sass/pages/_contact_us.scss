@@ -1,0 +1,165 @@
+.contact {
+  // border: 1px solid darkblue;
+  padding: 100px;
+  // background: rgba(238, 238, 238, 0.6);
+  width: 100%;
+  margin: 0 auto;
+
+  .title {
+    margin-bottom: 65px;
+
+    h1 {
+      margin-bottom: 32px;
+    }
+
+    p {
+      color: $primary-color-2;
+    }
+  }
+
+  .title-flex {
+    border-bottom: 1px solid $primary-color-2;
+    display: flex;
+    column-gap: 20px;
+    align-items: center;
+    padding-bottom: 24px;
+
+    h3 {
+      color: $primary-color-1;
+      font-weight: $fw600;
+    }
+
+    p {
+      // border: 1px solid saddlebrown;
+      font-size: $fs20;
+      color: #8F8F8F;
+      font-weight: bold;
+    }
+  }
+
+  .phone {
+    // border: 1px solid saddlebrown;
+    margin-top: 15px;
+    padding: 15px;
+
+    h3 {
+      color: $primary-color-1;
+      font-size: $fs16;
+      margin-bottom: 12px;
+    }
+
+    p {
+      color: $primary-color-2;
+    }
+  }
+
+  .gmail {
+    margin: 40px 0 60px 0;
+    padding: 15px;
+
+    h3 {
+      color: $primary-color-1;
+      font-size: $fs16;
+      margin-bottom: 12px;
+    }
+
+    p {
+      color: $primary-color-2;
+    }
+  }
+
+  .subject {
+    margin-top: 24px;
+    .purpose {
+      color: $primary-color-1;
+      font-weight: bold;
+    }
+
+    select {
+      display: block;
+      color: #8F8F8F;
+      padding: 15px;
+      width: 100%;
+      border-radius: 20px;
+      margin-top: 12px;
+      border: none;
+      outline: none;
+      appearance: none;
+      font-size: $fs14;
+      margin-bottom: 36px;
+    }
+
+    .text{
+      color: $primary-color-1;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    textarea {
+      display: block;
+      width: 100%;
+      padding: 25px;
+      padding: 25px 25px 200px 25px;
+      resize: none;
+      outline: none;
+      border: none;
+      border-radius: 20px;
+      color: $primary-color-2;
+    }
+  }
+
+  .captcha-flex{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #8F8F8F;
+    padding-bottom: 20PX;
+    margin-top: 44px;
+    label{
+      // border: 1px solid darkcyan;
+      color: $primary-color-1;
+      font-size: $fs16;
+      margin-right: 10px;
+    }
+
+    input{
+      border: none;
+      outline: none;
+      background: transparent;
+      color: $primary-color-2;
+    }
+
+    canvas{
+      background: rgba(238, 238, 238, 0.6);
+      vertical-align: bottom;
+      cursor: pointer;
+    }
+  }
+
+  .bt{
+    // border: 1px solid darkblue;
+    margin-top: 60px;
+    display: flex;
+    column-gap: 20px;
+    justify-content: center;
+    button{
+      // padding: 15px;
+      border-radius: 20px;
+      width: 157px;
+      height: 50px;
+      outline: none;
+      border: none;
+      font-size: $fs20;
+      font-weight: $fw500;
+    }
+    .reset{
+      color: $primary-color-1;
+      background-color: #fff;
+    }
+
+    .confirm{
+      background-color: $primary-color-1;
+      color: $white;
+    }
+  }
+    
+}

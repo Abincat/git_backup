@@ -1,7 +1,6 @@
 <template>
     <layout>
         <template #section-right-content>
-            <userinfo></userinfo>
             <div class="mypage">
                 <div class="introduction_guided_tour">
                     <div class="property">
@@ -15,7 +14,9 @@
                         </div>
                     </div>
                     <div class="my_introduction">
-                        <button class="new_post_button">發表新貼文</button>
+                        <div>
+                            <button class="new_post_button">發表新貼文</button>
+                        </div>
                         <div class="head_sticker">
                             <!-- <img :class="head_sticker" src="{{ headSticker }}" id="head_sticker" alt="head_sticker"> -->
                             <img :class="head_sticker_img" src="../assets/images/mypage/TibameCAT.jpg" alt="head_sticker">
@@ -303,12 +304,10 @@
 <script>
 //import 這頁需要的元件
 import layout from '@/components/layout.vue'
-import userinfo from '@/components/userInfo.vue'
 
 export default {
     components: {
-        layout,
-        userinfo
+        layout
     }
 }
 </script>

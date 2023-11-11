@@ -1,0 +1,152 @@
+.chatbot {
+  width: 100%;
+
+  .container {
+    // border: 1px solid darkblue;
+    height: 900px;
+    background-color: rgb(255, 255, 255, 0.8);
+    border-radius: 20px;
+
+    .title {
+      border-bottom: 2px solid #D6CBF5;
+      text-align: center;
+      padding: 24px;
+      width: 80%;
+      margin: 0 auto;
+
+      h3 {
+        color: $primary-color-1;
+        font-weight: $fw500;
+      }
+    }
+
+    .robot {
+      // border: 1px solid darkblue;
+      display: flex;
+      // justify-content: end;
+      align-items: center;
+      column-gap: 20px;
+      width: 80%;
+      margin: 44px 0 0 52px;
+
+      .talk {
+        // border: 1px solid saddlebrown;
+        width: 70%;
+        height: 50px;
+        padding-left: 20px;
+        background-color: $secondary-color-4;
+        border-radius: 20px;
+        height: 55px;
+
+        p {
+          // border: 1px solid blue;
+          color: $primary-color-1;
+          margin-top: 17px;
+        }
+      }
+    }
+
+    .box {
+      // border: 1px solid darkblue;
+      width: 240px;
+      height: 310px;
+      background-color: #C3C4E5;
+      border-radius: 10px;
+      margin-top: 30px;
+      transform: translateX(63%);
+
+      h3 {
+        // border: 1px solid darkblue;
+        color: $primary-color-1;
+        font-size: $fs20;
+        text-align: center;
+        padding: 15px;
+      }
+
+      ul {
+        // border: 1px solid saddlebrown;
+        width: 200px;
+        margin: 0 auto;
+        margin-top: 20px;
+
+        li {
+          background-color: #fff;
+          padding: 10px;
+          margin: 12px;
+          border-radius: 5px;
+          color: $primary-color-1;
+
+        }
+      }
+    }
+
+    .user {
+      // border: 1px solid saddlebrown;
+      display: flex;
+      justify-content: end;
+      align-items: center;
+      column-gap: 20px;
+      width: 100%;
+      margin-top: 44px;
+      padding-right: 20px;
+
+      .usertalk {
+        border: 1px solid darkblue;
+        width: 60%;
+        padding-left: 20px;
+        background-color: $secondary-color-4;
+        border-radius: 20px;
+        height: 55px;
+        background-color: $primary-color-1;
+
+        p {
+          // border: 1px solid blue;
+          color: $primary-color-1;
+          margin-top: 17px;
+          color: $white;
+        }
+      }
+    }
+
+    .chat{
+      border-top: 2px solid #D6CBF5;
+      padding: 20px;
+      margin:70px auto 0 auto;
+      width: 80%;
+
+      .chat-input {
+        width: 100%;
+        display: flex;
+        background-color: #C3C4E5;
+        border: 1px solid #ccc;
+        border-radius: 30px;
+        padding: 10px;
+        padding-right: 30px;
+        margin: 0 auto;
+
+        input {
+          // border: 1px solid darkblue;
+          flex: 1;
+          border: none;
+          outline: none;
+          background: transparent;
+          font-size: 16px;
+          padding-left: 20px;
+        }
+
+        button {
+          background-color: #007bff;
+          color: #fff;
+          border: none;
+          border-radius: 50%;
+          width: 36px;
+          height: 36px;
+          margin-left: 10px;
+          cursor: pointer;
+        }
+      }
+    }
+
+    
+  }
+}

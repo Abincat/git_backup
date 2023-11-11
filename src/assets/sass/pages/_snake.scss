@@ -1,0 +1,12 @@
+main.snake {
+    width: 100%;
+    // height: 100%;
+    border: 1px solid black;
+    // background: url("../../images/snake.svg");
+    background-image: url("/src/assets/images/snake.svg");
+    // background-color: aqua;
+
+    div {
+        background: url("../../images/snake.svg");
+    }
+}

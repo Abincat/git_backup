@@ -1,0 +1,114 @@
+.million_school_start {
+    width: 100%;
+
+
+    .top {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        .left {
+            width: 500px;
+            height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .right_top {
+
+            display: grid;
+            grid-template-columns: auto auto;
+            color: $primary-color-1;
+            padding: 40px;
+
+            span {
+                display: flex;
+                font-size: $fs32;
+                margin-bottom: 30px;
+
+                p {
+                    font-size: $fs32;
+                }
+
+                .heart {
+
+                    color: red;
+                }
+            }
+
+            p {
+
+                margin-bottom: 16px;
+            }
+        }
+
+        .right {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+
+        }
+
+        .right_down {
+
+
+
+            h3 {
+                font-size: $fs32;
+                color: $primary-color-1;
+
+
+            }
+
+            .ans {
+                display: grid;
+                grid-template-columns: auto auto;
+
+                span {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 200px;
+                    height: 60px;
+                    margin-bottom: 50px;
+                    border-radius: 32px;
+                    background-color: #ffff;
+                    color: $primary-color-1;
+
+                    margin: 40px auto;
+                }
+            }
+        }
+    }
+
+    .down {
+        .text {
+            font-size: $fs32;
+            color: $primary-color-1;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .bar {
+            border-radius: 10px;
+            margin: 0 auto;
+            width: 80%;
+            height: 21px;
+            background-color: #ffff;
+
+            .bar-color {
+                width: 30%;
+                height: 21px;
+                border-radius: 10px;
+                background-color: $primary-color-2;
+            }
+        }
+    }
+}

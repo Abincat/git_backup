@@ -16,6 +16,7 @@ $fs14: 14px;
 $fs12: 12px;
 
 //設定字體粗度
+$fw400: 400;
 $fw500: 500;
 $fw600: 600;
 
@@ -52,6 +53,12 @@ h3 {
 h4 {
     font-size: $fs24;
     font-weight: $fw500;
+    line-height: 140%;
+}
+
+h5 {
+    font-size: $fs20;
+    font-weight: $fw400;
     line-height: 140%;
 }
 

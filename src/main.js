@@ -9,4 +9,7 @@ import 'bootstrap'
 //引用sass
 import '@/assets/sass/style.scss'
 
+//引用axios
+import axios from 'axios'
+
 createApp(App).use(router).mount('#app')

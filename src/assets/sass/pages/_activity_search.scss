@@ -1,0 +1,111 @@
+.activity-search{
+    // border: 1px solid green;
+    width: 100%;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    .search-container{
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      width: 80%;
+      margin: 0 auto;
+      .search-result{
+        // border: 1px solid red;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        .result{
+          display: flex;
+          gap: 10px;
+          font-size: $fs20;
+          font-weight: $fw600;
+          color: $primary-color-1;
+          >span{
+            font-size: $fs24;
+          }
+  
+        }
+        .key-word{
+          display: flex;
+          gap: 10px;
+          font-size: $fs20;
+          font-weight: $fw600;
+          color: $primary-color-1;
+        }
+      }
+      .result-cards{
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+        .result-card{
+          // border: 1px solid blue;
+          display: flex;
+          border-radius: 32px;
+          &:hover{
+            box-shadow: 5px 5px 10px $secondary-color-4;
+            transform: scale(1.02);
+            transition: 0.2s ease-in-out;
+          }
+          .result-pic{
+            position: relative;
+            width: 450px;
+            height: 260px;
+            border-radius: 32px 0 0 32px;
+            overflow: hidden;
+           
+            .info{
+              display: flex;
+              align-items: center;
+              gap: 4px;
+              position: absolute;
+              color: $white;
+              left: 30px;
+              top: 20px;
+              >img{
+                width: 20px;
+                height: 20px;
+              }
+            }
+            >img{
+              width: 100%;
+              background-position: center;
+              background-size: center;
+            }
+  
+          }
+          .result-details{
+            background-color: $white;
+            border-radius: 0 32px 32px 0;
+            width: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .result-text{
+              display: flex;
+              flex-direction: column;
+              gap: 15px;
+              width: 80%;
+              >h3{
+                color:$primary-color-1;
+              }
+              .detail{
+                display: flex;
+                gap: 8px;
+                align-items: center;
+                color: $primary-color-2;
+                >img{
+                  width: 20px;
+                  height: 20px;
+
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+  
+}

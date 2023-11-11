@@ -1,7 +1,9 @@
 <template>
     <layout>
         <template #section-right-content>
-
+            <main class="snake">
+                <div>123</div>
+            </main>
         </template>
     </layout>
 </template>

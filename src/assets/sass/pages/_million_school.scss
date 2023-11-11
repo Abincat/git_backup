@@ -1,0 +1,100 @@
+.million_school {
+    width: 100%;
+    height: 345px;
+    // background-color: #EED0CC;
+    padding: 40px;
+    display: inline-block;
+    margin: 0 auto;
+
+    .member {
+        border: 1px solid black;
+        background-color: rgba(255, 255, 255, 0.8);
+        width: 600px;
+        height: 260px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        border-radius: 30px;
+
+        .playerimg {
+            border-radius: 50%;
+            margin: 0 auto;
+            position: absolute;
+            left: 50%;
+            bottom: 200px;
+            transform: translateX(-50%);
+
+            img {
+                width: 110px;
+                height: 110px;
+                border-radius: 50%;
+            }
+        }
+
+
+        .username {
+            font-size: $fs32;
+            text-align: center;
+            color: $primary-color-1;
+            padding-top: 40px;
+        }
+
+        .bottom {
+            // border: 1px solid red;
+            display: flex;
+            justify-content: space-around;
+            // margin: 40px 0;
+            padding: 50px 0;
+
+
+            .score {
+                text-align: center;
+                color: $primary-color-1;
+                display: flex;
+
+                &::after {
+                    content: '';
+                    border-right: 2px solid $primary-color-2;
+                    margin-left: 124px;
+                }
+
+                p {
+                    font-size: $fs24;
+                }
+            }
+
+
+
+            .rank {
+                text-align: center;
+                color: $primary-color-1;
+
+                p {
+                    font-size: $fs24;
+                }
+
+
+
+            }
+        }
+
+
+    }
+
+    .mil-link {
+        text-decoration: none;
+        color: white;
+        width: 143px;
+        height: 65px;
+        padding: 21px 40px;
+
+        border-radius: 48px;
+        margin: 0 auto;
+        background-color: $primary-color-1;
+
+        font-size: $fs24;
+
+    }
+}

@@ -1,0 +1,264 @@
+.b_mission {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+
+
+    height: 100%;
+
+    .mission-section {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+
+        .mission {
+            display: flex;
+        }
+
+        .mission-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-image: url("/src/assets/images/user/userimage.png");
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        p {
+            margin-left: 20px;
+            line-height: 40px;
+        }
+    }
+
+    .search-section {
+        display: flex;
+        justify-content: space-between;
+
+        .search-section-left {
+
+
+            span {
+                width: 100px;
+                height: 40px;
+                border-radius: 10px;
+                background-color: #FAEEE9;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: 1px solid black;
+                color: $primary-color-1;
+                font-size: $fs20;
+
+            }
+        }
+
+        .search-section-right {
+            display: flex;
+            justify-content: right;
+            margin-bottom: 20px;
+
+            input {
+                width: 246px;
+                height: 40px;
+                border-radius: 20px;
+                border: 1px solid black;
+                text-align: center;
+            }
+
+            span {
+                width: 100px;
+                height: 40px;
+                border-radius: 10px;
+                background-color: #FAEEE9;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: 1px solid black;
+                color: $primary-color-1;
+                font-size: $fs20;
+                margin-left: 20px;
+            }
+        }
+    }
+
+
+    .table {
+        text-align: center;
+        border: 1px solid black;
+
+        thead {
+
+            tr {
+                background-color: #FAEEE9;
+                border: 1px solid black;
+
+
+                th {
+                    color: $primary-color-1;
+                }
+
+            }
+        }
+
+        tbody {
+
+
+            tr {
+
+
+
+                td {
+                    .btn {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background-color: #FAEEE9;
+                        color: $primary-color-1;
+                        font-size: 16px;
+                        border: 1px solid $primary-color-1;
+                        width: 72px;
+                        height: 24px;
+                    }
+                }
+            }
+        }
+    }
+
+    .Pagination {
+
+
+        ul {
+
+            display: flex;
+            justify-content: right;
+            list-style: none;
+
+            li {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 30px;
+                height: 30px;
+                border: 1px solid green;
+                background-color: #FAEEE9;
+
+                &:hover {
+                    background-color: $primary-color-1;
+                    color: #ffff;
+                }
+            }
+
+
+        }
+    }
+}
+
+// 彈窗
+
+.editMission {
+    width: 960px;
+    background-color: white;
+    border-radius: 20px;
+    position: absolute;
+    z-index: 1;
+
+
+
+    .dialog {
+        // width: 960px;
+        // background-color: white;
+        // border-radius: 20px;
+        // position: absolute;
+    }
+
+    .editTitle {
+        height: 62px;
+        font-size: $fs20;
+        background-color: $secondary-color-1;
+        line-height: 62px;
+        color: $primary-color-1;
+        padding-left: 72px;
+        font-weight: $fw600;
+        border-radius: 20px 20px 0 0;
+        margin-bottom: 30px;
+
+
+    }
+
+    .editContent {
+        // background-color: white;
+        height: 140px;
+        display: flex;
+        justify-content: space-around;
+        // padding: 30px 0;
+
+        .editAll_left {
+            display: grid;
+            grid-template-columns: auto auto;
+            column-gap: 100px;
+
+            span {
+                font-weight: $fw600;
+                color: $primary-color-1;
+
+            }
+
+            p {
+                font-weight: $fw600;
+
+            }
+        }
+
+        .editAll_right {
+            display: grid;
+            grid-template-columns: auto auto;
+            column-gap: 100px;
+
+            span {
+                font-weight: $fw600;
+                color: $primary-color-1;
+
+            }
+
+            input {
+                height: 24px;
+                font-weight: $fw600;
+
+            }
+        }
+    }
+
+    .edit_btn {
+        margin: 30px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .mil-link {
+            display: grid;
+            grid-template-rows: auto auto;
+            text-decoration: none;
+            color: white;
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            // padding: 20px;
+
+            border-radius: 10px;
+            margin: 0 auto;
+            background-color: $secondary-color-1;
+            color: $primary-color-1;
+            border: 1px solid $primary-color-2;
+
+            font-size: $fs20;
+            text-align: center;
+
+            &:hover {
+                background-color: $primary-color-1;
+                color: $white;
+                border: 1px solid $primary-color-2;
+            }
+        }
+    }
+}

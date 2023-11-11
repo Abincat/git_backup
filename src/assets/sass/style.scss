@@ -1,5 +1,7 @@
 @import 'base/base';
 @import "mixin/mixin";
+@import 'node_modules/bootstrap/scss/mixins/breakpoints';
 @import 'layout/layout';
+@import "./layout/_b_layout";
 @import 'component/component';
 @import "pages/pages";

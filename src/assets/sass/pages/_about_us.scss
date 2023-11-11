@@ -1,0 +1,244 @@
+*{
+  // outline: 1px solid red;
+}
+.about-us{
+
+  // border: 5px solid blue;
+  width: 100%;
+  margin: 0 auto;
+  padding: 32px;
+
+  // ------------ 關於我們 --------------
+  .about_grid{
+    // border: 2px solid darkgoldenrod;
+    background-color: #EED0CC;
+    border-radius: 20px;
+    width: 100%;
+    display: grid;
+    grid-template-columns:1fr 1fr;
+    // column-gap: 70px;
+    padding: 40px;
+    position: relative;
+    padding-bottom: 80px;
+
+    .about_left{
+      // border: 2px solid darkgreen;
+      h1{
+        margin-bottom: 22px;
+      }
+
+      p{
+        font-size: $fs16;
+        color: $primary-color-2;
+        // font-weight: $fw500;
+      }
+    }
+
+    .about_right{
+      // border: 2px solid darkmagenta;
+      
+      img{
+        // border: 1px solid darkblue;
+        width:450px !important;
+        position: absolute;
+        top: 50px;
+      }
+    }
+  }
+  .about_grid{  
+    // border: 2px solid darkgoldenrod;
+    background-color: #EED0CC;
+    border-radius: 20px;
+    width: 100%;
+    display: grid;
+    grid-template-columns:1fr 1fr;
+    column-gap: 70px;
+
+    .about_left{
+      // border: 2px solid darkgreen;
+      h1{
+        margin-bottom: 22px;
+      }
+
+      p{
+        font-size: $fs24;
+        color: #66669A;
+      }
+    }
+
+    .about_right{
+      // border: 2px solid darkmagenta;
+      
+      img{
+        width: 100%;
+       
+      }
+    }
+    
+
+  }
+
+  // ------------ 主打功能 --------------
+
+  .subtitle{
+    // border: 1px solid darkblue;
+    margin: 112px 0 60px 0;
+    h2{
+      text-align: center;
+      color: $primary-color-1;
+      font-weight: bold;
+    }
+  }
+
+  // ------------ 聊天大廳 --------------
+
+  .subtitle_container{
+    // border: 2px solid darkgreen;
+    width: 100%;
+    margin: 0 auto;
+    
+
+    .chatroom{
+      // border: 1px solid darkmagenta;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 96px;
+      width: 100%;
+      align-items: center;
+      padding: 20px;
+
+      .room_left{
+        // border: 1px solid darkmagenta;
+        img{
+          width: 100%;
+        }
+      }
+
+      .room_right{
+        // border: 1px solid darkturquoise;
+        width: 100%;
+        h2{
+          color: $primary-color-1;
+          font-weight: bold;
+          margin-bottom: 52px;
+        }
+        p{
+          font-size: $fs24;
+          color: $primary-color-2;
+        }
+      }
+    }
+
+  // ------------ 遊樂場 --------------
+
+    .playground{
+      // border: 2px solid darkblue;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 96px;
+      width: 100%;
+      align-items: center;
+      // padding: 20px;
+      margin-top: 40px;
+
+      .play_left{
+        // border: 1px solid darkturquoise;
+        width: 100%;
+        h2{
+          color: $primary-color-1;
+          font-weight: bold;
+          margin-bottom: 52px;
+        }
+        p{
+          font-size: $fs24;
+          color: $primary-color-2;
+        }
+      }
+
+      .play_right{
+        img{
+          // border: 2px solid darkblue;
+          width: 100%;
+        }
+      }
+    }
+
+    
+  }
+
+  // ------------ 團隊介紹 --------------
+  
+  .introduce{
+    // border: 1px solid darkblue;
+    margin: 112px 0 60px 0;
+    h2{
+      text-align: center;
+      color: $primary-color-1;
+      font-weight: bold;
+    }
+  }
+
+  .team_grid{
+    // border: 2px solid darkgreen;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    column-gap: 32px;
+
+    .item{
+      // border: 1px solid darkblue;
+
+      img{
+        // border: 1px solid darkmagenta;
+        width: 180px;
+        height: 180px;
+        background-color: $white;
+        display: block;
+        margin: 0 auto;
+        border-radius: 80px;
+      }
+
+      h3{
+        margin-top: 24px;
+        text-align: center;
+        color: $primary-color-1;
+        font-size: $fs24;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .team_grid-2{
+    // border: 2px solid darkgoldenrod;
+    margin: 0 auto;
+    width: 85%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    // column-gap: 24px;
+    margin-top: 88px;
+
+    .item-2{
+      // border: 1px solid darkblue;
+      width: 100%;
+
+      img{
+        // border: 1px solid darkmagenta;
+        width: 180px;
+        height: 180px;
+        background-color: $white;
+        display: block;
+        margin: 0 auto;
+        border-radius: 80px;
+      }
+
+      h3{
+        margin-top: 24px;
+        text-align: center;
+        color: $primary-color-1;
+        font-size: $fs24;
+        font-weight: bold;
+      }
+    }
+  }
+
+}

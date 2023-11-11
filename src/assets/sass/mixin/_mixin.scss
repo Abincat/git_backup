@@ -3,24 +3,11 @@
     @if $bgc==$primary-color-1 {
         background-color: $bgc;
         color: $white;
-        border-radius: 32px;
 
-        &:hover {
-            background-color: $primary-color-3;
-            color: $primary-color-1;
-            border-color: $white;
-        }
     }
 
     @else if $bgc==$primary-color-3 {
         background-color: $bgc;
         color: $primary-color-1;
-        border-radius: 32px;
-        line-height: 140%;
-
-        &:hover {
-            background-color: $primary-color-1;
-            color: $white;
-        }
     }
 }

@@ -16,6 +16,18 @@ main.main-block {
         display: flex;
         flex-direction: row;
         flex: 1;
+        overflow: hidden;
+
+        @include media-breakpoint-down(lg) {
+            margin: 20px;
+        }
+
+        @include media-breakpoint-down(md) {
+            flex-direction: column-reverse;
+            background-color: transparent;
+            border-radius: 0;
+            margin: 0px;
+        }
 
         .section {
             &-left {
@@ -27,21 +39,62 @@ main.main-block {
                 display: flex;
                 flex-direction: column;
 
+                @include media-breakpoint-down(md) {
+                    min-height: auto;
+                    height: 130px;
+                    border-top-left-radius: 0px;
+                    border-bottom-left-radius: 0px;
+                }
+
                 .left-expand {
                     width: 280px;
                     padding: 12px 20px;
                     text-align: right;
 
+                    @include media-breakpoint-down(lg) {
+                        width: 200px;
+                    }
+
+                    @include media-breakpoint-down(md) {
+                        width: 100%;
+                    }
+
                     .statement {
-                        font-size: $fs14;
-                        color: $primary-color-1;
+                        font-size: $fs12;
+                        color: $primary-color-2;
                         padding-bottom: 12px;
                         text-align: left;
+
+                        @include media-breakpoint-down(md) {
+                            text-align: center;
+                            padding-bottom: 0px;
+                        }
+
+                        a {
+                            padding-top: 4px;
+                            display: flex;
+                            align-items: center;
+                            color: $primary-color-2;
+                            text-transform: uppercase;
+
+                            img {
+                                width: 18px;
+                                padding-right: 4px;
+                            }
+
+                            @include media-breakpoint-down(md) {
+                                justify-content: center;
+                            }
+                        }
                     }
 
                     .arrowBtn {
                         transform: rotate(0deg);
                         transition: transform .8s;
+
+                        @include media-breakpoint-down(md) {
+                            display: none;
+                        }
                     }
 
                     &-off {
@@ -66,7 +119,17 @@ main.main-block {
                 padding: 20px;
                 height: 100%;
                 min-height: 100%;
-                overflow-y: auto;
+                // overflow-y: auto;
+
+                .slot-content {
+                    overflow-y: auto;
+                    flex-grow: 1;
+                }
+
+                @include media-breakpoint-down(md) {
+                    min-height: calc(100% - 120px);
+                    padding: 0 20px;
+                }
             }
 
         }

@@ -10,9 +10,21 @@ nav.nav {
     flex-wrap: nowrap;
     transition: width .3s linear;
 
+    @include media-breakpoint-down(lg) {
+        width: 200px;
+    }
+
+    @include media-breakpoint-down(md) {
+        width: 100%;
+    }
+
     .nav-brandlogo {
         width: 150px;
         padding-top: 80px;
+
+        @include media-breakpoint-down(md) {
+            display: none;
+        }
 
         img {
             width: 100%;
@@ -23,7 +35,17 @@ nav.nav {
         padding-top: 40px;
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        gap: 8px;
+
+        @include media-breakpoint-down(md) {
+            flex-direction: row;
+            padding-top: 8px;
+        }
+
+        @include media-breakpoint-down(sm) {
+            gap: 12px;
+        }
+
 
         a {
             color: $primary-color-1;
@@ -31,10 +53,35 @@ nav.nav {
             display: flex;
             align-items: center;
             gap: 8px;
+            padding: 8px;
 
             img {
                 width: 30px;
             }
+
+            &:hover {
+                background: white;
+                padding: 8px;
+                border-radius: 100px;
+            }
+
+            @include media-breakpoint-down(md) {
+                h3 {
+                    font-size: $fs16;
+                }
+            }
+
+            @include media-breakpoint-down(sm) {
+                h3 {
+                    display: none;
+                }
+            }
+        }
+
+        a.current {
+            background: white;
+            padding: 8px;
+            border-radius: 100px;
         }
     }
 
@@ -46,7 +93,7 @@ nav.nav {
         }
 
         .nav-items {
-            gap: 20px;
+            gap: 12px;
 
             a {
 
