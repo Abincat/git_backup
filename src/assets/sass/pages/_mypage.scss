@@ -1,0 +1,556 @@
+.mypage_button {
+    border-radius: 20px;
+    font-size: $fs14;
+    border: none;
+    background-color: $primary-color-1;
+    color: white;
+    height: 30px;
+}
+
+.mypage {
+    width: 100%;
+
+    .introduction_guided_tour {
+        width: 100%;
+
+        .property {
+            align-items: center;
+            justify-content: center;
+            text-align: end;
+            white-space: nowrap;
+            width: 100%;
+
+            div {
+                display: flex;
+                align-items: center;
+                margin: 10px 0 0;
+                justify-content: flex-end;
+            }
+
+            div img {
+                width: 30px;
+                height: 30px;
+            }
+
+            p {
+                color: $primary-color-1;
+                font-size: $fs14;
+            }
+
+            button {
+                width: 80px;
+                padding: 5px;
+                margin-top: 10px;
+            }
+        }
+
+        .my_introduction {
+            display: flex;
+            width: 80%;
+            margin: 0 auto;
+            align-items: center;
+
+            .new_post_button {
+                width: 130px;
+                height: 80px;
+                background-color: white;
+                color: $primary-color-1;
+                font-weight: bold;
+                border-radius: 10px;
+                border: none;
+                box-shadow: -4px 4px 4px $primary-color-2;
+                align-items: center;
+                position: relative;
+                z-index: 2;
+
+                &::after {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    width: 0;
+                    top: 40%;
+                    right: -10%;
+                    border: 2.5px solid white;
+                    width: 0;
+                    height: 0;
+                    border-style: solid;
+                    border-width: 10px 0 10px 15px;
+                    border-color: transparent transparent transparent white;
+                }
+            }
+
+
+            .head_sticker {
+                width: 400px;
+                height: 400px;
+                background-color: white;
+                border-radius: 50px;
+                box-shadow: 0 8px 6px $primary-color-1;
+                z-index: 1;
+                display: flex;
+                margin: 0 auto;
+            }
+
+            .head_sticker img {
+                width: 400px;
+                height: 400px;
+                border-radius: 50px;
+            }
+
+            .guide_button {
+                z-index: 2;
+
+                button {
+                    width: 130px;
+                    height: 40px;
+                    background-color: white;
+                    border-radius: 10px;
+                    margin: 7px;
+                    border: none;
+                    box-shadow: 4px 4px 4px $primary-color-2;
+                    color: $primary-color-1;
+                    font-weight: bold;
+                }
+            }
+        }
+
+    }
+
+    .mypage_info {
+        text-align: center;
+        margin: 20px auto;
+        width: 47%;
+
+        button {
+            width: 150px;
+        }
+
+        p {
+            text-align: start;
+            margin: 10px auto;
+            color: $primary-color-1;
+        }
+    }
+
+    .tag {
+        width: 80%;
+        display: flex;
+        justify-content: space-around;
+        margin: 0 auto;
+
+        span {
+            width: 100px;
+            height: 40px;
+            background-color: white;
+            text-align: center;
+            justify-items: center;
+            border-radius: 20px;
+            line-height: 40px;
+            color: $primary-color-1;
+            font-weight: bold;
+        }
+    }
+
+    .custom_display {
+        display: flex;
+        width: 80%;
+        margin: 40px auto;
+
+        .show_role {
+            display: flex;
+            position: relative;
+            width: 40%;
+
+            .character_parts {
+                width: 200px;
+                height: 200px;
+                border-radius: 30px;
+                position: absolute;
+                left: 50%;
+                transform: translate(-50%);
+            }
+
+            .face {
+                z-index: 2;
+                background-image: url("@/assets/images/mypage/hehe.png");
+                background-size: 100%;
+            }
+
+            .hair {
+                z-index: 3;
+                background-image: url("@/assets/images/mypage/purple_hair.png");
+                background-size: 100%;
+            }
+
+            .cloth {
+                z-index: 4;
+                background-image: url("@/assets/images/mypage/pink_vest.png");
+                background-size: 100%;
+            }
+
+            .accessories {
+                z-index: 5;
+                background-image: url("@/assets/images/mypage/bubble.png");
+                background-size: 100%;
+            }
+
+            .base_plate {
+                width: 200px;
+                height: 200px;
+                border-radius: 30px;
+                background-color: white;
+                z-index: 1;
+                margin: 0 auto;
+            }
+        }
+
+        .my_collect {
+            text-align: end;
+
+            button {
+                position: relative;
+                width: 110px;
+                text-align: end;
+
+                &::before {
+                    content: '';
+                    background-image: url("@/assets/images/mypage/writeIcon.png");
+                    background-size: 100%;
+                    position: absolute;
+                    left: 10px;
+                    top: 5px;
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+
+            .my_collect_title {
+                display: flex;
+                align-items: center;
+            }
+
+            .my_collect_title span {
+                color: $primary-color-1;
+                padding-right: 10px;
+            }
+
+            .my_collect_title hr {
+                color: $primary-color-1;
+                border: 2px solid $primary-color-1;
+                width: 300px;
+            }
+
+            .collect {
+                display: flex;
+                justify-content: space-between;
+
+                div {
+                    width: 100px;
+                    height: 100px;
+                    background-color: white;
+                    border-radius: 20px;
+                }
+
+                .collectA {
+                    background-image: url("@/assets/images/mypage/JS_king.png");
+                    background-size: 100%;
+                }
+
+                .collectB {
+                    background-image: url("@/assets/images/mypage/git_king.png");
+                    background-size: 100%;
+                }
+
+                .collectC {
+                    background-image: url("@/assets/images/mypage/SQL_king.png");
+                    background-size: 100%;
+                }
+            }
+        }
+
+    }
+
+    .life {
+        background-color: rgba(255, 255, 255, 0.8);
+        display: flex;
+        padding: 15px;
+
+        .activity {
+            width: 70%;
+
+            .activity_list {
+                height: 300px;
+                border-radius: 30px 30px 0 0;
+                background-image: url("@/assets/images/mypage/rock_climbing.jpg");
+                background-size: 100%;
+                text-align: end;
+                color: white;
+                background-repeat: no-repeat;
+
+                h4 {
+                    padding: 20px 10px;
+                }
+
+                span {
+                    padding: 0 10px 5px 0;
+                }
+
+                p {
+                    padding: 5px 10px 5px 0;
+                }
+            }
+
+            .past_activity {
+                background-color: $secondary-color-4;
+                border-radius: 0 0 30px 30px;
+                color: $primary-color-1;
+                height: 270px;
+
+                .past_activity_title {
+                    text-align: end;
+                    padding: 10px;
+                    font-weight: bold;
+                }
+
+                .past_activity_list {
+                    width: 70%;
+                    margin: 0 auto;
+
+                    li {
+                        background-color: white;
+                        box-shadow: 0px 4px 4px $primary-color-2;
+                        border-radius: 20px;
+                        height: 50px;
+                        margin: 20px 0;
+                        justify-content: space-between;
+                        align-items: center;
+                        display: flex;
+                        padding: 10px;
+                    }
+
+                    li.cancel_activity {
+                        background-color: rgb(153, 153, 153);
+
+                        button {
+                            background-color: rgb(47, 45, 45);
+                            color: white;
+                        }
+                    }
+
+
+                }
+            }
+        }
+
+
+        .mission_board {
+            width: 30%;
+            background-color: $secondary-color-4;
+            border-radius: 30px;
+            margin-left: 10px;
+            color: $primary-color-1 ;
+
+            .mission_list {
+                li {
+                    display: flex;
+                    padding: 10px 0;
+                    width: 90%;
+                    margin: 0 auto;
+
+                }
+
+                h4 {
+                    padding: 20px 10px;
+                }
+
+                .mission {
+                    width: 70%;
+                    display: flex;
+
+                    img {
+                        width: 20px;
+                        height: 20px;
+                    }
+
+                    p {
+                        padding-left: 5px;
+                    }
+                }
+
+                .mission_award {
+                    display: flex;
+                    width: 30%;
+                    justify-content: space-around;
+                }
+
+                .mission_award img {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+    }
+
+
+    /*==============貼文區域==============*/
+    .page-post {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 8px 40px;
+
+        .post-items {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 0 auto;
+
+            .post-item {
+                background-color: $primary-color-3;
+                border-radius: 16px;
+
+                padding: 20px;
+                width: 600px;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                .post-user-info {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    color: $primary-color-1;
+
+                    .post-user-image {
+                        width: 40px;
+
+                        img {
+                            width: 100%;
+                        }
+                    }
+
+                    .post-user-time {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 4px;
+
+                        .user-post-time {
+                            font-size: $fs14;
+                        }
+                    }
+                }
+
+                .post-content {
+                    color: $primary-color-2;
+                }
+
+                .post-images {
+                    display: none;
+
+                    .show {
+                        display: flex;
+                    }
+                }
+
+                .post-feedback {
+                    display: flex;
+                    gap: 16px;
+                    color: $primary-color-1;
+                    padding-bottom: 12px;
+                    border-bottom: 1px solid $primary-color-2;
+
+                    p {
+                        font-size: $fs12;
+                    }
+
+                    .good-block {
+                        display: flex;
+                        align-items: center;
+                        gap: 4px;
+                    }
+
+                    .reply-block {
+                        display: flex;
+                        align-items: center;
+                        gap: 4px;
+                    }
+                }
+
+                .post-reply {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+
+                    .replied {
+                        display: flex;
+                        gap: 8px;
+
+                        .user-image {
+                            width: 30px;
+
+                            img {
+                                width: 100%;
+                            }
+                        }
+
+                        .replied-message {
+                            width: 100%;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 4px;
+
+                            .user-name {
+                                color: $primary-color-1;
+                            }
+
+                            .content {
+                                color: $primary-color-2;
+                                display: flex;
+                                justify-content: space-between;
+
+                                .replied-time {
+                                    font-size: $fs12;
+                                    color: $primary-color-2;
+                                }
+                            }
+                        }
+                    }
+
+                    .reply-message {
+                        display: flex;
+                        gap: 8px;
+
+                        .user-image {
+                            width: 30px;
+
+                            img {
+                                width: 100%;
+                            }
+                        }
+
+                        .reply-input {
+                            width: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: flex-end;
+
+                            input {
+                                width: 100%;
+                                border: none;
+                                border-radius: 32px;
+                                line-height: 140%;
+                                background-color: $white;
+                                padding-left: 8px;
+
+                                &:focus-visible {
+                                    outline: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

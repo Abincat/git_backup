@@ -1,0 +1,19 @@
+.btn {
+    font-size: $fs20;
+    line-height: 120%;
+    width: 150px;
+    padding: 8px 0;
+
+    &-dark {
+        @include btnColor($primary-color-1)
+    }
+
+    &-lg {
+        @include btnColor($primary-color-1);
+        width: 200px
+    }
+
+    &-light {
+        @include btnColor($primary-color-3)
+    }
+}

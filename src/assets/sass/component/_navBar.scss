@@ -1,0 +1,59 @@
+nav.nav {
+
+    height: 100%;
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    overflow: auto;
+    flex-wrap: nowrap;
+    transition: width .3s linear;
+
+    .nav-brandlogo {
+        width: 150px;
+        padding-top: 80px;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .nav-items {
+        padding-top: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        a {
+            color: $primary-color-1;
+            line-height: 140%;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            img {
+                width: 30px;
+            }
+        }
+    }
+
+    &-off {
+        width: 100px;
+
+        .nav-brandlogo {
+            width: 80px;
+        }
+
+        .nav-items {
+            gap: 20px;
+
+            a {
+
+                h3 {
+                    display: none;
+                }
+            }
+        }
+    }
+}

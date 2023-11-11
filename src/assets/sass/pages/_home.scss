@@ -1,0 +1,184 @@
+.home {
+    display: flex;
+
+
+    .home-post {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 8px 40px;
+
+        .add-post {
+            width: 600px;
+            border: 2px solid $primary-color-1;
+            border-radius: 100px;
+
+            p {
+                color: $primary-color-1;
+                padding: 16px;
+            }
+        }
+
+        .post-items {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            .post-item {
+                background-color: $primary-color-3;
+                border-radius: 16px;
+
+                padding: 20px;
+                width: 600px;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                .post-user-info {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    color: $primary-color-1;
+
+                    .post-user-image {
+                        width: 40px;
+
+                        img {
+                            width: 100%;
+                        }
+                    }
+
+                    .post-user-time {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 4px;
+
+                        .user-post-time {
+                            font-size: $fs14;
+                        }
+                    }
+                }
+
+                .post-content {
+                    color: $primary-color-2;
+                }
+
+                .post-images {
+                    display: none;
+
+                    .show {
+                        display: flex;
+                    }
+                }
+
+                .post-feedback {
+                    display: flex;
+                    gap: 16px;
+                    color: $primary-color-1;
+                    padding-bottom: 12px;
+                    border-bottom: 1px solid $primary-color-2;
+
+                    p {
+                        font-size: $fs12;
+                    }
+
+                    .good-block {
+                        display: flex;
+                        align-items: center;
+                        gap: 4px;
+                    }
+
+                    .reply-block {
+                        display: flex;
+                        align-items: center;
+                        gap: 4px;
+                    }
+                }
+
+                .post-reply {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+
+                    .replied {
+                        display: flex;
+                        gap: 8px;
+
+                        .user-image {
+                            width: 30px;
+
+                            img {
+                                width: 100%;
+                            }
+                        }
+
+                        .replied-message {
+                            width: 100%;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 4px;
+
+                            .user-name {
+                                color: $primary-color-1;
+                            }
+
+                            .content {
+                                color: $primary-color-2;
+                                display: flex;
+                                justify-content: space-between;
+
+                                .replied-time {
+                                    font-size: $fs12;
+                                    color: $primary-color-2;
+                                }
+                            }
+                        }
+                    }
+
+                    .reply-message {
+                        display: flex;
+                        gap: 8px;
+
+                        .user-image {
+                            width: 30px;
+
+                            img {
+                                width: 100%;
+                            }
+                        }
+
+                        .reply-input {
+                            width: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: flex-end;
+
+                            input {
+                                width: 100%;
+                                border: none;
+                                border-radius: 32px;
+                                line-height: 140%;
+                                background-color: $white;
+                                padding-left: 8px;
+
+                                &:focus-visible {
+                                    outline: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+    .home-info {
+        flex-basis: 350px;
+
+        .home-hot-activity {
+            padding-top: 8px;
+        }
+    }
+}

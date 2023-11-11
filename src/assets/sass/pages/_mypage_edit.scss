@@ -1,0 +1,292 @@
+.mypage_edit {
+    color: $primary-color-1 ;
+    width: 100%;
+
+    .information {
+        display: flex;
+        font-weight: bold;
+
+        .information_write {
+            width: 50%;
+
+            .head_sticker {
+                display: flex;
+
+                .head_sticker_main {
+                    margin-left: 20%;
+                    display: flex;
+                }
+
+                div {
+                    width: 200px;
+                    height: 200px;
+                    border-radius: 50%;
+                    background-color: white;
+
+                    img {
+                        width: 200px;
+                        height: 200px;
+                        border-radius: 50%;
+                    }
+                }
+
+                button {
+                    color: $primary-color-1 ;
+                    white-space: nowrap;
+                }
+            }
+
+            .short_input {
+                display: flex;
+
+                div {
+                    padding: 15px;
+
+                    input,
+                    select {
+                        border: none;
+                        width: 200px;
+                        height: 30px;
+                        border-radius: 20px;
+                    }
+                }
+            }
+
+            .long_input {
+                div {
+                    padding: 15px;
+
+                    input,
+                    select {
+                        border: none;
+                        width: 433px;
+                        height: 30px;
+                        border-radius: 20px;
+                    }
+                }
+            }
+
+            .big_input {
+                div {
+                    padding: 15px;
+
+                    textarea {
+                        border: none;
+                        width: 433px;
+                        height: 80px;
+                        border-radius: 20px;
+                        resize: none
+                    }
+                }
+            }
+        }
+
+        .decorate {
+            width: 50%;
+            position: relative;
+
+            iframe {
+                width: 100%;
+                height: 350px;
+                border: none;
+                margin-top: 200px;
+                z-index: 1;
+
+            }
+
+            .mask {
+                width: 155px;
+                height: 40px;
+                z-index: 2;
+                background-color: rgba(223, 221, 237, 1);
+                position: absolute;
+                border-radius: 10px;
+                top: 67.8%;
+                right: 15px;
+                // border: 1px solid black;
+            }
+
+            div {
+                width: 100%;
+
+                .TibameCAT {
+                    position: relative;
+                    right: 0;
+                    bottom: 130px;
+
+                    .TibameCAT_leave {
+                        width: 200px;
+                        z-index: 3;
+                        position: absolute;
+                        top: -10px;
+                        right: 15px;
+                        display: none;
+                    }
+
+                    .TibameCAT_leave_catch {
+                        width: 200px;
+                        z-index: 4;
+                        position: absolute;
+                        top: -10px;
+                        right: 15px;
+                    }
+
+                    .ball {
+                        width: 80px;
+                        z-index: 5;
+                        position: absolute;
+                        top: 90px;
+                        right: 110px;
+                    }
+
+                    .clickme {
+                        z-index: 6;
+                        font-size: 14px;
+                        font-weight: bold;
+                        color: purple;
+                        position: absolute;
+                        top: 120px;
+                        right: 115px;
+                    }
+
+
+                }
+            }
+        }
+    }
+
+    .avatar {
+        display: flex;
+        width: 100%;
+        padding-top: 50px;
+
+        .preview {
+            width: 50%;
+            position: relative;
+            display: block;
+            height: 400px;
+
+
+            .base_plate {
+                width: 330px;
+                height: 330px;
+                background-color: white;
+                border-radius: 20px;
+                position: absolute;
+                top: 10%;
+                left: 50%;
+                transform: translate(-50%);
+                z-index: 1;
+            }
+
+            .avatar_preview {
+                width: 300px;
+                height: 300px;
+                position: absolute;
+                top: 10%;
+                left: 50%;
+                transform: translate(-50%);
+                z-index: 2;
+
+                img {
+                    width: 300px;
+                    height: 300px;
+                    position: absolute;
+                    top: 5%;
+                    left: 50%;
+                    transform: translate(-50%);
+                }
+            }
+        }
+
+        .avatar_components {
+            width: 50%;
+            height: 400px;
+
+            .avatar_components_button {
+                padding-left: 15%;
+                padding-top: 20px;
+
+                .face_button {
+                    background-color: $primary-color-1 ;
+                    border-radius: 10px 10px 0 0;
+                    width: 80px;
+                    color: white;
+                }
+
+                .hair_button,
+                .cloth_button,
+                .accessories_button {
+                    background-color: white;
+                    border-radius: 10px 10px 0 0;
+                    width: 80px;
+
+                }
+            }
+
+            .avatar_components_assemble {
+                position: relative;
+
+
+                .avatar_components_face {
+                    width: 450px;
+                    height: 320px;
+                    background-color: white;
+                    border-radius: 30px;
+                    position: absolute;
+                    top: 0%;
+                    left: 50%;
+                    transform: translate(-50%);
+                    z-index: 2;
+
+                    img {
+                        width: 150px;
+                        height: 150px;
+                        // border: 1px solid black;
+                        cursor: pointer;
+                    }
+                }
+
+                .avatar_components_hair,
+                .avatar_components_cloth,
+                .avatar_components_accessories {
+                    width: 450px;
+                    height: 320px;
+                    background-color: white;
+                    border-radius: 30px;
+                    position: absolute;
+                    top: 0%;
+                    left: 50%;
+                    transform: translate(-50%);
+                    z-index: 1;
+
+
+                    img {
+                        width: 150px;
+                        height: 150px;
+                        // border: 1px solid black;
+                        cursor: pointer;
+                    }
+
+                }
+            }
+
+        }
+    }
+
+    .submit {
+        padding: 20px 0;
+        width: 100%;
+        display: flex;
+
+        input {
+            width: 150px;
+            height: 40px;
+            border-radius: 20px;
+            border: none;
+            background-color: $primary-color-1 ;
+            color: white;
+            margin: 0 auto;
+        }
+    }
+}
