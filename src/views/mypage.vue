@@ -2,6 +2,33 @@
     <layout>
         <template #section-right-content>
             <div class="mypage">
+                <div class="add-post" ref="addPostBlock">
+                    <div class="add-post-block">
+                        <div class="add-block-title">
+                            <h5 class="post-edit-title">發表貼文</h5>
+                            <div class="post-view-setting">
+                                <img src="../assets/images/icon/friend-view.svg" alt="" class="" value="friend">
+                                <img src="../assets/images/icon/global-view-select.svg" alt="" class="select"
+                                    value="global">
+                                <img src="../assets/images/icon/private-view-select.svg" alt="" class="select"
+                                    value="private">
+                            </div>
+                        </div>
+                        <textarea name="" id="post-content" rows="10" placeholder="輸入想說的話"></textarea>
+                        <label for="postImg" class="postImg">
+                            <span>
+                                新增照片
+                            </span>
+                            <img src="../assets/images/icon/image.svg" alt="">
+                            <input type="file" name="postImg" id="postImg">
+                        </label>
+                        <div class="btn-block">
+                            <button class="Btn Btn-light" @click="addPost">取消</button>
+                            <button class="Btn Btn-dark">發布</button>
+                        </div>
+                    </div>
+
+                </div>
                 <div class="introduction_guided_tour">
                     <div class="property">
                         <router-link :to="{ name: buy_coin }">
@@ -63,31 +90,80 @@
                             <div class="collection_window_Classification">
                                 <h2>SSR</h2>
                                 <div class="collection_list">
-                                    <img @click="select('SSR_git')" src="../assets/images/mypage/SSR_git.png" alt="">
-                                    <img @click="select('SSR_My_SQL')" src="../assets/images/mypage/SSR_MySQL.png" alt="">
-                                    <img @click="select('SSR_vue')" src="../assets/images/mypage/SSR_vue.png" alt="">
+                                    <div class="collection_detailed">
+                                        <img :class="{ 'selected-box': isSelected(index) }" @click="toggleSelection(index)"
+                                            src="../assets/images/mypage/SSR_git.png" alt="">
+                                        <h6>Git王</h6>
+                                    </div>
+                                    <div class="collection_detailed">
+                                        <img :class="{ 'selected-box': isSelected(index) }" @click="toggleSelection(index)"
+                                            src="../assets/images/mypage/SSR_MySQL.png" alt="">
+                                        <h6>DBA大哥</h6>
+                                    </div>
+                                    <div class="collection_detailed">
+                                        <img :class="{ 'selected-box': isSelected(index) }" @click="toggleSelection(index)"
+                                            src="../assets/images/mypage/SSR_vue.png" alt="">
+                                        <h6>YYDS</h6>
+                                    </div>
                                 </div>
                             </div>
                             <div class="collection_window_Classification">
                                 <h2>SR</h2>
-                                <div>
-                                    <img src="../assets/images/mypage/SR_html.png" alt="">
-                                    <img src="../assets/images/mypage/SR_CSS.png" alt="">
-                                    <img src="../assets/images/mypage/SR_js.png" alt="">
+                                <div class="collection_list">
+                                    <div class="collection_detailed">
+                                        <img :class="{ 'selected-box': isSelected(index) }" @click="toggleSelection(index)"
+                                            src="../assets/images/mypage/SR_html.png" alt="">
+                                        <h6>建築師</h6>
+                                    </div>
+                                    <div class="collection_detailed">
+                                        <img :class="{ 'selected-box': isSelected(index) }" @click="toggleSelection(index)"
+                                            src="../assets/images/mypage/SR_CSS.png" alt="">
+                                        <h6>裝潢師</h6>
+                                    </div>
+                                    <div class="collection_detailed">
+                                        <img :class="{ 'selected-box': isSelected(index) }" @click="toggleSelection(index)"
+                                            src="../assets/images/mypage/SR_js.png" alt="">
+                                        <h6>邏輯大師</h6>
+                                    </div>
+                                    <div class="collection_detailed">
+                                        <img :class="{ 'selected-box': isSelected(index) }" @click="toggleSelection(index)"
+                                            src="../assets/images/mypage/SR_gasp.png" alt="">
+                                        <h6>動畫超人</h6>
+                                    </div>
                                 </div>
                             </div>
                             <div class="collection_window_Classification">
                                 <h2>R</h2>
-                                <div>
-                                    <img src="../assets/images/mypage/R_game.png" alt="">
-                                    <img src="../assets/images/mypage/R_unicorn.png" alt="">
+                                <div class="collection_list">
+                                    <div class="collection_detailed">
+                                        <img src="../assets/images/mypage/R_game.png" alt="">
+                                        <h6>遊戲王</h6>
+                                    </div>
+                                    <div class="collection_detailed">
+                                        <img src="../assets/images/mypage/R_unicorn.png" alt="">
+                                        <h6>白日夢</h6>
+                                    </div>
                                 </div>
                             </div>
                             <div class="collection_window_Classification">
                                 <h2>N</h2>
-                                <div>
-                                    <img src="../assets/images/mypage/N_OK.png" alt="">
-                                    <img src="../assets/images/mypage/N_cion.png" alt="">
+                                <div class="collection_list">
+                                    <div class="collection_detailed">
+                                        <img src="../assets/images/mypage/N_OK.png" alt="">
+                                        <h6>職場小尖兵</h6>
+                                    </div>
+                                    <div class="collection_detailed">
+                                        <img src="../assets/images/mypage/N_TropicalFish.png" alt="">
+                                        <h6>熱帶魚</h6>
+                                    </div>
+                                    <div class="collection_detailed">
+                                        <img src="../assets/images/mypage/N_saltedFish.png" alt="">
+                                        <h6>鹹魚</h6>
+                                    </div>
+                                    <div class="collection_detailed">
+                                        <img src="../assets/images/mypage/N_tilapiaFish.png" alt="">
+                                        <h6>吳郭魚</h6>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -124,7 +200,7 @@
                         <div class="base_plate"></div>
                     </div>
                     <div class="my_collect">
-                        <button @click="collectionShow" class="mypage_button">編輯收藏品</button>
+                        <button @click="collectionShow = !collectionShow" class="mypage_button">編輯收藏品</button>
                         <div class="my_collect_title">
                             <span>我的收藏</span>
                             <hr>
@@ -158,7 +234,18 @@
                             <ul class="past_activity_list">
                                 <li>
                                     <p>活動名稱</p>
-                                    <button class="mypage_button score">評分</button>
+                                    <div class="score_box">
+                                        <div class="star">
+                                            <input type="checkbox">
+                                            <input type="checkbox">
+                                            <input type="checkbox">
+                                            <input type="checkbox">
+                                            <input type="checkbox">
+                                        </div>
+                                        <div>
+                                            <button class="mypage_button score">評分</button>
+                                        </div>
+                                    </div>
                                 </li>
                                 <li>
                                     <p>活動名稱</p>
@@ -434,6 +521,13 @@ export default {
             // selectedBoxes: [],
             // boxes: Array.from({ length: 10 }, (_, index) => index + 1),
             // maxSelection: 3,
+            selectedBoxes: [],
+            items: [
+                { image: "../assets/images/mypage/R_game.png", label: "遊戲王" },
+                { image: "../assets/images/mypage/R_unicorn.png", label: "白日夢" },
+                // 其他项
+            ],
+            maxSelection: 3,
         };
     },
 
@@ -458,7 +552,28 @@ export default {
         // isSelected(index) {
         //     return this.selectedBoxes.includes(index);
         // },
+        toggleSelection(index) {
+            const selectedIndex = this.selectedBoxes.indexOf(index);
+
+            if (selectedIndex !== -1) {
+                // 如果已经选中，取消选择
+                this.selectedBoxes.splice(selectedIndex, 1);
+            } else {
+                // 如果未选中，并且未达到最大选择数，选中
+                if (this.selectedBoxes.length < this.maxSelection) {
+                    this.selectedBoxes.push(index);
+                }
+            }
+        },
+        isSelected(index) {
+            return this.selectedBoxes.includes(index);
+        },
     }
 }
 </script>
+<style scoped>
+.selected-box {
+    box-shadow: 0 0 10px #66669A;
+}
+</style>
 
