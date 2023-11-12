@@ -51,45 +51,47 @@
 
 
                 <!----------------蒐藏品彈窗---------------->
-                <div class="collection_window">
-                    <div class="collection_window_title">
-                        <h4>編輯蒐藏品</h4>
-                        <img src="../assets/images/mypage/X.png" alt="x">
-                    </div>
-                    <div class="collection_window_list">
-                        <div class="collection_window_Classification">
-                            <h2>SSR</h2>
-                            <div class="collection_list">
-                                <img @click="select('SSR_git')" src="../assets/images/mypage/SSR_git.png" alt="">
-                                <img @click="select('SSR_My_SQL')" src="../assets/images/mypage/SSR_MySQL.png" alt="">
-                                <img @click="select('SSR_vue')" src="../assets/images/mypage/SSR_vue.png" alt="">
+                <div class="collection_window_blur">
+                    <div class="collection_window">
+                        <div class="collection_window_title">
+                            <h4>編輯蒐藏品</h4>
+                            <img src="../assets/images/mypage/X.png" alt="x">
+                        </div>
+                        <div class="collection_window_list">
+                            <div class="collection_window_Classification">
+                                <h2>SSR</h2>
+                                <div class="collection_list">
+                                    <img @click="select('SSR_git')" src="../assets/images/mypage/SSR_git.png" alt="">
+                                    <img @click="select('SSR_My_SQL')" src="../assets/images/mypage/SSR_MySQL.png" alt="">
+                                    <img @click="select('SSR_vue')" src="../assets/images/mypage/SSR_vue.png" alt="">
+                                </div>
+                            </div>
+                            <div class="collection_window_Classification">
+                                <h2>SR</h2>
+                                <div>
+                                    <img src="../assets/images/mypage/SR_html.png" alt="">
+                                    <img src="../assets/images/mypage/SR_CSS.png" alt="">
+                                    <img src="../assets/images/mypage/SR_js.png" alt="">
+                                </div>
+                            </div>
+                            <div class="collection_window_Classification">
+                                <h2>R</h2>
+                                <div>
+                                    <img src="../assets/images/mypage/R_game.png" alt="">
+                                    <img src="../assets/images/mypage/R_unicorn.png" alt="">
+                                </div>
+                            </div>
+                            <div class="collection_window_Classification">
+                                <h2>N</h2>
+                                <div>
+                                    <img src="../assets/images/mypage/N_OK.png" alt="">
+                                    <img src="../assets/images/mypage/N_cion.png" alt="">
+                                </div>
                             </div>
                         </div>
-                        <div class="collection_window_Classification">
-                            <h2>SR</h2>
-                            <div>
-                                <img src="../assets/images/mypage/SR_html.png" alt="">
-                                <img src="../assets/images/mypage/SR_CSS.png" alt="">
-                                <img src="../assets/images/mypage/SR_js.png" alt="">
-                            </div>
+                        <div class="collection_window_summit">
+                            <button class="mypage_button Btn">確定</button>
                         </div>
-                        <div class="collection_window_Classification">
-                            <h2>R</h2>
-                            <div>
-                                <img src="../assets/images/mypage/R_game.png" alt="">
-                                <img src="../assets/images/mypage/R_unicorn.png" alt="">
-                            </div>
-                        </div>
-                        <div class="collection_window_Classification">
-                            <h2>N</h2>
-                            <div>
-                                <img src="../assets/images/mypage/N_OK.png" alt="">
-                                <img src="../assets/images/mypage/N_cion.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="collection_window_summit">
-                        <button class="mypage_button Btn">確定</button>
                     </div>
                 </div>
                 <!----------------蒐藏品彈窗---------------->
