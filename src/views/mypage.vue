@@ -51,11 +51,13 @@
 
 
                 <!----------------蒐藏品彈窗---------------->
-                <div class="collection_window_blur">
+                <div v-if="collectionShow" class="collection_window_blur">
                     <div class="collection_window">
                         <div class="collection_window_title">
                             <h4>編輯蒐藏品</h4>
-                            <img src="../assets/images/mypage/X.png" alt="x">
+                            <button @click="collectionShow = !collectionShow">
+                                <img src="../assets/images/mypage/X.png" alt="x">
+                            </button>
                         </div>
                         <div class="collection_window_list">
                             <div class="collection_window_Classification">
@@ -90,13 +92,13 @@
                             </div>
                         </div>
                         <div class="collection_window_summit">
-                            <button class="mypage_button Btn">確定</button>
+                            <button @click="collectionShow = !collectionShow" class="mypage_button Btn">確定</button>
                         </div>
                     </div>
                 </div>
-                <!----------------蒐藏品彈窗---------------->
+                <!----------------蒐藏品彈窗end---------------->
 
-
+                <!-------------------------------蒐藏品區塊------------------------------->
                 <div class="tag">
                     <!-- <span>{{ hobby1 }}</span>
                     <span>{{ hobby2 }}</span>
@@ -122,7 +124,7 @@
                         <div class="base_plate"></div>
                     </div>
                     <div class="my_collect">
-                        <button class="mypage_button">編輯收藏品</button>
+                        <button @click="collectionShow" class="mypage_button">編輯收藏品</button>
                         <div class="my_collect_title">
                             <span>我的收藏</span>
                             <hr>
@@ -138,7 +140,7 @@
                     </div>
                 </div>
 
-                <!----------------任務與活動區塊---------------->
+                <!-------------------------------活動區塊------------------------------->
 
                 <div class="life">
                     <div class="activity">
@@ -169,6 +171,10 @@
                             </ul>
                         </div>
                     </div>
+
+
+                    <!-------------------------------任務區塊------------------------------->
+
                     <div class="mission_board">
                         <ul class="mission_list">
                             <!--用v-for迴圈跑item-->
@@ -237,7 +243,8 @@
                     </div>
                 </div>
 
-                <!----------------貼文區塊---------------->
+
+                <!-------------------------------貼文區塊------------------------------->
                 <div class="page-post">
                     <div class="post-items">
                         <div class="post-item">
@@ -258,7 +265,7 @@
                             <div class="post-images"></div>
                             <div class="post-feedback">
                                 <div class="good-block">
-                                    <img src="../assets/images/icon/good-line.svg" alt="">
+                                    <img src="../assets/images/icon/good-line.svg" alt="" class="good">
                                     <p class="good-nums">123</p>
                                     <p>人</p>
                                 </div>
@@ -310,7 +317,7 @@
                             <div class="post-images"></div>
                             <div class="post-feedback">
                                 <div class="good-block">
-                                    <img src="../assets/images/icon/good-line.svg" alt="">
+                                    <img src="../assets/images/icon/good-line.svg" alt="" class="good">
                                     <p class="good-nums">123</p>
                                     <p>人</p>
                                 </div>
@@ -344,10 +351,68 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="post-item">
+                            <div class="post-user-info">
+                                <div class="post-user-image">
+                                    <img src="../assets/images/user/userimage-g.png" alt="">
+                                </div>
+                                <div class="post-user-time">
+                                    <p class="user-name">林小美</p>
+                                    <p class="user-post-time">2023/10/25</p>
+                                </div>
+                            </div>
+                            <div class="post-content">
+                                <p>
+                                    今天天氣真好
+                                </p>
+                            </div>
+                            <div class="post-images"></div>
+                            <div class="post-feedback">
+                                <div class="good-block">
+                                    <img src="../assets/images/icon/good-line.svg" alt="" class="good">
+                                    <p class="good-nums">123</p>
+                                    <p>人</p>
+                                </div>
+                                <div class="reply-block">
+                                    <img src="../assets/images/icon/message.svg" alt="">
+                                    <p class="reply-nums">123</p>
+                                    <p>則</p>
+                                </div>
+                            </div>
+                            <div class="post-reply">
+                                <div class="replied">
+                                    <div class="user-image">
+                                        <img src="../assets/images/user/userimage.png" alt="">
+                                    </div>
+                                    <div class="replied-message">
+                                        <div class="user-name">王小明</div>
+                                        <div class="content">
+                                            <div class="text">好棒的天氣啊啊啊</div>
+                                            <div class="replied-time">2023/10/10 23:59:59</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="reply-message">
+                                    <div class="user-image">
+                                        <img src="../assets/images/user/userimage.png" alt="">
+                                    </div>
+                                    <div class="reply-input">
+                                        <input type="text">
+                                        <button type="button"><img src="../assets/images/icon/submit.svg" alt=""></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-
+                <!--測試框框-->
+                <!-- <div v-for="(box, index) in boxes" :key="index" :class="{ 'selected-box': isSelected(index) }"
+                        @click="toggleSelection(index)">
+                        Box {{ index + 1 }}
+                    </div> -->
             </div>
+
         </template>
     </layout>
 </template>
@@ -363,14 +428,36 @@ export default {
     },
     data() {
         return {
-            selectImg: {}
+            collectionShow: false,
+            // selectImg: {}
+            //選取框框
+            // selectedBoxes: [],
+            // boxes: Array.from({ length: 10 }, (_, index) => index + 1),
+            // maxSelection: 3,
         };
     },
 
     methods: {
-        select(imageName) {
-            console.log(`Selected image: ${imageName}`);
-        }
+        // select(imageName) {
+        //     console.log(`Selected image: ${imageName}`);
+        // }
+        // collectionShow() {
+        //     console.log("tttt")
+        // }
+
+        //選取框框
+        // toggleSelection(index) {
+        //     if (this.isSelected(index)) {
+        //         this.selectedBoxes = this.selectedBoxes.filter((boxIndex) => boxIndex !== index);
+        //     } else {
+        //         if (this.selectedBoxes.length < this.maxSelection) {
+        //             this.selectedBoxes.push(index);
+        //         }
+        //     }
+        // },
+        // isSelected(index) {
+        //     return this.selectedBoxes.includes(index);
+        // },
     }
 }
 </script>
