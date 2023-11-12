@@ -15,7 +15,7 @@
                     </div>
                     <div class="my_introduction">
                         <div>
-                            <button class="new_post_button">發表新貼文</button>
+                            <button class="new_post_button Btn">發表新貼文</button>
                         </div>
                         <div class="head_sticker">
                             <!-- <img :class="head_sticker" src="{{ headSticker }}" id="head_sticker" alt="head_sticker"> -->
@@ -23,28 +23,78 @@
                         </div>
                         <div class="guide_button">
                             <router-link :to="{ name: 'mypage_edit' }">
-                                <button>個人資料編輯</button>
+                                <button class="Btn">個人資料編輯</button>
                             </router-link>
 
                             <router-link :to="{ name: 'wander' }">
-                                <button>我要去流浪</button>
+                                <button class="Btn">我要去流浪</button>
                             </router-link>
 
                             <router-link :to="{ name: 'friends' }">
-                                <button>好友清單</button>
+                                <button class="Btn">好友清單</button>
                             </router-link>
 
-                            <button>＋加朋友</button>
+                            <button class="Btn">＋加朋友</button>
                         </div>
                     </div>
                 </div>
 
                 <div class="mypage_info">
-                    <button class="mypage_button">更換大頭貼</button>
+                    <label class="mypage_button Btn">
+                        <span>更換大頭貼</span>
+                        <input type="file" class="upload_photos_input">
+                    </label>
                     <!-- <p>{{ self_introduction }}</p> -->
                     <p>嗨！我是工程師。工作中喜歡挑戰技術極限，<br>
                         業餘時間熱衷極限運動，喜歡攀岩和跳傘。期待在技術和生活中不斷挑戰自己！</p>
                 </div>
+
+
+                <!----------------蒐藏品彈窗---------------->
+                <div class="collection_window">
+                    <div class="collection_window_title">
+                        <h4>編輯蒐藏品</h4>
+                        <img src="../assets/images/mypage/X.png" alt="x">
+                    </div>
+                    <div class="collection_window_list">
+                        <div class="collection_window_Classification">
+                            <h2>SSR</h2>
+                            <div class="collection_list">
+                                <img @click="select('SSR_git')" src="../assets/images/mypage/SSR_git.png" alt="">
+                                <img @click="select('SSR_My_SQL')" src="../assets/images/mypage/SSR_MySQL.png" alt="">
+                                <img @click="select('SSR_vue')" src="../assets/images/mypage/SSR_vue.png" alt="">
+                            </div>
+                        </div>
+                        <div class="collection_window_Classification">
+                            <h2>SR</h2>
+                            <div>
+                                <img src="../assets/images/mypage/SR_html.png" alt="">
+                                <img src="../assets/images/mypage/SR_CSS.png" alt="">
+                                <img src="../assets/images/mypage/SR_js.png" alt="">
+                            </div>
+                        </div>
+                        <div class="collection_window_Classification">
+                            <h2>R</h2>
+                            <div>
+                                <img src="../assets/images/mypage/R_game.png" alt="">
+                                <img src="../assets/images/mypage/R_unicorn.png" alt="">
+                            </div>
+                        </div>
+                        <div class="collection_window_Classification">
+                            <h2>N</h2>
+                            <div>
+                                <img src="../assets/images/mypage/N_OK.png" alt="">
+                                <img src="../assets/images/mypage/N_cion.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="collection_window_summit">
+                        <button class="mypage_button Btn">確定</button>
+                    </div>
+                </div>
+                <!----------------蒐藏品彈窗---------------->
+
+
                 <div class="tag">
                     <!-- <span>{{ hobby1 }}</span>
                     <span>{{ hobby2 }}</span>
@@ -104,7 +154,7 @@
                             <ul class="past_activity_list">
                                 <li>
                                     <p>活動名稱</p>
-                                    <button class="mypage_button">評分</button>
+                                    <button class="mypage_button score">評分</button>
                                 </li>
                                 <li>
                                     <p>活動名稱</p>
@@ -308,6 +358,17 @@ import layout from '@/components/layout.vue'
 export default {
     components: {
         layout
+    },
+    data() {
+        return {
+            selectImg: {}
+        };
+    },
+
+    methods: {
+        select(imageName) {
+            console.log(`Selected image: ${imageName}`);
+        }
     }
 }
 </script>
