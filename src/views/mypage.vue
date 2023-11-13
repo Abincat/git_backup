@@ -2,33 +2,36 @@
     <layout>
         <template #section-right-content>
             <div class="mypage">
-                <div class="add-post" ref="addPostBlock">
-                    <div class="add-post-block">
-                        <div class="add-block-title">
-                            <h5 class="post-edit-title">發表貼文</h5>
-                            <div class="post-view-setting">
-                                <img src="../assets/images/icon/friend-view.svg" alt="" class="" value="friend">
-                                <img src="../assets/images/icon/global-view-select.svg" alt="" class="select"
-                                    value="global">
-                                <img src="../assets/images/icon/private-view-select.svg" alt="" class="select"
-                                    value="private">
+                <div v-if="postShow" class="add-post-blur">
+                    <div class="add-post" ref="addPostBlock">
+                        <div class="add-post-block">
+                            <div class="add-block-title">
+                                <h5 class="post-edit-title">發表貼文</h5>
+                                <div class="post-view-setting">
+                                    <img src="../assets/images/icon/friend-view.svg" alt="" class="" value="friend">
+                                    <img src="../assets/images/icon/global-view-select.svg" alt="" class="select"
+                                        value="global">
+                                    <img src="../assets/images/icon/private-view-select.svg" alt="" class="select"
+                                        value="private">
+                                </div>
+                            </div>
+                            <textarea name="" id="post-content" rows="10" placeholder="輸入想說的話"></textarea>
+                            <label for="postImg" class="postImg">
+                                <span>
+                                    新增照片
+                                </span>
+                                <img src="../assets/images/icon/image.svg" alt="">
+                                <input type="file" name="postImg" id="postImg">
+                            </label>
+                            <div class="btn-block">
+                                <button class="Btn Btn-light" @click="postShow = !postShow">取消</button>
+                                <button class="Btn Btn-dark" @click="postShow = !postShow">發布</button>
                             </div>
                         </div>
-                        <textarea name="" id="post-content" rows="10" placeholder="輸入想說的話"></textarea>
-                        <label for="postImg" class="postImg">
-                            <span>
-                                新增照片
-                            </span>
-                            <img src="../assets/images/icon/image.svg" alt="">
-                            <input type="file" name="postImg" id="postImg">
-                        </label>
-                        <div class="btn-block">
-                            <button class="Btn Btn-light" @click="addPost">取消</button>
-                            <button class="Btn Btn-dark">發布</button>
-                        </div>
                     </div>
-
                 </div>
+
+
                 <div class="introduction_guided_tour">
                     <div class="property">
                         <router-link :to="{ name: buy_coin }">
@@ -42,7 +45,7 @@
                     </div>
                     <div class="my_introduction">
                         <div>
-                            <button class="new_post_button Btn">發表新貼文</button>
+                            <button @click="postShow = !postShow" class="new_post_button Btn">發表新貼文</button>
                         </div>
                         <div class="head_sticker">
                             <!-- <img :class="head_sticker" src="{{ headSticker }}" id="head_sticker" alt="head_sticker"> -->
@@ -235,17 +238,93 @@
                                 <li>
                                     <p>活動名稱</p>
                                     <div class="score_box">
-                                        <div class="star">
-                                            <input type="checkbox">
-                                            <input type="checkbox">
-                                            <input type="checkbox">
-                                            <input type="checkbox">
-                                            <input type="checkbox">
+                                        <div v-if="add_score" class="score">
+                                            <div class="star">
+                                                <div>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                                                        viewBox="0 0 576 512">
+                                                        <path
+                                                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
+                                                    </svg>
+                                                </div>
+                                                <div>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                                                        viewBox="0 0 576 512">
+                                                        <path
+                                                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
+                                                    </svg>
+                                                </div>
+                                                <div>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                                                        viewBox="0 0 576 512">
+                                                        <path
+                                                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
+                                                    </svg>
+                                                </div>
+                                                <div>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                                                        viewBox="0 0 576 512">
+                                                        <path
+                                                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
+                                                    </svg>
+                                                </div>
+                                                <div>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                                                        viewBox="0 0 576 512">
+                                                        <path
+                                                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
+                                                    </svg>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div>
-                                            <button class="mypage_button score">評分</button>
+                                            <button @click="add_score = !add_score" class="mypage_button score">確定</button>
                                         </div>
                                     </div>
+                                    <!-- <div class="score">
+                                        <div>
+                                                <svg :class="{ '-on': task.star >= 1 }"
+                                                    @click="$emit('taskStar', $event, index, 1)"
+                                                    xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
+                                                    <path
+                                                        d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <svg :class="{ '-on': task.star >= 2 }"
+                                                    @click="$emit('taskStar', $event, index, 2)"
+                                                    xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
+                                                    <path
+                                                        d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <svg :class="{ '-on': task.star >= 3 }"
+                                                    @click="$emit('taskStar', $event, index, 3)"
+                                                    xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
+                                                    <path
+                                                        d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <svg :class="{ '-on': task.star >= 4 }"
+                                                    @click="$emit('taskStar', $event, index, 4)"
+                                                    xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
+                                                    <path
+                                                        d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <svg :class="{ '-on': task.star >= 5 }"
+                                                    @click="$emit('taskStar', $event, index, 5)"
+                                                    xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
+                                                    <path
+                                                        d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
+                                                </svg>
+                                            </div>
+                                        </div> -->
+
+
                                 </li>
                                 <li>
                                     <p>活動名稱</p>
@@ -516,6 +595,10 @@ export default {
     data() {
         return {
             collectionShow: false,
+            postShow: false,
+            add_score: false,
+            // taskText: "",
+            // tasks: [],
             // selectImg: {}
             //選取框框
             // selectedBoxes: [],
@@ -538,6 +621,12 @@ export default {
         // collectionShow() {
         //     console.log("tttt")
         // }
+
+        // taskStar(e, i, star) {
+        //     // alert(star);
+        //     this.tasks[i].star = star; //取得陣列裡面的物件,改變值
+        //     localStorage.setItem("tasks", JSON.stringify(this.tasks)); //把值存入localStorage
+        // },
 
         //選取框框
         // toggleSelection(index) {
@@ -574,6 +663,10 @@ export default {
 <style scoped>
 .selected-box {
     box-shadow: 0 0 10px #66669A;
+}
+
+&svg.-on {
+    color: yellow
 }
 </style>
 

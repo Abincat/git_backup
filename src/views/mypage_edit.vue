@@ -10,7 +10,10 @@
                                     <img :class="head_sticker_img" src="../assets/images/mypage/TibameCAT.jpg"
                                         alt="head_sticker">
                                 </div>
-                                <button>編輯大頭貼</button>
+                                <label class="mypage_button">
+                                    <span>編輯大頭貼</span>
+                                    <input type="file" class="upload_photos_input">
+                                </label>
                             </div>
                         </div>
                         <div class="short_input">
@@ -43,7 +46,7 @@
                                 </select>
                             </div>
                             <div>
-                                <p>星座</p>
+                                <p>星座*</p>
                                 <select name="constellation">
                                     <option>-</option>
                                     <option>牡羊座</option>
@@ -63,11 +66,11 @@
                         </div>
                         <div class="short_input">
                             <div>
-                                <p>工作/職稱</p>
+                                <p>工作/職稱*</p>
                                 <input type="text" name="job">
                             </div>
                             <div>
-                                <p>所在地區</p>
+                                <p>所在地區*</p>
                                 <select name="city">
                                     <option>-</option>
                                     <option>基隆市</option>
@@ -91,6 +94,16 @@
                                     <option>台東縣</option>
                                     <option>離島地區</option>
                                 </select>
+                            </div>
+                        </div>
+                        <div class="short_input">
+                            <div>
+                                <p>興趣1*</p>
+                                <input type="text" name="first_name">
+                            </div>
+                            <div>
+                                <p>興趣2*</p>
+                                <input type="text" name="last_name">
                             </div>
                         </div>
                         <div class="big_input">
@@ -135,13 +148,18 @@
                     </div>
                     <div class="avatar_components">
                         <div class="avatar_components_button">
-                            <button class="face_button">臉型</button>
-                            <button class="hair_button">髮型</button>
-                            <button class="cloth_button">服裝</button>
-                            <button class="accessories_button">配件</button>
+                            <button @click="showTab('face')" :class="{ 'active-button': avatarWindow === 'face' }"
+                                class="face_button">臉型</button>
+                            <button @click="showTab('hair')" :class="{ 'active-button': avatarWindow === 'hair' }"
+                                class="hair_button">髮型</button>
+                            <button @click="showTab('cloth')" :class="{ 'active-button': avatarWindow === 'cloth' }"
+                                class="cloth_button">服裝</button>
+                            <button @click="showTab('accessories')"
+                                :class="{ 'active-button': avatarWindow === 'accessories' }"
+                                class="accessories_button">配件</button>
                         </div>
                         <div class="avatar_components_assemble">
-                            <div class="avatar_components_face">
+                            <div v-show="avatarWindow === 'face'" class="avatar_components_face">
                                 <img class="faceA" src="../assets/images/mypage_edit/face_hehe.png" alt="">
                                 <img class="faceB" src="../assets/images/mypage_edit/face_grimace.png" alt="">
                                 <img class="faceC" src="../assets/images/mypage_edit/face_unhappy.png" alt="">
@@ -149,7 +167,7 @@
                                 <img class="faceE" src="../assets/images/mypage_edit/face_Playful.png" alt="">
                                 <img class="faceF" src="../assets/images/mypage_edit/face_scare.png" alt="">
                             </div>
-                            <div class="avatar_components_hair">
+                            <div v-show="avatarWindow === 'hair'" class="avatar_components_hair">
                                 <img class="hairA" src="../assets/images/mypage_edit/hair_curls.png" alt="">
                                 <img class="hairB" src="../assets/images/mypage_edit/hair_novelist.png" alt="">
                                 <img class="hairC" src="../assets/images/mypage_edit/hair_ponytail.png" alt="">
@@ -157,7 +175,7 @@
                                 <img class="hairE" src="../assets/images/mypage_edit/hair_tea.png" alt="">
                                 <img class="hairF" src="../assets/images/mypage_edit/hair_white.png" alt="">
                             </div>
-                            <div class="avatar_components_cloth">
+                            <div v-show="avatarWindow === 'cloth'" class="avatar_components_cloth">
                                 <img class="clothA" src="../assets/images/mypage_edit/cloth_black.png" alt="">
                                 <img class="clothB" src="../assets/images/mypage_edit/cloth_pinkvest.png" alt="">
                                 <img class="clothC" src="../assets/images/mypage_edit/cloth_redsweater.png" alt="">
@@ -165,15 +183,19 @@
                                 <img class="clothE" src="../assets/images/mypage_edit/cloth_bluecoat.png" alt="">
                                 <img class="clothF" src="../assets/images/mypage_edit/cloth_coffeejacket.png" alt="">
                             </div>
-                            <div class="avatar_components_accessories">
-                                <img class="accessoriesA" src="../assets/images/mypage_edit/accessories_Bachelorcap.png"
+                            <div v-show="avatarWindow === 'accessories'" class="avatar_components_accessories">
+                                <img class="accessoriesA"
+                                    src="../assets/images/mypage_edit/accessories_Bachelorcap_center.png" alt="">
+                                <img class="accessoriesB" src="../assets/images/mypage_edit/accessories_bowtie_center.png"
                                     alt="">
-                                <img class="accessoriesB" src="../assets/images/mypage_edit/accessories_bowtie.png" alt="">
-                                <img class="accessoriesC" src="../assets/images/mypage_edit/accessories_bubble.png" alt="">
-                                <img class="accessoriesD" src="../assets/images/mypage_edit/accessories_chef.png" alt="">
-                                <img class="accessoriesE" src="../assets/images/mypage_edit/accessories_Christmas.png"
+                                <img class="accessoriesC" src="../assets/images/mypage_edit/accessories_bubble_center.png"
                                     alt="">
-                                <img class="accessoriesF" src="../assets/images/mypage_edit/accessories_crown.png" alt="">
+                                <img class="accessoriesD" src="../assets/images/mypage_edit/accessories_chef_center.png"
+                                    alt="">
+                                <img class="accessoriesE"
+                                    src="../assets/images/mypage_edit/accessories_Christmas_center.png" alt="">
+                                <img class="accessoriesF" src="../assets/images/mypage_edit/accessories_crown_center.png"
+                                    alt="">
                             </div>
                         </div>
                     </div>
@@ -225,7 +247,9 @@ export default {
         layout
     },
     data() {
-        return {};
+        return {
+            avatarWindow: 'face',
+        };
     },
     methods: {
         ball_animation() {
@@ -257,7 +281,12 @@ export default {
             gsap.to(".TibameCAT_leave", {
                 opacity: 1
             });
-        }
+        },
+
+        showTab(tab) {
+            this.avatarWindow = tab;
+        },
+
 
     }
 };
@@ -265,5 +294,9 @@ export default {
 
 
 </script>
-
-
+<style scoped>
+.active-button {
+    background-color: #343575 !important;
+    color: white;
+}
+</style>
