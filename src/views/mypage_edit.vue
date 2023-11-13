@@ -133,16 +133,16 @@
                     <div class="preview">
                         <h4>虛擬角色人物</h4>
                         <div class="preview_face avatar_preview">
-                            <img src="../assets/images/mypage_edit/face_grimace.png" alt="">
+                            <img id="faceImage" alt="Face Image">
                         </div>
                         <div class="preview_hair avatar_preview">
-                            <img src="../assets/images/mypage_edit/hair_ponytail.png" alt="">
+                            <img id="hairImage" alt="Hair Image">
                         </div>
                         <div class="preview_cloth avatar_preview">
-                            <img src="../assets/images/mypage_edit/cloth_bluecoat.png" alt="">
+                            <img id="clothImage" alt="Cloth Image">
                         </div>
                         <div class="preview_accessories avatar_preview">
-                            <img src="../assets/images/mypage_edit/accessories_Christmas.png" alt="">
+                            <img id="accessoriesImage" alt="Accessories Image">
                         </div>
                         <div class="base_plate"></div>
                     </div>
@@ -160,12 +160,18 @@
                         </div>
                         <div class="avatar_components_assemble">
                             <div v-show="avatarWindow === 'face'" class="avatar_components_face">
-                                <img class="faceA" src="../assets/images/mypage_edit/face_hehe.png" alt="">
-                                <img class="faceB" src="../assets/images/mypage_edit/face_grimace.png" alt="">
-                                <img class="faceC" src="../assets/images/mypage_edit/face_unhappy.png" alt="">
-                                <img class="faceD" src="../assets/images/mypage_edit/face_smile.png" alt="">
-                                <img class="faceE" src="../assets/images/mypage_edit/face_Playful.png" alt="">
-                                <img class="faceF" src="../assets/images/mypage_edit/face_scare.png" alt="">
+                                <img @click="selectImage('face', 'face_hehe.png')" class="faceA"
+                                    src="../assets/images/mypage_edit/face_hehe.png" alt="">
+                                <img @click="selectImage('face', 'face_grimace.png')" class="faceB"
+                                    src="../assets/images/mypage_edit/face_grimace.png" alt="">
+                                <img @click="selectImage('face', 'face_unhappy.png')" class="faceC"
+                                    src="../assets/images/mypage_edit/face_unhappy.png" alt="">
+                                <img @click="selectImage('face', 'face_smile.png')" class="faceD"
+                                    src="../assets/images/mypage_edit/face_smile.png" alt="">
+                                <img @click="selectImage('face', 'face_Playful.png')" class="faceE"
+                                    src="../assets/images/mypage_edit/face_Playful.png" alt="">
+                                <img @click="selectImage('face', 'face_scare.png')" class="faceF"
+                                    src="../assets/images/mypage_edit/face_scare.png" alt="">
                             </div>
                             <div v-show="avatarWindow === 'hair'" class="avatar_components_hair">
                                 <img class="hairA" src="../assets/images/mypage_edit/hair_curls.png" alt="">
@@ -249,6 +255,7 @@ export default {
     data() {
         return {
             avatarWindow: 'face',
+
         };
     },
     methods: {
@@ -286,9 +293,13 @@ export default {
         showTab(tab) {
             this.avatarWindow = tab;
         },
-
-
-    }
+        selectImage(category, imageName) {
+            const imageId = category + 'Image';
+            const selectedImage = `../assets/images/mypage_edit/${imageName}`;
+            document.getElementById(imageId).src = selectedImage;
+            // console.log(selectedImage)
+        },
+    },
 };
 
 
@@ -296,7 +307,7 @@ export default {
 </script>
 <style scoped>
 .active-button {
-    background-color: #343575 !important;
+    background-color: #66669A !important;
     color: white;
 }
 </style>
