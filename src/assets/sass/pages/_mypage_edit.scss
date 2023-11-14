@@ -38,6 +38,7 @@
                         justify-content: center;
                         display: flex;
                         margin: 40px auto;
+                        cursor: pointer;
 
 
 
@@ -45,6 +46,7 @@
                             display: none;
                             outline: 0;
                             opacity: 0;
+
                             // pointer-events: none;
                             // user-select: none;
                         }

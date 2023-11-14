@@ -133,19 +133,21 @@
                     <div class="preview">
                         <h4>虛擬角色人物</h4>
                         <div class="preview_face avatar_preview">
-                            <img id="faceImage" alt="Face Image">
+                            <img :src="faceImageChange" id="faceImage" alt="">
                         </div>
                         <div class="preview_hair avatar_preview">
-                            <img id="hairImage" alt="Hair Image">
+                            <img :src="hairImageChange" id="hairImage" alt="">
                         </div>
                         <div class="preview_cloth avatar_preview">
-                            <img id="clothImage" alt="Cloth Image">
+                            <img :src="clothImageChange" id="clothImage" alt="">
                         </div>
                         <div class="preview_accessories avatar_preview">
-                            <img id="accessoriesImage" alt="Accessories Image">
+                            <img :src="accessoriesImageChange" id="accessoriesImage" alt="">
                         </div>
                         <div class="base_plate"></div>
                     </div>
+
+                    <!-------------------------配件頁籤------------------------->
                     <div class="avatar_components">
                         <div class="avatar_components_button">
                             <button @click="showTab('face')" :class="{ 'active-button': avatarWindow === 'face' }"
@@ -158,76 +160,74 @@
                                 :class="{ 'active-button': avatarWindow === 'accessories' }"
                                 class="accessories_button">配件</button>
                         </div>
+
+                        <!-------------------------臉配件------------------------->
                         <div class="avatar_components_assemble">
                             <div v-show="avatarWindow === 'face'" class="avatar_components_face">
-                                <img @click="selectImage('face', 'face_hehe.png')" class="faceA"
+                                <img @click="selectImage('face', 'faceHehe')" class="faceA"
                                     src="../assets/images/mypage_edit/face_hehe.png" alt="">
-                                <img @click="selectImage('face', 'face_grimace.png')" class="faceB"
+                                <img @click="selectImage('face', 'faceGrimace')" class="faceB"
                                     src="../assets/images/mypage_edit/face_grimace.png" alt="">
-                                <img @click="selectImage('face', 'face_unhappy.png')" class="faceC"
+                                <img @click="selectImage('face', 'faceUnhappy')" class="faceC"
                                     src="../assets/images/mypage_edit/face_unhappy.png" alt="">
-                                <img @click="selectImage('face', 'face_smile.png')" class="faceD"
+                                <img @click="selectImage('face', 'faceSmile')" class="faceD"
                                     src="../assets/images/mypage_edit/face_smile.png" alt="">
-                                <img @click="selectImage('face', 'face_Playful.png')" class="faceE"
+                                <img @click="selectImage('face', 'facePlayful')" class="faceE"
                                     src="../assets/images/mypage_edit/face_Playful.png" alt="">
-                                <img @click="selectImage('face', 'face_scare.png')" class="faceF"
+                                <img @click="selectImage('face', 'faceScare')" class="faceF"
                                     src="../assets/images/mypage_edit/face_scare.png" alt="">
                             </div>
+
+                            <!-------------------------頭髮配件------------------------->
                             <div v-show="avatarWindow === 'hair'" class="avatar_components_hair">
-                                <img class="hairA" src="../assets/images/mypage_edit/hair_curls.png" alt="">
-                                <img class="hairB" src="../assets/images/mypage_edit/hair_novelist.png" alt="">
-                                <img class="hairC" src="../assets/images/mypage_edit/hair_ponytail.png" alt="">
-                                <img class="hairD" src="../assets/images/mypage_edit/hair_purple.png" alt="">
-                                <img class="hairE" src="../assets/images/mypage_edit/hair_tea.png" alt="">
-                                <img class="hairF" src="../assets/images/mypage_edit/hair_white.png" alt="">
+                                <img @click="selectImage('hair', 'hairCurls')" class="hairA"
+                                    src="../assets/images/mypage_edit/hair_curls.png" alt="">
+                                <img @click="selectImage('hair', 'hairNovelist')" class="hairB"
+                                    src="../assets/images/mypage_edit/hair_novelist.png" alt="">
+                                <img @click="selectImage('hair', 'hairPonytail')" class="hairC"
+                                    src="../assets/images/mypage_edit/hair_ponytail.png" alt="">
+                                <img @click="selectImage('hair', 'hairPurple')" class="hairD"
+                                    src="../assets/images/mypage_edit/hair_purple.png" alt="">
+                                <img @click="selectImage('hair', 'hairTea')" class="hairE"
+                                    src="../assets/images/mypage_edit/hair_tea.png" alt="">
+                                <img @click="selectImage('hair', 'hairWhite')" class="hairF"
+                                    src="../assets/images/mypage_edit/hair_white.png" alt="">
                             </div>
+
+                            <!-------------------------衣服配件------------------------->
                             <div v-show="avatarWindow === 'cloth'" class="avatar_components_cloth">
-                                <img class="clothA" src="../assets/images/mypage_edit/cloth_black.png" alt="">
-                                <img class="clothB" src="../assets/images/mypage_edit/cloth_pinkvest.png" alt="">
-                                <img class="clothC" src="../assets/images/mypage_edit/cloth_redsweater.png" alt="">
-                                <img class="clothD" src="../assets/images/mypage_edit/cloth_shirt.png" alt="">
-                                <img class="clothE" src="../assets/images/mypage_edit/cloth_bluecoat.png" alt="">
-                                <img class="clothF" src="../assets/images/mypage_edit/cloth_coffeejacket.png" alt="">
+                                <img @click="selectImage('cloth', 'clothBlack')" class="clothA"
+                                    src="../assets/images/mypage_edit/cloth_black.png" alt="">
+                                <img @click="selectImage('cloth', 'clothPinkvest')" class="clothB"
+                                    src="../assets/images/mypage_edit/cloth_pinkvest.png" alt="">
+                                <img @click="selectImage('cloth', 'clothRedsweater')" class="clothC"
+                                    src="../assets/images/mypage_edit/cloth_redsweater.png" alt="">
+                                <img @click="selectImage('cloth', 'clothShirt')" class="clothD"
+                                    src="../assets/images/mypage_edit/cloth_shirt.png" alt="">
+                                <img @click="selectImage('cloth', 'clothBluecoat')" class="clothE"
+                                    src="../assets/images/mypage_edit/cloth_bluecoat.png" alt="">
+                                <img @click="selectImage('cloth', 'clothCoffeejacket')" class="clothF"
+                                    src="../assets/images/mypage_edit/cloth_coffeejacket.png" alt="">
                             </div>
+
+                            <!-------------------------飾品配件------------------------->
                             <div v-show="avatarWindow === 'accessories'" class="avatar_components_accessories">
-                                <img class="accessoriesA"
+                                <img @click="selectImage('accessories', 'accessoriesBachelorcap')" class="accessoriesA"
                                     src="../assets/images/mypage_edit/accessories_Bachelorcap_center.png" alt="">
-                                <img class="accessoriesB" src="../assets/images/mypage_edit/accessories_bowtie_center.png"
-                                    alt="">
-                                <img class="accessoriesC" src="../assets/images/mypage_edit/accessories_bubble_center.png"
-                                    alt="">
-                                <img class="accessoriesD" src="../assets/images/mypage_edit/accessories_chef_center.png"
-                                    alt="">
-                                <img class="accessoriesE"
+                                <img @click="selectImage('accessories', 'accessoriesBowtie')" class="accessoriesB"
+                                    src="../assets/images/mypage_edit/accessories_bowtie_center.png" alt="">
+                                <img @click="selectImage('accessories', 'accessoriesBubble')" class="accessoriesC"
+                                    src="../assets/images/mypage_edit/accessories_bubble_center.png" alt="">
+                                <img @click="selectImage('accessories', 'accessoriesChef')" class="accessoriesD"
+                                    src="../assets/images/mypage_edit/accessories_chef_center.png" alt="">
+                                <img @click="selectImage('accessories', 'accessoriesChristmas')" class="accessoriesE"
                                     src="../assets/images/mypage_edit/accessories_Christmas_center.png" alt="">
-                                <img class="accessoriesF" src="../assets/images/mypage_edit/accessories_crown_center.png"
-                                    alt="">
+                                <img @click="selectImage('accessories', 'accessoriesCrown')" class="accessoriesF"
+                                    src="../assets/images/mypage_edit/accessories_crown_center.png" alt="">
                             </div>
                         </div>
                     </div>
 
-
-                    <!--課金按鈕尚未規劃-->
-                    <div>
-                        <div>
-                            <div>
-                                <img>
-                                <span></span>
-                            </div>
-                            <div>
-                                <button></button>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <img>
-                                <span></span>
-                            </div>
-                            <div>
-                                <button></button>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div>
                     <router-link :to="{ name: 'mypage' }" class="submit">
@@ -246,7 +246,34 @@
 //import 這頁需要的元件
 import layout from '@/components/layout.vue'
 import { gsap } from 'gsap'
+import faceHehe from '@/assets/images/mypage_edit/face_hehe.png'
+import faceGrimace from '@/assets/images/mypage_edit/face_grimace.png'
+import faceUnhappy from '@/assets/images/mypage_edit/face_unhappy.png'
+import faceSmile from '@/assets/images/mypage_edit/face_smile.png'
+import facePlayful from '@/assets/images/mypage_edit/face_Playful.png'
+import faceScare from '@/assets/images/mypage_edit/face_scare.png'
 
+import hairCurls from '@/assets/images/mypage_edit/hair_curls.png'
+import hairNovelist from '@/assets/images/mypage_edit/hair_novelist.png'
+import hairPonytail from '@/assets/images/mypage_edit/hair_ponytail.png'
+import hairPurple from '@/assets/images/mypage_edit/hair_purple.png'
+import hairTea from '@/assets/images/mypage_edit/hair_tea.png'
+import hairWhite from '@/assets/images/mypage_edit/hair_white.png'
+
+import clothBlack from '@/assets/images/mypage_edit/cloth_black.png'
+import clothPinkvest from '@/assets/images/mypage_edit/cloth_pinkvest.png'
+import clothRedsweater from '@/assets/images/mypage_edit/cloth_redsweater.png'
+import clothShirt from '@/assets/images/mypage_edit/cloth_shirt.png'
+import clothBluecoat from '@/assets/images/mypage_edit/cloth_bluecoat.png'
+import clothCoffeejacket from '@/assets/images/mypage_edit/cloth_coffeejacket.png'
+
+import accessoriesBachelorcap from '@/assets/images/mypage_edit/accessories_Bachelorcap.png'
+import accessoriesBowtie from '@/assets/images/mypage_edit/accessories_bowtie.png'
+import accessoriesBubble from '@/assets/images/mypage_edit/accessories_bubble.png'
+import accessoriesChef from '@/assets/images/mypage_edit/accessories_chef.png'
+import accessoriesChristmas from '@/assets/images/mypage_edit/accessories_Christmas.png'
+import accessoriesCrown from '@/assets/images/mypage_edit/accessories_crown.png'
+//這邊要把全部圖片import進去
 
 export default {
     components: {
@@ -255,7 +282,10 @@ export default {
     data() {
         return {
             avatarWindow: 'face',
-
+            faceImageChange: faceHehe,
+            hairImageChange: hairCurls,
+            clothImageChange: clothBlack,
+            accessoriesImageChange: accessoriesBachelorcap,
         };
     },
     methods: {
@@ -295,13 +325,96 @@ export default {
         },
         selectImage(category, imageName) {
             const imageId = category + 'Image';
-            const selectedImage = `../assets/images/mypage_edit/${imageName}`;
-            document.getElementById(imageId).src = selectedImage;
-            // console.log(selectedImage)
-        },
-    },
+            switch (category) {
+                case 'face':
+                    switch (imageName) {
+                        case 'faceHehe':
+                            this.faceImageChange = faceHehe;
+                            break;
+                        case 'faceGrimace':
+                            this.faceImageChange = faceGrimace;
+                            break;
+                        case 'faceUnhappy':
+                            this.faceImageChange = faceUnhappy;
+                            break;
+                        case 'faceSmile':
+                            this.faceImageChange = faceSmile;
+                            break;
+                        case 'facePlayful':
+                            this.faceImageChange = facePlayful;
+                            break;
+                        case 'faceScare':
+                            this.faceImageChange = faceScare;
+                            break;
+                    }
+                case 'hair':
+                    switch (imageName) {
+                        case 'hairCurls':
+                            this.hairImageChange = hairCurls;
+                            break;
+                        case 'hairNovelist':
+                            this.hairImageChange = hairNovelist;
+                            break;
+                        case 'hairPonytail':
+                            this.hairImageChange = hairPonytail;
+                            break;
+                        case 'hairPurple':
+                            this.hairImageChange = hairPurple;
+                            break;
+                        case 'hairTea':
+                            this.hairImageChange = hairTea;
+                            break;
+                        case 'hairWhite':
+                            this.hairImageChange = hairWhite;
+                            break;
+                    }
+                    break;
+                case 'cloth':
+                    switch (imageName) {
+                        case 'clothBlack':
+                            this.clothImageChange = clothBlack;
+                            break;
+                        case 'clothPinkvest':
+                            this.clothImageChange = clothPinkvest;
+                            break;
+                        case 'clothRedsweater':
+                            this.clothImageChange = clothRedsweater;
+                            break;
+                        case 'clothShirt':
+                            this.clothImageChange = clothShirt;
+                            break;
+                        case 'clothBluecoat':
+                            this.clothImageChange = clothBluecoat;
+                            break;
+                        case 'clothCoffeejacket':
+                            this.clothImageChange = clothCoffeejacket;
+                            break;
+                    }
+                case 'accessories':
+                    switch (imageName) {
+                        case 'accessoriesBachelorcap':
+                            this.accessoriesImageChange = accessoriesBachelorcap;
+                            break;
+                        case 'accessoriesBowtie':
+                            this.accessoriesImageChange = accessoriesBowtie;
+                            break;
+                        case 'accessoriesBubble':
+                            this.accessoriesImageChange = accessoriesBubble;
+                            break;
+                        case 'accessoriesChef':
+                            this.accessoriesImageChange = accessoriesChef;
+                            break;
+                        case 'accessoriesChristmas':
+                            this.accessoriesImageChange = accessoriesChristmas;
+                            break;
+                        case 'accessoriesCrown':
+                            this.accessoriesImageChange = accessoriesCrown;
+                            break;
+                    }
+            };
+        }
+    }
 };
-
 
 
 </script>
