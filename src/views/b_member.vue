@@ -14,8 +14,12 @@
 
                 <div class="table-section" :class="{ 'blurred': isBlurred }">
                     <div class="search-section">
-                        <input type="text" placeholder="以會員編號搜尋">
-                        <span>搜尋</span>
+                        <div class="form-floating mb-3">
+                            <input type="search" class="form-control" id="floatingInput" placeholder="以會員帳號搜尋"
+                                v-model="searchQuery">
+                            <label for="floatingInput">以會員帳號搜尋</label>
+                            <span @click="fliterMember">搜尋</span>
+                        </div>
                     </div>
                     <table class="table table-bordered ">
                         <thead>
@@ -30,7 +34,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(i, index) in member" :key="index">
+                            <tr v-for="(i, index) in fliterMember" :key="index">
                                 <th scope="row">{{ index + 1 }}</th>
                                 <td>{{ i.mail }}</td>
                                 <td>{{ i.phone }}</td>
@@ -116,6 +120,7 @@ export default {
             open: false,
             isBlurred: false,
             selectedIndex: null,
+            searchQuery: '',
             member: [
                 {
                     mail: "aaaa1234567@gmail.com",
@@ -125,42 +130,36 @@ export default {
                     foundingTime: `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`,
                 },
                 {
-                    mail: "aaaa1234567@gmail.com",
+                    mail: "bbbb1234567@gmail.com",
                     phone: "0911000333",
                     name: "張嘉航2",
                     state: "正常",
                     foundingTime: `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`,
                 },
                 {
-                    mail: "aaaa1234567@gmail.com",
+                    mail: "ccc1234567@gmail.com",
                     phone: "0911000333",
                     name: "張嘉航3",
                     state: "正常",
                     foundingTime: `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`,
                 },
+
                 {
-                    mail: "aaaa1234567@gmail.com",
-                    phone: "0911000333",
-                    name: "張嘉航4",
-                    state: "正常",
-                    foundingTime: `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`,
-                },
-                {
-                    mail: "aaaa1234567@gmail.com",
+                    mail: "dddd1234567@gmail.com",
                     phone: "0911000333",
                     name: "張嘉航5",
                     state: "正常",
                     foundingTime: `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`,
                 },
                 {
-                    mail: "aaaa1234567@gmail.com",
+                    mail: "aeeee1234567@gmail.com",
                     phone: "0911000333",
                     name: "張嘉航6",
                     state: "正常",
                     foundingTime: `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`,
                 },
                 {
-                    mail: "aaaa1234567@gmail.com",
+                    mail: "gggg1234567@gmail.com",
                     phone: "0911000333",
                     name: "張嘉航7",
                     state: "正常",
@@ -183,9 +182,17 @@ export default {
         close() {
             this.open = false;
             this.isBlurred = false;
+        },
+
+
+
+    },
+    computed: {
+        fliterMember() {
+            const query = this.searchQuery.toLowerCase()
+            return this.member.filter(i => i.mail.toLowerCase().includes(query));
+
         }
-
-
     },
     components: {
         Backlayout

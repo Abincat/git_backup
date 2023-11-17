@@ -1,17 +1,20 @@
 .million_school {
+    padding: 50px;
     width: 100%;
-    height: 345px;
+    // height: 345px;
     // background-color: #EED0CC;
-    padding: 40px;
-    display: inline-block;
-    margin: 0 auto;
+
+    // display: inline-block;
+    // margin: 0 auto;
+
 
     .member {
+
         border: 1px solid black;
         background-color: rgba(255, 255, 255, 0.8);
-        width: 600px;
-        height: 260px;
-        margin: 0 auto;
+        width: 60%;
+
+        margin: 40px auto;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -53,12 +56,10 @@
                 text-align: center;
                 color: $primary-color-1;
                 display: flex;
+                flex-direction: column;
 
-                &::after {
-                    content: '';
-                    border-right: 2px solid $primary-color-2;
-                    margin-left: 124px;
-                }
+                width: 50%;
+                border-right: 3px solid $primary-color-1;
 
                 p {
                     font-size: $fs24;
@@ -66,10 +67,20 @@
             }
 
 
+            .middle {
+                display: flex;
+                flex-direction: column;
+
+                p {
+                    font-size: $fs32;
+                }
+            }
 
             .rank {
+
                 text-align: center;
                 color: $primary-color-1;
+                width: 50%;
 
                 p {
                     font-size: $fs24;
@@ -81,6 +92,13 @@
         }
 
 
+    }
+
+    .millionimg {
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .mil-link {

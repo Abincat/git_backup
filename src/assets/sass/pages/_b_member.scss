@@ -1,5 +1,5 @@
 .b_member {
-    padding: 50px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
 
@@ -37,6 +37,12 @@
         display: flex;
         justify-content: right;
         margin-bottom: 20px;
+
+        .form-floating {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
         input {
             width: 246px;

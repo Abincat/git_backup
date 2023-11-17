@@ -2,7 +2,7 @@
     <Backlayout>
         <template #section-right-content>
             <div class="b_mission">
-                <div class="mission-section" :class="{'blurred':isBlurred}">
+                <div class="mission-section" :class="{ 'blurred': isBlurred }">
                     <h1>任務管理</h1>
                     <div class="mission">
                         <div class="mission-img"></div>
@@ -12,13 +12,17 @@
                 </div>
 
 
-                <div class="table-section" :class="{'blurred':isBlurred}">
+                <div class="table-section" :class="{ 'blurred': isBlurred }">
                     <div class="search-section">
                         <div class="search-section-left">
                         </div>
                         <div class="search-section-right">
-                            <input type="text" placeholder="以任務編號搜尋">
-                            <span>搜尋</span>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput" placeholder="以任務內容搜尋"
+                                    v-model="missionQuery">
+                                <label for="floatingInput">以任務內容搜尋</label>
+                                <span>搜尋</span>
+                            </div>
                         </div>
                     </div>
 
@@ -42,7 +46,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(i, index) in mission" :key="index">
+                            <tr v-for="(i, index) in    missionFliter" :key="index">
                                 <th scope="row">{{ index + 1 }}</th>
                                 <td></td>
                                 <td></td>
@@ -63,7 +67,7 @@
                 </div>
 
 
-                <div class="Pagination" :class="{'blurred':isBlurred}">
+                <div class="Pagination" :class="{ 'blurred': isBlurred }">
                     <ul>
                         <li>1</li>
                         <li>2</li>
@@ -76,7 +80,7 @@
 
                 <div class="editMission" id="editMission" v-if="open">
                     <!-- 外層 -->
-                    <div class="dialog" v-for="(i, index) in mission" :key="index"> 
+                    <div class="dialog" v-for="(i, index) in mission" :key="index">
                         <!-- 內容 -->
                         <div class="editTitle" v-if="selectedIndex == index">
                             <span>任務管理</span>
@@ -84,9 +88,9 @@
                         <div class="editContent" v-if="selectedIndex == index">
                             <div class="editAll_left">
                                 <span>任務編號</span>
-                                <p>{{index+1}}</p>
+                                <p>{{ index + 1 }}</p>
                                 <span>任務內容</span>
-                                <p>{{i.mission_content}}</p>
+                                <p>{{ i.mission_content }}</p>
                             </div>
 
                             <div class="editAll_right">
@@ -96,13 +100,13 @@
                                 <input type="number" :value="i.finish_time">
                             </div>
                         </div>
-                        
+
                     </div>
 
 
                     <div class="edit_btn">
-                         <button type="button" class="mil-link" @click="close">關閉</button> 
-                         <button type="button" class="mil-link" @click="close">儲存</button>
+                        <button type="button" class="mil-link" @click="close">關閉</button>
+                        <button type="button" class="mil-link" @click="close">儲存</button>
                     </div>
 
 
@@ -121,9 +125,10 @@ export default {
     data() {
         return {
             id: 0,
-            open:false,
+            open: false,
             isBlurred: false,
-            selectedIndex:null,
+            selectedIndex: null,
+            missionQuery: '',
             mission: [
                 {
 
@@ -167,9 +172,9 @@ export default {
             ]
         }
     },
-    methods:{
-        show(index){
-            this.$root.$emit('toggleBlur',!this.open);
+    methods: {
+        show(index) {
+            this.$root.$emit('toggleBlur', !this.open);
             this.open = !this.open;
             this.isBlurred = !this.isBlurred
             this.selectedIndex = index;
@@ -177,10 +182,20 @@ export default {
             // this.$emit('toggle-blur',this.open);
             // console.log(this.$root.$emit('toggleBlur',this.open))
         },
-        close(){
-            this.open = false; 
+        close() {
+            this.open = false;
             this.isBlurred = false;
-        }  
+        }
+    },
+    computed: {
+        missionFliter() {
+            const query = this.missionQuery.toLowerCase();
+            return this.mission.filter((i) => {
+                return i.mission_content.toLowerCase().includes(query)
+            })
+        }
+
+
     },
     components: {
         Backlayout

@@ -141,12 +141,16 @@
     .introduction_guided_tour {
         width: 100%;
 
+
+
         .property {
             align-items: center;
             justify-content: center;
             text-align: end;
             white-space: nowrap;
             width: 100%;
+
+
 
             div {
                 display: flex;
@@ -178,6 +182,10 @@
             margin: 0 auto;
             align-items: center;
 
+            @include media-breakpoint-down(lg) {
+                width: 100%;
+            }
+
             .new_post_button {
                 width: 130px;
                 height: 80px;
@@ -205,7 +213,31 @@
                     border-width: 10px 0 10px 15px;
                     border-color: transparent transparent transparent white;
                 }
+
+                @include media-breakpoint-down(md) {
+                    display: none;
+                }
             }
+
+            .new_post_button_RWD {
+                width: 130px;
+                height: 80px;
+                background-color: white;
+                color: $primary-color-1;
+                font-weight: bold;
+                border-radius: 10px;
+                border: none;
+                box-shadow: -4px 4px 4px $primary-color-2;
+                align-items: center;
+                position: relative;
+                z-index: 2;
+                display: none;
+
+                @include media-breakpoint-down(md) {
+                    display: block;
+                }
+            }
+
 
 
             .head_sticker {
@@ -217,12 +249,22 @@
                 z-index: 1;
                 display: flex;
                 margin: 0 auto;
+
+                @include media-breakpoint-down(sm) {
+                    width: 250px;
+                    height: 250px;
+                }
             }
 
             .head_sticker img {
                 width: 400px;
                 height: 400px;
                 border-radius: 50px;
+
+                @include media-breakpoint-down(sm) {
+                    width: 250px;
+                    height: 250px;
+                }
             }
 
             .guide_button {
@@ -248,6 +290,14 @@
         text-align: center;
         margin: 20px auto;
         width: 47%;
+
+        @include media-breakpoint-down(md) {
+            width: 80%;
+        }
+
+        @include media-breakpoint-down(sm) {
+            width: 100%;
+        }
 
         label {
             width: 150px;
@@ -283,6 +333,9 @@
         top: 0%;
 
 
+
+
+
         .collection_window {
             border: 3px solid rgb(255, 255, 255);
             background-color: rgb(250, 239, 234);
@@ -295,6 +348,8 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+
+
 
 
             .collection_window_title {
@@ -315,6 +370,8 @@
                 width: 90%;
                 margin: 0 auto;
 
+
+
                 .collection_window_Classification {
                     margin: auto 30px;
 
@@ -327,8 +384,20 @@
                         display: flex;
                         margin: 20px auto;
 
+                        @include media-breakpoint-down(md) {
+                            display: block;
+                        }
+
+
                         .collection_detailed {
                             display: block;
+
+                            @include media-breakpoint-down(md) {
+                                display: flex;
+                                padding: 10px;
+
+                            }
+
 
                             img {
                                 width: 100px;
@@ -337,13 +406,24 @@
                                 border-radius: 10px;
                                 margin: 0 15px;
                                 cursor: pointer;
+
+                                @include media-breakpoint-down(xl) {
+                                    width: 80px;
+                                    height: 80px;
+                                }
+
+                                @include media-breakpoint-down(lg) {
+                                    width: 60px;
+                                    height: 60px;
+                                }
+
                             }
 
                             h6 {
                                 color: $primary-color-1;
                                 font-weight: bold;
                                 text-align: center;
-
+                                white-space: nowrap;
                             }
                         }
                     }
@@ -372,6 +452,14 @@
         justify-content: space-around;
         margin: 0 auto;
 
+        @include media-breakpoint-down(md) {
+            width: 90%;
+        }
+
+        @include media-breakpoint-down(sm) {
+            width: 100%;
+        }
+
         span {
             width: 100px;
             height: 40px;
@@ -390,10 +478,29 @@
         width: 80%;
         margin: 40px auto;
 
+        @include media-breakpoint-down(lg) {
+            width: 100%;
+        }
+
+        @include media-breakpoint-down(md) {
+            width: 90%;
+            display: block;
+        }
+
         .show_role {
             display: flex;
             position: relative;
             width: 40%;
+
+            @include media-breakpoint-down(lg) {
+                margin: 10px;
+
+            }
+
+            @include media-breakpoint-down(md) {
+                margin: 0 auto;
+                width: 80%;
+            }
 
             .character_parts {
                 width: 200px;
@@ -402,30 +509,86 @@
                 position: absolute;
                 left: 50%;
                 transform: translate(-50%);
+
+                @include media-breakpoint-down(md) {
+                    width: 350px;
+                    height: 350px;
+                }
+
+                @include media-breakpoint-down(sm) {
+                    width: 300px;
+                    height: 300px;
+                }
+
             }
 
             .face {
                 z-index: 2;
                 background-image: url("@/assets/images/mypage/hehe.png");
                 background-size: 100%;
+
+                @include media-breakpoint-down(md) {
+                    width: 350px;
+                    height: 350px;
+                }
+
+                @include media-breakpoint-down(sm) {
+                    width: 300px;
+                    height: 300px;
+                }
+
+
             }
 
             .hair {
                 z-index: 3;
                 background-image: url("@/assets/images/mypage/purple_hair.png");
                 background-size: 100%;
+
+                @include media-breakpoint-down(md) {
+                    width: 350px;
+                    height: 350px;
+                }
+
+                @include media-breakpoint-down(sm) {
+                    width: 300px;
+                    height: 300px;
+                }
+
             }
 
             .cloth {
                 z-index: 4;
                 background-image: url("@/assets/images/mypage/pink_vest.png");
                 background-size: 100%;
+
+                @include media-breakpoint-down(md) {
+                    width: 350px;
+                    height: 350px;
+                }
+
+                @include media-breakpoint-down(sm) {
+                    width: 300px;
+                    height: 300px;
+                }
+
             }
 
             .accessories {
                 z-index: 5;
                 background-image: url("@/assets/images/mypage/bubble.png");
                 background-size: 100%;
+
+                @include media-breakpoint-down(md) {
+                    width: 350px;
+                    height: 350px;
+                }
+
+                @include media-breakpoint-down(sm) {
+                    width: 300px;
+                    height: 300px;
+                }
+
             }
 
             .base_plate {
@@ -435,11 +598,32 @@
                 background-color: white;
                 z-index: 1;
                 margin: 0 auto;
+
+                @include media-breakpoint-down(md) {
+                    width: 350px;
+                    height: 350px;
+                }
+
+                @include media-breakpoint-down(sm) {
+                    width: 300px;
+                    height: 300px;
+                }
+
             }
         }
 
         .my_collect {
             text-align: end;
+
+            @include media-breakpoint-down(md) {
+                width: 70%;
+                margin: 0 auto;
+            }
+
+            @include media-breakpoint-down(sm) {
+                width: 100%;
+                margin: 0 auto;
+            }
 
             button {
                 position: relative;
@@ -493,6 +677,7 @@
             .my_collect_title span {
                 color: $primary-color-1;
                 padding-right: 10px;
+                white-space: nowrap;
             }
 
             .my_collect_title hr {
@@ -510,21 +695,30 @@
                     height: 100px;
                     background-color: white;
                     border-radius: 20px;
+
+                    @include media-breakpoint-down(sm) {
+                        width: 80px;
+                        height: 80px;
+                        margin: 5px;
+                    }
                 }
 
                 .collectA {
                     background-image: url("@/assets/images/mypage/SSR_git.png");
                     background-size: 100%;
+                    background-repeat: no-repeat;
                 }
 
                 .collectB {
                     background-image: url("@/assets/images/mypage/SSR_MySQL.png");
                     background-size: 100%;
+                    background-repeat: no-repeat;
                 }
 
                 .collectC {
                     background-image: url("@/assets/images/mypage/SR_js.png");
                     background-size: 100%;
+                    background-repeat: no-repeat;
                 }
             }
         }

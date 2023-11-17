@@ -12,10 +12,9 @@
 
                     <div class="bottom">
                         <div class="score">
-                            <div>
-                                <p>最高紀錄</p>
-                                <p>98題</p>
-                            </div>
+
+                            <p>最高紀錄</p>
+                            <p>98題</p>
 
                         </div>
 
@@ -31,7 +30,7 @@
                     <img src="../assets/images/million_school/qafront.svg" alt="">
                 </div>
 
-                <router-link class="mil-link" :to="{ name: 'million_school_start' }"> start</router-link>
+                <router-link class="mil-link" :to="{ name: 'million_school_start' }">start</router-link>
 
             </main>
         </template>

@@ -1,5 +1,5 @@
 .b_mission {
-    padding: 50px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
 
@@ -34,6 +34,12 @@
     .search-section {
         display: flex;
         justify-content: space-between;
+
+        .form-floating {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
         .search-section-left {
 

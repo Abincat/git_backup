@@ -2,6 +2,8 @@
     <layout>
         <template #section-right-content>
             <div class="mypage">
+
+                <!----------------新增貼文彈窗---------------->
                 <div v-if="postShow" class="add-post-blur">
                     <div class="add-post" ref="addPostBlock">
                         <div class="add-post-block">
@@ -30,6 +32,8 @@
                         </div>
                     </div>
                 </div>
+                <!----------------新增貼文彈窗end---------------->
+
 
 
                 <div class="introduction_guided_tour">
@@ -65,6 +69,10 @@
                             </router-link>
 
                             <button class="Btn">＋加朋友</button>
+
+                            <div>
+                                <button @click="postShow = !postShow" class="new_post_button_RWD Btn">發表新貼文</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -78,6 +86,8 @@
                     <p>嗨！我是工程師。工作中喜歡挑戰技術極限，<br>
                         業餘時間熱衷極限運動，喜歡攀岩和跳傘。期待在技術和生活中不斷挑戰自己！</p>
                 </div>
+
+
 
 
                 <!----------------蒐藏品彈窗---------------->

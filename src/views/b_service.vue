@@ -14,8 +14,12 @@
 
                 <div class="table-section" :class="{ 'blurred': isBlurred }">
                     <div class="search-section">
-                        <input type="text" placeholder="以問題編號搜尋">
-                        <span>搜尋</span>
+                        <div class="form-floating mb-3">
+                            <input type="search" class="form-control" id="floatingInput" placeholder="以回復狀態搜尋"
+                                v-model="serveQuery">
+                            <label for="floatingInput">以回復狀態搜尋</label>
+                            <span>搜尋</span>
+                        </div>
                     </div>
                     <table class="table table-bordered ">
                         <thead>
@@ -31,7 +35,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(i, index) in serve_qa" :key="index">
+                            <tr v-for="(i, index) in  serveFliter" :key="index">
                                 <th scope="row">{{ index + 1 }}</th>
                                 <td>{{ i.mail }}</td>
                                 <td>{{ i.qa_content }}</td>
@@ -39,7 +43,12 @@
                                 <td :class="{ 'active': i.state == '未回覆' }">{{ i.state }}</td>
                                 <td>{{ i.reflectTime }}</td>
                                 <td>{{ i.resTime }}</td>
-                                <td><button class="btn btn btn-warning" @click="show(index)">回覆</button></td>
+                                <td><button class="btn btn btn-warning" @click="show(index)"
+                                        v-if="i.state == '未回覆'">回覆</button>
+                                    <button class="btn btn btn-warning" @click="show(index)"
+                                        v-if="i.state == '已回覆'">查詢</button>
+                                </td>
+
                             </tr>
                         </tbody>
                     </table>
@@ -107,6 +116,7 @@
 </template>
 <script>
 //import 這頁需要的元件
+import { query } from "firebase/database";
 import Backlayout from "../components/backlayout.vue";
 
 export default {
@@ -115,12 +125,13 @@ export default {
             id: 0,
             open: false,
             serve_qa_index: null,
+            serveQuery: '',
             serve_qa: [
                 {
                     mail: "aaaa1234567@gmail.com",
                     qa_content: "忘記密碼了",
                     qa_name: "張嘉航",
-                    state: "未回覆",
+                    state: "已回覆",
                     reflectTime: `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`,
                     resTime: `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`
                 },
@@ -160,7 +171,7 @@ export default {
                     mail: "aaaa1234567@gmail.com",
                     qa_content: "忘記密碼了",
                     qa_name: "張嘉航",
-                    state: "未回覆",
+                    state: "已回覆",
                     reflectTime: `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`,
                     resTime: `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`
                 },
@@ -178,6 +189,14 @@ export default {
         close() {
             this.open = false;
             this.isBlurred = false;
+        }
+    },
+    computed: {
+        serveFliter() {
+            const query = this.serveQuery.toLowerCase();
+            return this.serve_qa.filter((i) => {
+                return i.state.toLowerCase().includes(query);
+            })
         }
     },
     components: {

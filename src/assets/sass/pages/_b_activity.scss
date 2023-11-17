@@ -1,5 +1,5 @@
 .b_active {
-    padding: 50px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
 
@@ -35,8 +35,14 @@
         display: flex;
         justify-content: space-between;
 
-        .search-section-left {
+        .form-floating {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
+        .search-section-left {
+            margin-top: 10px;
 
             span {
                 width: 100px;

@@ -134,7 +134,7 @@ export default {
                 this.dissipateA = false;
                 this.dissipateB = false;
             }, 15000);
-            // }, 60000); //測試完改回正確數值
+            // }, 60000); //動畫停止時間-測試完改回正確數值
             setTimeout(() => {
                 if (!this.giftRedDot) {
                     this.giftRedDot = true;
@@ -144,8 +144,8 @@ export default {
                     this.giftLetterDot = true;
                     this.have = true;
                 }
-            }, 1000);
-            // }, 10000);//測試完改回正確數值
+            }, 5000);
+            // }, 10000);//獎品獲得時間-測試完改回正確數值
         },
 
 
