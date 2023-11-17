@@ -144,7 +144,7 @@
                         <div class="preview_accessories avatar_preview">
                             <img :src="accessoriesImageChange" id="accessoriesImage" alt="">
                         </div>
-                        <div class="base_plate"></div>
+                        <!-- <div class="base_plate"></div> -->
                     </div>
 
                     <!-------------------------配件頁籤------------------------->

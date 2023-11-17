@@ -588,11 +588,15 @@
                         display: flex;
                         padding: 10px;
 
+                        .score-box-bg {
+                            background-color: $secondary-color-4;
+
+                        }
+
                         .score_box {
                             width: 160px;
-                            background-color: $secondary-color-4;
                             display: flex;
-                            justify-content: space-between;
+                            justify-content: end;
                             border-radius: 20px;
                             position: relative;
 

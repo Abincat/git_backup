@@ -94,18 +94,21 @@
                                 <h2>SSR</h2>
                                 <div class="collection_list">
                                     <div class="collection_detailed">
-                                        <img :class="{ 'selected-box': isSelected(index) }" @click="toggleSelection(index)"
-                                            src="../assets/images/mypage/SSR_git.png" alt="">
+                                        <img :class="{ 'selected-box': isSelected('SSR_git') }"
+                                            @click="toggleSelection('SSR_git')" src="../assets/images/mypage/SSR_git.png"
+                                            alt="">
                                         <h6>Git王</h6>
                                     </div>
                                     <div class="collection_detailed">
-                                        <img :class="{ 'selected-box': isSelected(index) }" @click="toggleSelection(index)"
+                                        <img :class="{ 'selected-box': isSelected('SSR_MySQL') }"
+                                            @click="toggleSelection('SSR_MySQL')"
                                             src="../assets/images/mypage/SSR_MySQL.png" alt="">
                                         <h6>DBA大哥</h6>
                                     </div>
                                     <div class="collection_detailed">
-                                        <img :class="{ 'selected-box': isSelected(index) }" @click="toggleSelection(index)"
-                                            src="../assets/images/mypage/SSR_vue.png" alt="">
+                                        <img :class="{ 'selected-box': isSelected('SSR_vue') }"
+                                            @click="toggleSelection('SSR_vue')" src="../assets/images/mypage/SSR_vue.png"
+                                            alt="">
                                         <h6>YYDS</h6>
                                     </div>
                                 </div>
@@ -114,23 +117,27 @@
                                 <h2>SR</h2>
                                 <div class="collection_list">
                                     <div class="collection_detailed">
-                                        <img :class="{ 'selected-box': isSelected(index) }" @click="toggleSelection(index)"
-                                            src="../assets/images/mypage/SR_html.png" alt="">
+                                        <img :class="{ 'selected-box': isSelected('SR_html') }"
+                                            @click="toggleSelection('SR_html')" src="../assets/images/mypage/SR_html.png"
+                                            alt="">
                                         <h6>建築師</h6>
                                     </div>
                                     <div class="collection_detailed">
-                                        <img :class="{ 'selected-box': isSelected(index) }" @click="toggleSelection(index)"
-                                            src="../assets/images/mypage/SR_CSS.png" alt="">
+                                        <img :class="{ 'selected-box': isSelected('SR_CSS') }"
+                                            @click="toggleSelection('SR_CSS')" src="../assets/images/mypage/SR_CSS.png"
+                                            alt="">
                                         <h6>裝潢師</h6>
                                     </div>
                                     <div class="collection_detailed">
-                                        <img :class="{ 'selected-box': isSelected(index) }" @click="toggleSelection(index)"
-                                            src="../assets/images/mypage/SR_js.png" alt="">
+                                        <img :class="{ 'selected-box': isSelected('SR_js') }"
+                                            @click="toggleSelection('SR_js')" src="../assets/images/mypage/SR_js.png"
+                                            alt="">
                                         <h6>邏輯大師</h6>
                                     </div>
                                     <div class="collection_detailed">
-                                        <img :class="{ 'selected-box': isSelected(index) }" @click="toggleSelection(index)"
-                                            src="../assets/images/mypage/SR_gasp.png" alt="">
+                                        <img :class="{ 'selected-box': isSelected('SR_gasp') }"
+                                            @click="toggleSelection('SR_gasp')" src="../assets/images/mypage/SR_gasp.png"
+                                            alt="">
                                         <h6>動畫超人</h6>
                                     </div>
                                 </div>
@@ -139,11 +146,15 @@
                                 <h2>R</h2>
                                 <div class="collection_list">
                                     <div class="collection_detailed">
-                                        <img src="../assets/images/mypage/R_game.png" alt="">
+                                        <img :class="{ 'selected-box': isSelected('R_game') }"
+                                            @click="toggleSelection('R_game')" src="../assets/images/mypage/R_game.png"
+                                            alt="">
                                         <h6>遊戲王</h6>
                                     </div>
                                     <div class="collection_detailed">
-                                        <img src="../assets/images/mypage/R_unicorn.png" alt="">
+                                        <img :class="{ 'selected-box': isSelected('R_unicorn') }"
+                                            @click="toggleSelection('R_unicorn')"
+                                            src="../assets/images/mypage/R_unicorn.png" alt="">
                                         <h6>白日夢</h6>
                                     </div>
                                 </div>
@@ -152,19 +163,26 @@
                                 <h2>N</h2>
                                 <div class="collection_list">
                                     <div class="collection_detailed">
-                                        <img src="../assets/images/mypage/N_OK.png" alt="">
+                                        <img :class="{ 'selected-box': isSelected('N_OK') }"
+                                            @click="toggleSelection('N_OK')" src="../assets/images/mypage/N_OK.png" alt="">
                                         <h6>職場小尖兵</h6>
                                     </div>
                                     <div class="collection_detailed">
-                                        <img src="../assets/images/mypage/N_TropicalFish.png" alt="">
+                                        <img :class="{ 'selected-box': isSelected('N_TropicalFish') }"
+                                            @click="toggleSelection('N_TropicalFish')"
+                                            src="../assets/images/mypage/N_TropicalFish.png" alt="">
                                         <h6>熱帶魚</h6>
                                     </div>
                                     <div class="collection_detailed">
-                                        <img src="../assets/images/mypage/N_saltedFish.png" alt="">
+                                        <img :class="{ 'selected-box': isSelected('N_saltedFish') }"
+                                            @click="toggleSelection('N_saltedFish')"
+                                            src="../assets/images/mypage/N_saltedFish.png" alt="">
                                         <h6>鹹魚</h6>
                                     </div>
                                     <div class="collection_detailed">
-                                        <img src="../assets/images/mypage/N_tilapiaFish.png" alt="">
+                                        <img :class="{ 'selected-box': isSelected('N_tilapiaFish') }"
+                                            @click="toggleSelection('N_tilapiaFish')"
+                                            src="../assets/images/mypage/N_tilapiaFish.png" alt="">
                                         <h6>吳郭魚</h6>
                                     </div>
                                 </div>
@@ -184,11 +202,11 @@
                     <span>{{ hobby3 }}</span>
                     <span>{{ hobby4 }}</span>
                     <span>{{ hobby5 }}</span> -->
+                    <span> constellation </span>
+                    <span> job </span>
+                    <span> city </span>
                     <span> hobby1 </span>
                     <span> hobby2 </span>
-                    <span> hobby3 </span>
-                    <span> hobby4 </span>
-                    <span> hobby5 </span>
                 </div>
                 <div class="custom_display">
                     <div class="show_role">
@@ -237,7 +255,7 @@
                             <ul class="past_activity_list">
                                 <li>
                                     <p>活動名稱</p>
-                                    <div class="score_box">
+                                    <div class="score_box" :class="add_score ? 'score-box-bg ' : ''">
                                         <div v-if="add_score" class="score">
                                             <div class="star">
                                                 <div>
@@ -278,7 +296,7 @@
                                             </div>
                                         </div>
                                         <div>
-                                            <button @click="add_score = !add_score" class="mypage_button score">確定</button>
+                                            <button @click="add_score = !add_score" class="mypage_button ">確定</button>
                                         </div>
                                     </div>
                                     <!-- <div class="score">
@@ -343,7 +361,6 @@
 
                     <div class="mission_board">
                         <ul class="mission_list">
-                            <!--用v-for迴圈跑item-->
                             <h4>今日任務</h4>
                             <li>
                                 <div class="mission">
@@ -362,7 +379,7 @@
                                     <div>
                                         <img src="../assets/images/mypage/Finish_icon.png">
                                     </div>
-                                    <p>每日登入獎勵</p>
+                                    <p>流浪一次</p>
                                 </div>
                                 <div class="mission_award">
                                     <img src="../assets/images/mypage/gold_coin.png">
@@ -374,7 +391,7 @@
                                     <div>
                                         <img src="../assets/images/mypage/unFinish_icon.png">
                                     </div>
-                                    <p>每日登入獎勵</p>
+                                    <p>貪食蛇或百萬小學堂遊玩一次</p>
                                 </div>
                                 <div class="mission_award">
                                     <img src="../assets/images/mypage/gold_coin.png">
@@ -386,7 +403,7 @@
                                     <div>
                                         <img src="../assets/images/mypage/unFinish_icon.png">
                                     </div>
-                                    <p>每日登入獎勵</p>
+                                    <p>大廳聊天一次</p>
                                 </div>
                                 <div class="mission_award">
                                     <img src="../assets/images/mypage/gold_coin.png">
@@ -398,7 +415,7 @@
                                     <div>
                                         <img src="../assets/images/mypage/unFinish_icon.png">
                                     </div>
-                                    <p>每日登入獎勵</p>
+                                    <p>發表公開新貼文</p>
                                 </div>
                                 <div class="mission_award">
                                     <img src="../assets/images/mypage/gold_coin.png">
@@ -572,11 +589,6 @@
 
                     </div>
                 </div>
-                <!--測試框框-->
-                <!-- <div v-for="(box, index) in boxes" :key="index" :class="{ 'selected-box': isSelected(index) }"
-                        @click="toggleSelection(index)">
-                        Box {{ index + 1 }}
-                    </div> -->
             </div>
 
         </template>
@@ -600,47 +612,18 @@ export default {
             // taskText: "",
             // tasks: [],
             // selectImg: {}
-            //選取框框
-            // selectedBoxes: [],
-            // boxes: Array.from({ length: 10 }, (_, index) => index + 1),
-            // maxSelection: 3,
             selectedBoxes: [],
-            items: [
-                { image: "../assets/images/mypage/R_game.png", label: "遊戲王" },
-                { image: "../assets/images/mypage/R_unicorn.png", label: "白日夢" },
-                // 其他项
-            ],
             maxSelection: 3,
         };
     },
 
     methods: {
-        // select(imageName) {
-        //     console.log(`Selected image: ${imageName}`);
-        // }
-        // collectionShow() {
-        //     console.log("tttt")
-        // }
-
         // taskStar(e, i, star) {
         //     // alert(star);
         //     this.tasks[i].star = star; //取得陣列裡面的物件,改變值
         //     localStorage.setItem("tasks", JSON.stringify(this.tasks)); //把值存入localStorage
         // },
 
-        //選取框框
-        // toggleSelection(index) {
-        //     if (this.isSelected(index)) {
-        //         this.selectedBoxes = this.selectedBoxes.filter((boxIndex) => boxIndex !== index);
-        //     } else {
-        //         if (this.selectedBoxes.length < this.maxSelection) {
-        //             this.selectedBoxes.push(index);
-        //         }
-        //     }
-        // },
-        // isSelected(index) {
-        //     return this.selectedBoxes.includes(index);
-        // },
         toggleSelection(index) {
             const selectedIndex = this.selectedBoxes.indexOf(index);
 
