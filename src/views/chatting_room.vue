@@ -66,10 +66,13 @@
                 <div class="user-section">
 
                     <div class="text-content">
-                        <input type="text" v-model="message" placeholder="請輸入信息">
-                        <button @click="addMessage" class="Btn Btn-dark chatbtn">送出</button>
-                    </div>
+                        <div class="input-section">
+                            <input type="text" v-model="message" placeholder="請輸入信息">
+                            <img src="../assets/images/chatroom/Vector.svg" alt="" @click="addMessage">
+                        </div>
 
+                        <button @click="addMessage" @keyup.enter="addMessage" class="Btn Btn-dark chatbtn">送出</button>
+                    </div>
                 </div>
             </div>
         </template>
@@ -166,23 +169,39 @@ export default {
                 {
                     id: 2,
                     url: 'src/assets/images/user/userimage-g.png'
+                },
+                {
+                    id: 3,
+                    url: 'src/assets/images/chatroom/man_A.png'
+                },
+                {
+                    id: 4,
+                    url: 'src/assets/images/chatroom/woman_B.png'
                 }
             ]
         }
     },
     methods: {
+        forceRerender() {
+            this.$forceUpdate();
+        },
         addMessage() {
             const date = new Date().getTime();
             const newMessage = push(messageRef);
+            let image = this.currentMessageImage || 'src/assets/images/user/userimage.png'; // 設置預設值
+
             if (this.message !== "") {
                 set(newMessage, {
                     username: this.username,
                     message: this.message,
                     time: new Date(date).toLocaleString(),
-                    image: this.currentMessageImage, // 新增 image 屬性
+                    image: image, // 新增 image 屬性
                 })
                 this.message = '';
 
+                this.$nextTick(() => {
+                    this.scrollToBottom();
+                });
 
             } else {
                 alert("請輸入信息");
@@ -194,6 +213,10 @@ export default {
                 this.tempUsername = "";
                 this.isSubmitted = true;
 
+                this.$nextTick(() => {
+                    this.scrollToBottom();
+                });
+
             } else {
                 alert("請輸入暱稱")
             };
@@ -203,15 +226,52 @@ export default {
             console.log(this.currentMessageImage);
             this.active = !this.active;
             this.activeImage = image
+        }, scrollToBottom() {
+            // const chatContainer = this.$refs.chatContainer;
+            const chatContainer = document.querySelector('.slot-content')
+            console.log("Trying to scroll to bottom...");
+            if (chatContainer) {
+                console.log("chatContainer test is available");
+                if (chatContainer.scrollHeight > 0) {
+                    setTimeout(() => {
+                        chatContainer.scrollTo(0, chatContainer.scrollHeight)
+                        console.log("Scrolled successfullyfsfsfs!");
+                    }, 10);
+                    console.log(chatContainer.scrollHeight);
+                    // chatContainer.scroll(0, chatContainer.scrollHeight);
+                    chatContainer.scroll({
+                        top: 9000,
+                    });
+                    console.log("Scrolled successfully!");
+                } else {
+                    console.warn('chatContainer.scrollHeight is 0. Cannot scroll to bottom.')
+                }
+            } else {
+                console.error("chatContainer is undefined.");
+            }
         },
+
 
     },
 
     mounted() {
+        this.forceRerender();
         onValue(messageRef, (snapshot) => {
             const data = snapshot.val();
             this.chatroom = data;
+            this.$nextTick(() => {
+                this.scrollToBottom();
+            });
         });
+        this.$nextTick(() => {
+            const chatContainer = this.$refs.chatContainer;
+            if (chatContainer) {
+                // console.log("chatContainer is available");
+
+            } else {
+                console.error("chatContainer is undefined.");
+            }
+        })
     },
 
 }

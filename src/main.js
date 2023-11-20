@@ -11,5 +11,6 @@ import '@/assets/sass/style.scss'
 
 //引用axios
 import axios from 'axios'
+window.axios = axios;
 
 createApp(App).use(router).mount('#app')

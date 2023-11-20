@@ -10,6 +10,12 @@ const routes = [
         component: Home
     },
     {
+        // 前台 搜尋好友
+        path: '/search_friends/:keyword?',
+        name: 'search_friends',
+        component: () => import('@/views/search_friends.vue')
+    },
+    {
         // 前台 聊天大廳
         path: '/chatting_room',
         name: 'chatting_room',
@@ -128,6 +134,12 @@ const routes = [
         path: '/sign_up',
         name: 'member_signup',
         component: () => import('@/views/member_signup.vue')
+    },
+    {
+        // 前台 會員忘記密碼
+        path: '/password_reset',
+        name: 'member_pwd_reset',
+        component: () => import('@/views/member_pwd_reset.vue')
     },
 
     /*--------------------------  backside --------------------------*/

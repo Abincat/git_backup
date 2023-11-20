@@ -55,14 +55,15 @@
                 <!-- ------------------下半部------------------ -->
 
                 <div class="intro">
+                    <div class="left-img">
+                        <img src="../assets/images/playground/snake.svg" alt="">
+                    </div>
                     <div class="right-content">
                         <h2>貪吃蛇 Sankes</h2>
                         <p>蛇一開始只有一個短小的身體。蛇可以在四個方向（上、下、左、右）上移動，通過控制鍵盤或其他輸入設備。每當蛇吃掉食物時，它會變得稍微變長，玩家必須避免蛇撞到牆壁或自己的身體，否則遊戲將結束。</p>
                         <router-link class="Btn Btn-dark mil-link" :to="{ name: 'snake' }"> start</router-link>
                     </div>
-                    <div class="left-img">
-                        <img src="../assets/images/playground/snake.svg" alt="">
-                    </div>
+                   
                 </div>
                 <div class="ranking">
                     <section class="right">

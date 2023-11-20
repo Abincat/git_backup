@@ -1,5 +1,5 @@
 <template>
-    <layoutFull>
+    <layout>
         <template #section-right-content>
             <div class="wander">
                 <div :class="{ 'start': animationMove }" class="container">
@@ -11,8 +11,8 @@
                         </div>
                     </div>
                     <div class="middle">
-                        <!-- <h4>流浪倒數{{ minute }}:{{ second }}</h4> -->
-                        <h4>流浪倒數59:59</h4>
+                        <h4>流浪倒數{{ minute }}:{{ second }}</h4>
+                        <!-- <h4>流浪倒數59:59</h4> -->
                         <div class="middle_campervan">
                             <div class="echaust">
                                 <img :class="{ 'start': dissipateA }" class="echaustA"
@@ -75,13 +75,13 @@
                     <!--------------- 陌生人貼文彈窗end -------------->
                     <div class="loot">
                         <div class="loot_container">
-                            <img @click="readGift(), giftShow = !giftShow" :class="{ 'have': have }"
-                                src="../assets/images/wander/gift_icon.png" alt="gift">
+                            <img @click="readGift" :class="{ 'have': have }" src="../assets/images/wander/gift_icon.png"
+                                alt="gift">
                             <div class="notification_container">
                                 <div :class="{ 'start': giftRedDot }" class="gift_notify"></div>
                             </div>
-                            <img @click="readLetter(), letterShow = !letterShow" :class="{ 'have': have }"
-                                src="../assets/images/wander/letter_icon.png" alt="letter">
+                            <img @click="readLetter" :class="{ 'have': have }" src="../assets/images/wander/letter_icon.png"
+                                alt="letter">
                             <div class="notification_container">
                                 <div :class="{ 'start': giftLetterDot }" class="letter_notify"></div>
                             </div>
@@ -92,15 +92,15 @@
 
 
         </template>
-    </layoutFull>
+    </layout>
 </template>
 <script>
 //import 這頁需要的元件
-import layoutFull from '@/components/layoutFull.vue'
+import layout from '@/components/layout.vue'
 
 export default {
     components: {
-        layoutFull
+        layout
 
     },
     data() {
@@ -111,8 +111,6 @@ export default {
             dissipateB: false,
             giftRedDot: false,
             giftLetterDot: false,
-            minutes: 0,
-            seconds: 0,
             countingDown: false,
             countdownInterval: null,
             have: false,
@@ -120,6 +118,9 @@ export default {
             letterShow: false,
             likePost: false,
             addHim: false,
+            minute: 59,
+            second: 59,
+            countdownInterval: null, //時間暫停
         }
     },
     methods: {
@@ -128,12 +129,12 @@ export default {
             this.animationMove = true;
             this.dissipateA = true;
             this.dissipateB = true;
-            setTimeout(() => {
-                this.animationDrive = false;
-                this.animationMove = false;
-                this.dissipateA = false;
-                this.dissipateB = false;
-            }, 15000);
+            // setTimeout(() => {
+            // this.animationDrive = false;
+            // this.animationMove = false;
+            //     this.dissipateA = false;
+            //     this.dissipateB = false;
+            // }, 60000);
             // }, 60000); //動畫停止時間-測試完改回正確數值
             setTimeout(() => {
                 if (!this.giftRedDot) {
@@ -146,25 +147,51 @@ export default {
                 }
             }, 5000);
             // }, 10000);//獎品獲得時間-測試完改回正確數值
+
+
+            if (this.countdownInterval) {
+                clearInterval(this.countdownInterval);
+            }
+
+            // 設定倒數計時
+            const totalTimeInSeconds = 3599;
+
+            // 開始倒數計時
+            let countdown = totalTimeInSeconds;
+            this.countdownInterval = setInterval(() => {
+                this.minute = Math.floor(countdown / 60);
+                this.second = countdown % 60;
+                if (countdown === 0) {
+                    clearInterval(this.countdownInterval); //倒數計時結束時停止計時器
+                    this.animationDrive = false; //倒數結束全部動畫停止
+                    this.animationMove = false;
+                    this.dissipateA = false;
+                    this.dissipateB = false;
+                } else {
+                    countdown -= 1;
+                }
+            }, 5); //快轉
+            // }, 1000); //一秒更新一次-測試完改回正確數值
         },
 
-
-        //點選之後紅點消除
+        //點選之後紅點消除,判斷有紅點才彈窗
         readGift() {
-            this.giftRedDot = false;
-        },
-        readLetter() {
-            this.giftLetterDot = false;
+            if (this.giftRedDot == true) {
+                this.giftShow = true;
+                this.giftRedDot = false;
+            } else {
+                this.giftShow = false;
+            }
         },
 
-        //要判斷紅點,紅點在才能觸發click彈窗事件
-        // giftShow() {
-        //     if (this.giftRedDot == true) {
-        //         this.giftShow = true;
-        //     } else {
-        //         this.giftShow = false;
-        //     }
-        // },
+        readLetter() {
+            if (this.giftLetterDot == true) {
+                this.letterShow = true;
+                this.giftLetterDot = false;
+            } else {
+                this.letterShow = false;
+            }
+        },
 
         addFriend() {
             this.addHim = true;
@@ -173,7 +200,6 @@ export default {
             this.likePost = true;
         },
 
-
-    },
+    }
 }
 </script>

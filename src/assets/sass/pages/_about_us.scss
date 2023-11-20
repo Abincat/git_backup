@@ -8,6 +8,26 @@
   margin: 0 auto;
   padding: 32px;
 
+  @include media-breakpoint-only(lg) {
+    // border: 3px solid darkblue;
+    padding: 0;
+  }
+
+  @include media-breakpoint-only(md) { 
+    // border: 3px solid darkblue;
+    padding: 20px;
+  }
+
+  @include media-breakpoint-only(sm) {
+    // border: 3px solid darkblue;
+    padding: 0px;
+  }
+
+  @include media-breakpoint-only(xs) { 
+    // border: 2px solid darkblue;
+    padding: 0;
+  }
+
   // ------------ 關於我們 --------------
   .about_grid{
     // border: 2px solid darkgoldenrod;
@@ -16,67 +36,118 @@
     width: 100%;
     display: grid;
     grid-template-columns:1fr 1fr;
-    // column-gap: 70px;
+    column-gap: 70px;
     padding: 40px;
     position: relative;
     padding-bottom: 80px;
 
+    @include media-breakpoint-only(md) { 
+      // border: 3px solid darkblue;
+      padding: 24px;
+    }
+
+    @include media-breakpoint-only(sm) { 
+      // border: 2px solid darkgoldenrod;
+      background-color: transparent;
+      display: grid;
+      grid-template-columns: auto;
+      position: initial;
+    }
+
+    @include media-breakpoint-only(xs) {
+      // border: 2px solid darkblue; 
+      background-color: transparent;
+      display: grid;
+      grid-template-columns: auto;
+      position: initial;
+      padding: 26px;
+    }
+
     .about_left{
+      @include media-breakpoint-only(sm) { 
+        order: 2;
+      }
+
+      @include media-breakpoint-only(xs) { 
+        order: 2;
+      }
       // border: 2px solid darkgreen;
       h1{
         margin-bottom: 22px;
-      }
+        @include media-breakpoint-only(md) { 
+          font-size: $fs32;
+        }
 
-      p{
-        font-size: $fs16;
-        color: $primary-color-2;
-        // font-weight: $fw500;
-      }
-    }
+        @include media-breakpoint-only(sm) { 
+          text-align: center;
+        }
 
-    .about_right{
-      // border: 2px solid darkmagenta;
-      
-      img{
-        // border: 1px solid darkblue;
-        width:450px !important;
-        position: absolute;
-        top: 50px;
-      }
-    }
-  }
-  .about_grid{  
-    // border: 2px solid darkgoldenrod;
-    background-color: #EED0CC;
-    border-radius: 20px;
-    width: 100%;
-    display: grid;
-    grid-template-columns:1fr 1fr;
-    column-gap: 70px;
-
-    .about_left{
-      // border: 2px solid darkgreen;
-      h1{
-        margin-bottom: 22px;
+        @include media-breakpoint-only(xs) { 
+          text-align: center;
+        }
+        
       }
 
       p{
         font-size: $fs24;
-        color: #66669A;
+        color: $primary-color-2;
+        // font-weight: $fw500;
+        @include media-breakpoint-only(md) { 
+          font-size: $fs20;
+        }
+
+        @include media-breakpoint-only(xs) { 
+          width: 100%;
+          // border: 1px solid darkgoldenrod;
+        }
       }
     }
 
     .about_right{
       // border: 2px solid darkmagenta;
-      
+      @include media-breakpoint-only(sm) { 
+        // border: 2px solid darkblue;
+        order: 1;
+      }
+
+      @include media-breakpoint-only(xs) { 
+        order: 1;
+      }
       img{
-        width: 100%;
-       
+        // border: 1px solid darkblue;
+        width:450px;
+        position: absolute;
+        top: 50px;
+        @include media-breakpoint-only(lg) {
+          width: 400px;
+          // border: 1px solid darkblue;
+          right: 0;
+          top: 80px;
+        }
+
+        @include media-breakpoint-only(md) { 
+          // border: 3px solid darkblue;
+          width: 270px;
+          position: initial;
+        }
+
+        @include media-breakpoint-only(sm) { 
+          // border: 1px solid rgb(139, 0, 51);
+          position: initial;
+          margin-left: 96px;
+          margin-bottom: 32px;
+        }
+
+        @include media-breakpoint-only(xs) { 
+          // border: 2px solid darkgreen;
+          position: initial;
+          margin-left: 16px;
+          margin-bottom: 32px;
+        }
       }
     }
-    
-
   }
+  
 
   // ------------ 主打功能 --------------
 
@@ -107,10 +178,34 @@
       align-items: center;
       padding: 20px;
 
+      @include media-breakpoint-only(sm) { 
+        grid-template-columns: auto;
+        // border: 2px solid darkblue;
+        background-color: rgba(255, 255, 255, 0.6);
+      }
+
+      @include media-breakpoint-only(xs) { 
+        grid-template-columns: auto;
+        // border: 2px solid darkblue;
+        background-color: rgba(255, 255, 255, 0.6);
+      }
+
       .room_left{
         // border: 1px solid darkmagenta;
         img{
           width: 100%;
+
+          @include media-breakpoint-only(sm) { 
+            // border: 1px solid darkblue;
+            margin-left: 90px;
+            width: 70%;
+          }
+
+          @include media-breakpoint-only(xs) { 
+            // border: 1px solid darkblue;
+            margin-left: 90px;
+            width: 70%;
+          }
         }
       }
 
@@ -121,10 +216,37 @@
           color: $primary-color-1;
           font-weight: bold;
           margin-bottom: 52px;
+          @include media-breakpoint-only(md) { 
+            font-size: $fs32;
+            margin-bottom: 22px;
+          }
+
+          @include media-breakpoint-only(sm) { 
+            text-align: center;
+            margin-bottom: 16px;
+          }
+
+          @include media-breakpoint-only(xs) { 
+            text-align: center;
+            margin-bottom: 16px;
+          }
+          
         }
         p{
           font-size: $fs24;
           color: $primary-color-2;
+          @include media-breakpoint-only(md) { 
+            font-size: $fs20;
+          }
+
+          @include media-breakpoint-only(sm) { 
+            padding: 36px;
+          }
+
+          @include media-breakpoint-only(xs) { 
+            padding: 36px;
+          }
+    
         }
       }
     }
@@ -141,17 +263,63 @@
       // padding: 20px;
       margin-top: 40px;
 
+      @include media-breakpoint-only(sm) { 
+        grid-template-columns: auto;
+        background-color: rgba(255, 255, 255, 0.6);
+        height: 650px;
+      }
+
+      @include media-breakpoint-only(xs) { 
+        grid-template-columns: auto;
+        background-color: rgba(255, 255, 255, 0.6);
+        height: 650px;
+      }
+
       .play_left{
         // border: 1px solid darkturquoise;
         width: 100%;
+        @include media-breakpoint-only(sm) { 
+          order: 2;
+        }
+
+        @include media-breakpoint-only(xs) { 
+          order: 2;
+        }
         h2{
           color: $primary-color-1;
           font-weight: bold;
           margin-bottom: 52px;
+          @include media-breakpoint-only(md) { 
+            font-size: $fs32;
+            margin-bottom: 22px;
+          }
+          @include media-breakpoint-only(sm) { 
+            text-align: center;
+            margin-bottom: 28px;
+          }
+
+          @include media-breakpoint-only(xs) { 
+            text-align: center;
+            margin-bottom: 28px;
+          }
         }
         p{
           font-size: $fs24;
           color: $primary-color-2;
+          @include media-breakpoint-only(md) { 
+            font-size: $fs20;
+          }
+
+          @include media-breakpoint-only(sm) { 
+            // text-align: center;
+            // border: 1px solid darkblue;
+            padding: 20px;
+          }
+
+          @include media-breakpoint-only(xs) { 
+            padding: 20px;
+          }
+          
         }
       }
 
@@ -159,6 +327,13 @@
         img{
           // border: 2px solid darkblue;
           width: 100%;
+          @include media-breakpoint-only(sm) { 
+            order: 1;
+          }
+
+          @include media-breakpoint-only(xs) { 
+            order: 1;
+          }
         }
       }
     }
@@ -171,6 +346,7 @@
   .introduce{
     // border: 1px solid darkblue;
     margin: 112px 0 60px 0;
+    
     h2{
       text-align: center;
       color: $primary-color-1;
@@ -182,8 +358,24 @@
     // border: 2px solid darkgreen;
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    column-gap: 32px;
+    gap: 32px;
+
+    @include media-breakpoint-only(sm) { 
+      // border: 1px solid darkblue;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      overflow-x:auto;
+    }
+
+    @include media-breakpoint-only(xs) { 
+      // border: 1px solid darkblue;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      overflow-x:auto;
+    }
+    
 
     .item{
       // border: 1px solid darkblue;
@@ -196,39 +388,12 @@
         display: block;
         margin: 0 auto;
         border-radius: 80px;
-      }
 
-      h3{
-        margin-top: 24px;
-        text-align: center;
-        color: $primary-color-1;
-        font-size: $fs24;
-        font-weight: bold;
-      }
-    }
-  }
-
-  .team_grid-2{
-    // border: 2px solid darkgoldenrod;
-    margin: 0 auto;
-    width: 85%;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    // column-gap: 24px;
-    margin-top: 88px;
-
-    .item-2{
-      // border: 1px solid darkblue;
-      width: 100%;
-
-      img{
-        // border: 1px solid darkmagenta;
-        width: 180px;
-        height: 180px;
-        background-color: $white;
-        display: block;
-        margin: 0 auto;
-        border-radius: 80px;
+        @include media-breakpoint-only(md) { 
+          // border: 3px solid darkblue;
+          width: 140px;
+          height: 140px;
+        }
       }
 
       h3{
@@ -242,3 +407,4 @@
   }
 
 }
+

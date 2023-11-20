@@ -8,16 +8,38 @@
         grid-template-columns: 300px auto;
         column-gap: 50px;
 
+        @include media-breakpoint-only(lg) {
+            column-gap: 25px;
+            grid-template-columns: 250px auto;
+        } 
+
+        @include media-breakpoint-only(md) {
+            column-gap: 25px;
+            grid-template-columns:auto;
+            row-gap: 50px;
+        } 
+
+        @include media-breakpoint-only(sm) {
+            column-gap: 25px;
+            grid-template-columns:auto;
+            row-gap: 50px;
+        } 
+
+        @include media-breakpoint-only(xs) {
+            column-gap: 25px;
+            grid-template-columns:auto;
+            row-gap: 50px;
+        } 
+
         .qa-left {
             // border: 1px solid darkgreen;
             border-radius: 20px;
             background-color: $secondary-color-2;
             padding: 20px;
             box-shadow: 4px 4px 4px rgba($primary-color-1, 0.5);
-            height: 450px;
+            height: 400px;
 
             h1 {
-                margin-bottom: 40px;
                 font-size: $fs32;
             }
 
@@ -25,9 +47,10 @@
 
                 // border: 1px solid saddlebrown;
                 li {
-                    padding: 10px;
-                    margin-bottom: 20px;
+                    padding:20px 10px 10px 10px;
+                    margin-bottom: 10px;
                     color: $primary-color-1;
+                    cursor: pointer;
                 }
             }
         }
@@ -46,23 +69,41 @@
 
             }
 
-            .menu {
-                // border: 1px solid saddlebrown;
-                display: flex;
-                justify-content: space-between;
-                border-bottom: 2px solid black;
-                margin-top: 24px;
-                padding-bottom: 24px;
+            .list {
 
-                span {
-                    color: $primary-color-1;
+                // border: 2px solid darkblue;
+                li {
+                    padding-left: 10px;
+                    line-height: 2;
+
+                    &:hover {
+                        background-color: #eee;
+                        cursor: pointer;
+                    }
                 }
+
+                .title {
+                    border-bottom: 2px solid black;
+                    padding: 32px 32px 32px 10px;
+                    cursor: pointer;
+                    font-size: 18px;
+                    font-weight: bold;
+                    color: $primary-color-1;
+
+                    
+                }
+
+                .item {
+                    // border: 1px solid #ccc;
+                    padding-left: 20px;
+                    color: $primary-color-2;
+                }
+
             }
 
-            .menu:nth-child(8) {
-                margin-bottom: 78px;
-            }
+
         }
     }
-
 }
+
+

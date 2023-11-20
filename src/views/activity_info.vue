@@ -173,22 +173,6 @@
                             </div>
                           </div>
                         </div>
-                        <div class="list-check">
-                          <input
-                            type="checkbox"
-                            id="agree"
-                            v-model="isChecked"
-                          />
-                          <label for="agree">
-                            我已閱讀並同意遵守本網站的
-                            <span class="link" @click="goToItem1">服務條款</span
-                            >和
-                            <span class="link" @click="goToItem2"
-                              >隱私政策</span
-                            ></label
-                          >
-                          <!-- 當連結被點擊時，調用 checkBeforeNavigate 方法 -->
-                        </div>
                       </div>
                       <!-- @@@@@@@@@@@@@@@@@ -->
 
@@ -196,8 +180,7 @@
                         <button
                           type="button"
                           class="Btn Btn-dark chatbtn"
-                          @click="changeContent()"
-                          :disabled="!isChecked"
+                          @click="showSuccessMessage()"
                         >
                           前往結帳
                         </button>
@@ -273,7 +256,8 @@ export default {
         this.amount = 1200; // 如果人數少於3，費用恢復
       }
     },
-    changeContent() {
+    showSuccessMessage() {
+      // 更新 contentChanged 屬性以顯示報名成功訊息
       this.contentChanged = true;
     },
     checkBeforeNavigate() {
@@ -285,13 +269,6 @@ export default {
       }
     },
 
-    goToItem1() {
-      window.location.href = "https://www.google.com"; // 替換成實際的條款頁面 URL
-      // 使用vue.router
-    },
-    goToItem2() {
-      window.location.href = "https://edition.cnn.com/"; // 替換成實際的隱私政策頁面 URL
-    },
     handleButtonClick() {
       if (this.isChecked) {
         // 執行一些操作，因為 checkbox 已經被勾選

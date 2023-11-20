@@ -150,15 +150,17 @@
                     <!-------------------------配件頁籤------------------------->
                     <div class="avatar_components">
                         <div class="avatar_components_button">
-                            <button @click="showTab('face')" :class="{ 'active-button': avatarWindow === 'face' }"
-                                class="face_button">臉型</button>
-                            <button @click="showTab('hair')" :class="{ 'active-button': avatarWindow === 'hair' }"
-                                class="hair_button">髮型</button>
-                            <button @click="showTab('cloth')" :class="{ 'active-button': avatarWindow === 'cloth' }"
-                                class="cloth_button">服裝</button>
-                            <button @click="showTab('accessories')"
-                                :class="{ 'active-button': avatarWindow === 'accessories' }"
-                                class="accessories_button">配件</button>
+                            <div class="button_group">
+                                <button @click="showTab('face')" :class="{ 'active-button': avatarWindow === 'face' }"
+                                    class="face_button">臉型</button>
+                                <button @click="showTab('hair')" :class="{ 'active-button': avatarWindow === 'hair' }"
+                                    class="hair_button">髮型</button>
+                                <button @click="showTab('cloth')" :class="{ 'active-button': avatarWindow === 'cloth' }"
+                                    class="cloth_button">服裝</button>
+                                <button @click="showTab('accessories')"
+                                    :class="{ 'active-button': avatarWindow === 'accessories' }"
+                                    class="accessories_button">配件</button>
+                            </div>
                         </div>
 
                         <!-------------------------臉配件------------------------->

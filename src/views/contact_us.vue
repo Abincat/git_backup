@@ -2,6 +2,7 @@
     <layout>
         <template #section-right-content>
             <div class="contact">
+    <!-- ------ 聯絡資訊 ------ -->
     <div class="title">
       <h1>聯絡我們</h1>
       <p>歡迎您提供寶貴的意見,請填寫下方聯絡表單</p>
@@ -26,18 +27,14 @@
       <h3>聯絡表單</h3>
       <p>CONTACT FORM</p>
     </div>
-
-    <form action="" method="" class="subject">
+    <!-- ------ 表單內容 ------ -->
+    <div class="subject">
       <label for="selectoption" class="purpose">主旨</label>
-      <select name="selectoption" id="selectoption">
-        <option value="">主旨Subject</option>
-        <option value="">帳號問題</option>
-        <option value="">聚會問題</option>
-      </select>
+      <input type="text" placeholder="主旨Subject">
 
       <label for="content" class="text">聯繫內容</label>
       <textarea name="content" id="content"></textarea>
-    </form>
+    </div>
 
     <div class="captcha-flex">
       <label for="captcha">驗證碼</label>

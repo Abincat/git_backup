@@ -30,7 +30,7 @@
         </div>
         <div class="room_right">
             <h2>聊天大廳</h2>
-            <p>我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字</p>
+            <p>我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字</p>
         </div>
     </div>
     
@@ -39,7 +39,7 @@
     <div class="playground">
         <div class="play_left">
             <h2>遊樂場</h2>
-            <p>我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字</p>
+            <p>我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文</p>
         </div>
         <div class="play_right">
             <img src="../assets/images/about-us/playground.png" alt="playground_pic">
@@ -61,7 +61,7 @@
 
     <div class="item">
         <img src="../assets/images/about-us/jian.png" alt="jian">
-        <h3>副組長 簡彣昂</h3>
+        <h3>副組長 簡彣庭</h3>
     </div>
 
     <div class="item">
@@ -69,33 +69,27 @@
         <h3>吳勁霖</h3>
     </div>
 
-    <div class="item" style="display: none;">
-        <img src="../assets/images/about-us/wu.png" alt="wu">
-        <h3>吳勁霖</h3>
-    </div>
-</div>
-
-<div class="team_grid-2">
-    <div class="item-2">
+    <div class="item">
         <img src="../assets/images/about-us/lee.png" alt="lee">
         <h3>李育緯</h3>
     </div>
 
-    <div class="item-2">
+    <div class="item">
         <img src="../assets/images/about-us/shi.png" alt="shi">
         <h3>施妤靜</h3>
     </div>
 
-    <div class="item-2">
+    <div class="item">
         <img src="../assets/images/about-us/chen.png" alt="chen">
         <h3>陳冠廷</h3>
     </div>
 
-    <div class="item-2">
+    <div class="item">
         <img src="../assets/images/about-us/peng.png" alt="peng">
         <h3>彭筱茜</h3>
     </div>
 </div>
+
 </div>
         </template>
     </layout>
@@ -107,6 +101,6 @@ import layout from '@/components/layout.vue'
 export default {
     components: {
         layout
-    }
+    },
 }
 </script>

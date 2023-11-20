@@ -282,7 +282,7 @@ export default {
             this.open = !this.open;
 
             this.isBlurred = !this.isBlurred,
-                this.active_show = index
+            this.active_show = index
             // this.$emit('toggle-blur',this.open);
             // console.log(this.$root.$emit('toggleBlur',this.open))
         },

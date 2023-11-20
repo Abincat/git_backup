@@ -30,14 +30,32 @@
             width: 20%;
             padding-top: 30px;
 
+            @include media-breakpoint-down(lg) {
+                width: 15%;
+            }
+
+            @include media-breakpoint-down(md) {
+                width: 10%;
+            }
+
             div {
                 margin: 0 auto;
                 width: 50px;
                 height: 50px;
 
+                @include media-breakpoint-down(md) {
+                    width: 65%;
+                    height: auto;
+                }
+
                 img {
                     width: 50px;
                     height: 50px;
+
+                    @include media-breakpoint-down(md) {
+                        width: 100%;
+                        height: auto;
+                    }
                 }
             }
         }
@@ -49,6 +67,10 @@
             text-align: center;
             padding-top: 30px;
 
+            @include media-breakpoint-down(md) {
+                width: 70%;
+            }
+
             h4 {
                 color: white;
             }
@@ -59,10 +81,19 @@
                 height: 350px;
                 width: 100%;
 
+                @include media-breakpoint-down(md) {
+                    height: 300px;
+                }
+
                 .campervan {
                     width: 250px;
                     height: 230px;
                     transform: translateY(0);
+
+                    @include media-breakpoint-down(md) {
+                        width: 60%;
+                        height: auto;
+                    }
 
                     &.start {
                         animation: animationDrive 0.4s linear infinite;
@@ -88,10 +119,21 @@
                 display: flex;
                 padding-top: 100px;
 
+                @include media-breakpoint-down(md) {
+                    padding-top: 20%;
+                }
+
                 img {
                     width: 60px;
                     height: 50px;
                     margin: 10px;
+
+                    @include media-breakpoint-down(md) {
+                        width: 35%;
+                        height: auto;
+                        margin: 5px;
+                    }
+
                 }
 
                 .echaustA {
@@ -165,6 +207,8 @@
             position: absolute;
             top: 0%;
 
+
+
             .collection_window {
                 border: 3px solid rgb(255, 255, 255);
                 background-color: rgb(250, 239, 234);
@@ -177,6 +221,20 @@
                 top: 40%;
                 left: 35%;
                 transform: translate(-30%, -30%);
+
+                @include media-breakpoint-down(lg) {
+                    left: 30%;
+                }
+
+                @include media-breakpoint-down(md) {
+                    top: 35%;
+                }
+
+                @include media-breakpoint-down(sm) {
+                    width: 200px;
+                    height: 300px;
+                    top: 30%;
+                }
 
                 button {
                     width: 100%;
@@ -256,6 +314,19 @@
                 left: 37%;
                 transform: translate(-37%, -40%);
 
+                @include media-breakpoint-down(lg) {
+                    left: 32%;
+                }
+
+                @include media-breakpoint-down(md) {
+                    top: 35%;
+                }
+
+                @include media-breakpoint-down(sm) {
+                    width: 250px;
+                    height: 350px;
+                }
+
                 .post_img {
                     padding: 0 20px;
 
@@ -328,6 +399,10 @@
             width: 20%;
             padding-top: 30px;
 
+            @include media-breakpoint-down(md) {
+                width: 20%;
+            }
+
             .loot_container {
                 width: 80%;
                 display: flex;
@@ -338,6 +413,12 @@
                     width: 40px;
                     height: 40px;
                     margin-left: 20px;
+
+                    @include media-breakpoint-down(md) {
+                        margin-left: 10px;
+                        width: 40%;
+                        height: auto;
+                    }
 
                     &.have {
                         cursor: pointer;

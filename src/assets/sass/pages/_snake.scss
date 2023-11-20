@@ -13,9 +13,25 @@
     justify-content: center;
     align-items: center;
 
-    #canvas {
+    @include media-breakpoint-down(sm) {
+        flex-direction: column;
+        gap: 10px;
+        background-image: url("/src/assets/images/snake/Frame 110.svg");
+
+    }
+
+    .snake_canvas {
+        opacity: 0.5;
         border: 2px solid $primary-color-1;
 
+        @include media-breakpoint-down(md) {
+            margin-top: 30px;
+        }
+
+        @include media-breakpoint-down(sm) {
+            width: 200px;
+            height: 200px;
+        }
     }
 
 
@@ -31,6 +47,54 @@
 
         p {
             font-size: $fs20;
+        }
+
+        div {
+            width: 100%;
+            display: none;
+
+
+            @include media-breakpoint-down(sm) {
+                display: flex;
+                justify-content: space-around;
+
+            }
+
+            .left {
+                background-color: $primary-color-1;
+                color: white;
+                padding: 5px 10px;
+                font-size: $fs24;
+                margin-right: 40px;
+                width: 60px;
+                height: 30px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                &::after {
+                    content: "<";
+
+                }
+            }
+
+            .right {
+                width: 60px;
+                height: 30px;
+
+                background-color: $primary-color-1;
+                color: white;
+                padding: 5px 10px;
+                font-size: $fs24;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                &::after {
+                    content: ">";
+                }
+            }
         }
     }
 

@@ -1,4 +1,5 @@
 .playground {
+
   width: 100%;
 
   background-color: #eed0cc;
@@ -9,18 +10,63 @@
 
   .banner {
     display: flex;
+    background-color: #EED0CC;
+    width: 100%;
+    padding: 40px;
+    // height: 100%;
+    border-radius: 20px;
+    margin-top: 20px;
+
+    @include media-breakpoint-down(sm) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: transparent;
+    }
 
     .left {
       width: 50%;
 
+      @include media-breakpoint-down(sm) {
+        width: 100%;
+        text-align: center;
+      }
+
       h1 {
         margin-bottom: 40px;
+
+        @include media-breakpoint-down(sm) {
+          font-size: $fs40;
+        }
+
+
       }
 
       p {
         color: $primary-color-2;
         font-size: $fs24;
         margin-bottom: 8px;
+        // border: 1px solid red;
+
+        white-space: nowrap;
+
+        @include media-breakpoint-down(xxl) {
+          width: 100%;
+
+        }
+
+        @include media-breakpoint-down(xl) {
+          font-size: $fs20;
+        }
+
+        @include media-breakpoint-down(lg) {
+          font-size: $fs20;
+        }
+
+
+        @include media-breakpoint-down(sm) {
+          font-size: $fs24;
+        }
       }
     }
 
@@ -28,9 +74,29 @@
       width: 50%;
       text-align: center;
 
+      @include media-breakpoint-down(sm) {
+        width: 100%;
+      }
+
       img {
         width: 400px;
+
         // height: 443px;
+
+        @include media-breakpoint-down(xl) {
+          width: 100%
+        }
+
+        @include media-breakpoint-down(lg) {
+
+          margin-top: 20px;
+        }
+
+        @include media-breakpoint-down(sm) {
+          width: 70%;
+        }
+
+
       }
     }
   }
@@ -41,15 +107,42 @@
     grid-template-columns: auto auto;
     gap: 48px;
 
+    &:nth-child(4n) {
+      .left-img {
+        order: 2;
+      }
+    }
+
+
+    @include media-breakpoint-down(sm) {
+      display: block;
+    }
+
     .left-img {
       // height: 473px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       img {
         width: 100%;
+
+
+        // @include media-breakpoint-down(lg) {
+        //     width: 240px;
+        // }
+
+        @include media-breakpoint-down(sm) {
+          width: 70%;
+
+        }
+
       }
     }
 
     .right-content {
+      width: 100%;
       align-items: center;
       display: flex;
       flex-direction: column;
@@ -57,11 +150,20 @@
       // width: 378px;
       justify-content: space-between;
 
+
       h2 {
         margin-top: 20px;
         color: $primary-color-1;
         font-weight: $fw600;
         margin-bottom: 40px;
+
+        @include media-breakpoint-down(lg) {
+          font-size: $fs24;
+        }
+
+        @include media-breakpoint-down(sm) {
+          font-size: $fs32;
+        }
       }
 
       p {
@@ -69,6 +171,11 @@
         font-size: $fs24;
         color: $primary-color-2;
         margin-bottom: 80px;
+
+        @include media-breakpoint-down(sm) {
+          padding: 30px;
+        }
+
       }
 
       .mil-link {
@@ -113,6 +220,19 @@
 
       .rank-list {
         display: flex;
+        background-color: #EED0CC;
+        width: 100%;
+        padding: 40px;
+        // height: 100%;
+        border-radius: 20px;
+        margin-top: 20px;
+
+        @include media-breakpoint-down(sm) {
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          background-color: transparent;
+        }
 
         .ranking-item {
           display: flex;
@@ -120,6 +240,79 @@
           justify-content: center;
           align-items: center;
           margin-bottom: 20px;
+
+          @include media-breakpoint-down(sm) {
+            width: 100%;
+            text-align: center;
+          }
+
+          h1 {
+            margin-bottom: 40px;
+
+            @include media-breakpoint-down(sm) {
+              font-size: $fs40;
+            }
+
+
+          }
+
+          p {
+            color: $primary-color-2;
+            font-size: $fs24;
+            margin-bottom: 8px;
+            // border: 1px solid red;
+
+            white-space: nowrap;
+
+            @include media-breakpoint-down(xxl) {
+              width: 100%;
+
+            }
+
+            @include media-breakpoint-down(xl) {
+              font-size: $fs20;
+            }
+
+            @include media-breakpoint-down(lg) {
+              font-size: $fs20;
+            }
+
+
+            @include media-breakpoint-down(sm) {
+              font-size: $fs24;
+            }
+          }
+
+        }
+
+        .right {
+          width: 50%;
+          text-align: center;
+
+          @include media-breakpoint-down(sm) {
+            width: 100%;
+          }
+
+          img {
+            width: 400px;
+
+            // height: 443px;
+
+            @include media-breakpoint-down(xl) {
+              width: 100%
+            }
+
+            @include media-breakpoint-down(lg) {
+
+              margin-top: 20px;
+            }
+
+            @include media-breakpoint-down(sm) {
+              width: 70%;
+            }
+
+
+          }
 
           img.ranking-img {
             width: 50px;
@@ -145,10 +338,205 @@
       // width: 500px;
       // height: 375px;
 
-      img {
+      &:nth-child(4n) {
+        .left-img {
+          order: 2;
+        }
+      }
+
+
+      @include media-breakpoint-down(sm) {
+        display: block;
+      }
+
+      .left-img {
+
+        // height: 473px;
         width: 100%;
-        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          width: 100%;
+
+
+          // @include media-breakpoint-down(lg) {
+          //     width: 240px;
+          // }
+
+          @include media-breakpoint-down(sm) {
+            width: 70%;
+
+          }
+
+        }
+      }
+
+      .right-content {
+        width: 100%;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        // width: 378px;
+        justify-content: space-between;
+
+
+        h2 {
+          margin-top: 20px;
+          color: $primary-color-1;
+          font-weight: $fw600;
+          margin-bottom: 40px;
+
+          @include media-breakpoint-down(lg) {
+            font-size: $fs24;
+          }
+
+          @include media-breakpoint-down(sm) {
+            font-size: $fs32;
+          }
+        }
+
+        p {
+          text-align: left;
+          font-size: $fs24;
+          color: $primary-color-2;
+          margin-bottom: 80px;
+
+          @include media-breakpoint-down(sm) {
+            padding: 30px;
+          }
+
+        }
+
+        .mil-link {
+          text-align: center;
+          text-transform: uppercase;
+          // text-decoration: none;
+          // color: white;
+          // width: 143px;
+          // height: 65px;
+          padding: 20px 40px;
+
+          // border-radius: 48px;
+          // margin: 0 auto;
+          // background-color: $primary-color-1;
+
+          // font-size: $fs24;
+
+        }
+
       }
     }
+
+    .ranking {
+      // border: 1px solid red;
+      display: grid;
+      grid-template-columns: auto auto;
+      padding: 40px 0px;
+      border-top: 2px solid $secondary-color-4;
+      margin-top: 40px;
+      gap: 50px;
+      align-items: center;
+
+      @include media-breakpoint-down(md) {
+        display: block;
+      }
+
+      .left {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+
+
+        h2 {
+          color: $primary-color-1;
+          text-align: center;
+          margin-bottom: 32px;
+        }
+
+        .rank-list {
+          display: flex;
+          justify-content: space-between;
+
+          .ranking-item {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            // border: 1px solid red;
+
+            img.ranking-img {
+              width: 50px;
+
+
+
+            }
+
+            img {
+              width: 80px;
+              height: 80px;
+              border-radius: 50%;
+
+
+
+
+
+
+
+            }
+
+            p {
+              color: $primary-color-1;
+              font-size: $fs24;
+              font-weight: $fw600;
+              margin: 0 30px;
+              // border: 1px solid green;
+              width: 100%;
+              text-align: center;
+
+              @include media-breakpoint-down(lg) {
+                font-size: $fs14;
+
+
+              }
+
+              @include media-breakpoint-down(md) {
+                font-size: $fs14;
+
+              }
+            }
+          }
+        }
+      }
+
+      .right {
+        // width: 500px;
+        // height: 375px;
+
+        img {
+          width: 100%;
+          // height: 100%;
+
+          @include media-breakpoint-down(lg) {
+            width: 220px;
+          }
+
+          @include media-breakpoint-down(md) {
+            display: none;
+          }
+        }
+      }
+    }
+
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
   }
 }

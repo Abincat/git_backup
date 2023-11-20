@@ -1,5 +1,5 @@
 <template>
-    <div class="info-block">
+    <div :class="['info-block', { 'hide': hide }]">
         <div class="logo-block">
             <router-link :to="{ name: 'home' }" class="logo-mobile">
                 <img src="../assets/images/logo/logo_mobile.svg" alt="logo" />
@@ -8,7 +8,7 @@
         <div class="user-info">
             <div class="user-search">
                 <img src="../assets/images/icon/search.svg" alt="">
-                <input type="search" placeholder="搜尋好友">
+                <input ref="searchFriend" type="search" placeholder="搜尋好友" @keyup.enter="search">
             </div>
             <div class="user-detail-info">
                 <router-link :to="{ name: 'mypage' }">
@@ -22,3 +22,23 @@
         </div>
     </div>
 </template>
+
+<script>
+
+export default {
+    inject: ['hide'],
+
+    methods: {
+        search() {
+            if (this.$refs.searchFriend.value == '') {
+                alert('請輸入搜尋好友關鍵字');
+            } else {
+
+                const keyword = this.$refs.searchFriend.value;
+                this.$router.push({ name: 'search_friends', params: { keyword: keyword } })
+            }
+        }
+    }
+}
+
+</script>

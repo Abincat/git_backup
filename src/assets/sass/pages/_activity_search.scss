@@ -10,6 +10,9 @@
       gap: 32px;
       width: 80%;
       margin: 0 auto;
+      @include media-breakpoint-down(xl){
+        width: 90%;
+      }
       .search-result{
         // border: 1px solid red;
         display: flex;
@@ -21,6 +24,9 @@
           font-size: $fs20;
           font-weight: $fw600;
           color: $primary-color-1;
+          @include media-breakpoint-down(lg){
+            justify-content: center;
+          }
           >span{
             font-size: $fs24;
           }
@@ -32,6 +38,9 @@
           font-size: $fs20;
           font-weight: $fw600;
           color: $primary-color-1;
+          @include media-breakpoint-down(lg){
+            justify-content: center;
+          }
         }
       }
       .result-cards{
@@ -43,6 +52,9 @@
           // border: 1px solid blue;
           display: flex;
           border-radius: 32px;
+          @include media-breakpoint-down(lg){
+            flex-direction: column;
+          }
           &:hover{
             box-shadow: 5px 5px 10px $secondary-color-4;
             transform: scale(1.02);
@@ -54,6 +66,12 @@
             height: 260px;
             border-radius: 32px 0 0 32px;
             overflow: hidden;
+            @include media-breakpoint-down(xl){
+              width: 400px;
+            }
+            @include media-breakpoint-down(lg){
+              border-radius: 32px 32px 0 0;
+            }
            
             .info{
               display: flex;
@@ -82,6 +100,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            @include media-breakpoint-down(xl){
+              width: 200px;
+            }
+            @include media-breakpoint-down(lg){
+              width: 400px;
+              border-radius: 0 0 32px 32px;
+            }
             .result-text{
               display: flex;
               flex-direction: column;
@@ -90,15 +115,35 @@
               >h3{
                 color:$primary-color-1;
               }
-              .detail{
+              .details{
                 display: flex;
+                flex-direction: column;
                 gap: 8px;
-                align-items: center;
-                color: $primary-color-2;
-                >img{
-                  width: 20px;
-                  height: 20px;
+                @include media-breakpoint-down(lg){
+                  flex-wrap: wrap;
+                  flex-direction: row;
+                  gap: 10px;
+                  padding: 5px;
 
+                }
+                .detail{
+                  display: flex;
+                  gap: 8px;
+                  align-items: center;
+                  color: $primary-color-2;
+                  @include media-breakpoint-down(lg){
+                    width: calc(50% - 20px);
+                  }
+                  
+                  >img{
+                    width: 20px;
+                    height: 20px;
+  
+                  }
+                  .fake{
+                    width: 20px;
+                    height: 20px;
+                  }
                 }
               }
             }

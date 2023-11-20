@@ -4,6 +4,10 @@
     gap: 16px 40px;
     flex-wrap: wrap;
 
+    @include media-breakpoint-down(lg) {
+        gap: 16px;
+    }
+
     .friend-item {
         width: calc((100% - 40px)/2);
         padding: 12px;
@@ -12,6 +16,20 @@
         align-items: center;
         gap: 20px;
         background-color: $primary-color-3;
+        transition: opacity 1s;
+
+        &.fade_out {
+            opacity: 0
+        }
+
+        @include media-breakpoint-down(lg) {
+            width: calc((100% - 16px)/2);
+            gap: 12px;
+        }
+
+        @include media-breakpoint-down(sm) {
+            width: 100%;
+        }
 
         .friend-img {
             width: 60px;
@@ -52,9 +70,17 @@
                     width: 20px;
                     height: 20px;
                 }
-            }
 
-            button.delete {}
+                &.add-friend {
+                    background-color: $primary-color-1;
+                    color: $white;
+                }
+
+                &.invited {
+                    background-color: $primary-color-4;
+                    color: $primary-color-1;
+                }
+            }
         }
     }
 }
