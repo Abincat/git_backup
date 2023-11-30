@@ -11,6 +11,7 @@
         background-repeat: no-repeat;
         overflow: hidden;
         border-radius: 10px;
+        height: 85vh;
 
         &.start {
             animation: moveLeft 10s linear infinite;
@@ -77,9 +78,10 @@
 
             .middle_campervan {
                 display: flex;
-                align-items: center;
+                // align-items: center;
                 height: 350px;
                 width: 100%;
+                position: relative;
 
                 @include media-breakpoint-down(md) {
                     height: 300px;
@@ -88,6 +90,9 @@
                 .campervan {
                     width: 250px;
                     height: 230px;
+                    position: absolute;
+                    bottom: 5%;
+                    left: 35%;
                     transform: translateY(0);
 
                     @include media-breakpoint-down(md) {
@@ -117,10 +122,12 @@
 
             .echaust {
                 display: flex;
-                padding-top: 100px;
+                position: absolute;
+                bottom: 15%;
+                left: 5%;
 
-                @include media-breakpoint-down(md) {
-                    padding-top: 20%;
+                @include media-breakpoint-down(lg) {
+                    left: 5%;
                 }
 
                 img {
@@ -128,12 +135,28 @@
                     height: 50px;
                     margin: 10px;
 
-                    @include media-breakpoint-down(md) {
-                        width: 35%;
+                    @include media-breakpoint-down(lg) {
+                        width: 50px;
                         height: auto;
                         margin: 5px;
                     }
 
+                    @include media-breakpoint-down(md) {
+                        width: 45px;
+                        height: auto;
+                        margin: 3px;
+                    }
+
+                    @include media-breakpoint-down(sm) {
+                        width: 40px;
+                        height: auto;
+                    }
+
+                    @media screen and (max-width: 430px) {
+                        width: 20px;
+                        height: auto;
+                        margin: 1px;
+                    }
                 }
 
                 .echaustA {
@@ -185,6 +208,7 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                // border: 3px solid rgb(255, 242, 0);
 
                 .start {
                     background-color: $primary-color-1 ;
@@ -192,8 +216,13 @@
                     height: 40px;
                     border-radius: 20px;
                     color: white;
-                }
 
+                    &.limit {
+                        background-color: rgb(50, 50, 50);
+                        color: rgb(81, 81, 81);
+                        cursor: not-allowed;
+                    }
+                }
             }
         }
 
@@ -408,16 +437,23 @@
                 display: flex;
                 margin: 0 auto;
 
-
                 img {
                     width: 40px;
                     height: 40px;
                     margin-left: 20px;
 
-                    @include media-breakpoint-down(md) {
+                    @include media-breakpoint-down(lg) {
                         margin-left: 10px;
                         width: 40%;
                         height: auto;
+                    }
+
+                    @include media-breakpoint-down(md) {
+                        margin-left: 5px;
+                    }
+
+                    @include media-breakpoint-down(sm) {
+                        margin-left: 2px;
                     }
 
                     &.have {
@@ -438,6 +474,11 @@
                         background-color: red;
                         border-radius: 50%;
                         opacity: 0;
+
+                        @include media-breakpoint-down(sm) {
+                            width: 7px;
+                            height: 7px;
+                        }
 
                         &.start {
                             opacity: 1;

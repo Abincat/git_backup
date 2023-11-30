@@ -38,15 +38,50 @@
                 <div class="sub-bar">
                     <div>熱門主題</div>
                 </div>
+                <!-- topic card
+                <div class="topic-container">
+                    <div class="cards">
+                    <div class="arrow" @click="changeCardContent(true)">
+                        <img src="../assets/images/activity/icon_leftarrow.svg" alt="">
+                    </div>
 
-                <!-- topic card -->
+                    <router-link v-for="(card, index) in topicCards" :key="index" :to="{ name: 'activity_info' }" class="card" v-show="shouldShowCard(index)">
+                        <div class="card-pic">
+                        <img :src="card.image" alt="">
+                        <div class="location">
+                            <img src="../assets/images/activity/location.svg" alt="">
+                            <div class="text">{{ card.location }}</div>
+                        </div>
+                        </div>
+                        <div class="card-details">
+                        <div class="card-details-title">{{ card.title }}</div>
+                        <div class="card-details-info">
+                            <img src="../assets/images/activity/calendar.svg" alt="">
+                            <div>{{ card.date }}</div>
+                        </div>
+                        <div class="card-details-info">
+                            <img src="../assets/images/activity/group.svg" alt="">
+                            <div>{{ card.remainingSlots }}</div>
+                        </div>
+                        </div>
+                    </router-link>
+
+                    <div class="arrow" @click="changeCardContent(false)">
+                        <img src="../assets/images/activity/icon_rightarrow.svg" alt="">
+                    </div>
+                    <div class="more">
+                        查看更多 +
+                    </div>
+                    </div>
+                </div> -->
+                <!-- 原本的topic card -->
                 <div class="topic-container">
                     <div class="cards">
                         <div class="arrow">
                             <img src="../assets/images/activity/icon_leftarrow.svg" alt="">
                         </div>
 
-                        <a href="" class="card">
+                        <router-link :to="{ name: 'activity_info' }" class="card">
                             <div class="card-pic">
                                 <img src="../assets/images/activity/music-fes.jpg" alt="">
                                 <div class="location">
@@ -68,8 +103,8 @@
                                 </div>
 
                             </div>
-                        </a>
-                        <a href="" class="card">
+                        </router-link>
+                        <router-link :to="{ name: 'activity_info' }" class="card">
                             <div class="card-pic">
                                 <img src="../assets/images/activity/music-fes.jpg" alt="">
                                 <div class="location">
@@ -91,8 +126,8 @@
                                 </div>
 
                             </div>
-                        </a>
-                        <a href="" class="card">
+                        </router-link>
+                        <router-link :to="{ name: 'activity_info' }" class="card">
                             <div class="card-pic">
                                 <img src="../assets/images/activity/music-fes.jpg" alt="">
                                 <div class="location">
@@ -114,14 +149,18 @@
                                 </div>
 
                             </div>
-                        </a>
+                        </router-link>
 
                         <div class="arrow">
                             <img src="../assets/images/activity/icon_rightarrow.svg" alt="">
                         </div>
+                        <div class="more">
+                            查看更多 +
+                        </div>
                     </div>
 
                 </div>
+                <!-- 原本結束 -->
 
                 <!-- activity region bar -->
                 <div class="sub-bar">
@@ -131,42 +170,44 @@
 
                 <!-- region card -->
                 <div class="region-cards">
-                    <!-- region-card -->
-                    <div class="region">
-                        <a href="" class="">
-                            <div class="region-pic">
-                                <img src="../assets/images/activity/101.jpeg" alt="">
-                            </div>
-                            <div class="region-text">北區</div>
+                    <div class="region-container">
 
-                        </a>
-                    </div>
-                    <div class="region">
-                        <a href="" class="">
-                            <div class="region-pic">
-                                <img src="../assets/images/activity/mid-opera.jpeg" alt="">
-                            </div>
-                            <div class="region-text">中區</div>
+                        <div class="region">
+                            <router-link :to="{ name: 'activity_search' }" class="">
+                                <div class="region-pic">
+                                    <img src="../assets/images/activity/mid-opera.jpeg" alt="">
+                                </div>
+                                <div class="region-text">北區</div>
 
-                        </a>
-                    </div>
-                    <div class="region">
-                        <a href="" class="">
-                            <div class="region-pic">
-                                <img src="../assets/images/activity/mid-opera.jpeg" alt="">
-                            </div>
-                            <div class="region-text">南區</div>
+                            </router-link>
+                        </div>
+                        <div class="region">
+                            <router-link :to="{ name: 'activity_search' }" class="">
+                                <div class="region-pic">
+                                    <img src="../assets/images/activity/mid-opera.jpeg" alt="">
+                                </div>
+                                <div class="region-text">中區</div>
 
-                        </a>
-                    </div>
-                    <div class="region">
-                        <a href="" class="">
-                            <div class="region-pic">
-                                <img src="../assets/images/activity/mid-opera.jpeg" alt="">
-                            </div>
-                            <div class="region-text">離島</div>
+                            </router-link>
+                        </div>
+                        <div class="region">
+                            <router-link :to="{ name: 'activity_search' }" class="">
+                                <div class="region-pic">
+                                    <img src="../assets/images/activity/mid-opera.jpeg" alt="">
+                                </div>
+                                <div class="region-text">南區</div>
 
-                        </a>
+                            </router-link>
+                        </div>
+                        <div class="region">
+                            <router-link :to="{ name: 'activity_search' }" class="">
+                                <div class="region-pic">
+                                    <img src="../assets/images/activity/mid-opera.jpeg" alt="">
+                                </div>
+                                <div class="region-text">離島</div>
+
+                            </router-link>
+                        </div>
                     </div>
 
 
@@ -180,74 +221,62 @@
 
                 <!-- upcoming card -->
                 <div class="upcoming-cards">
-                    <div class="upcoming-card">
-                        <div class="card-pic">
+                    <div class="upcoming-container">
 
-                            <img src="../assets/images/activity/upcoming-min.png" alt="">
-                        </div>
-                        <div class="card-detail">
-                            <div class="title">賞櫻季</div>
-                            <div class="date">活動日期：
-                                <span>2024/01/01</span>
+                        <div class="upcoming">
+
+                            <div class="upcoming-card">
+                                <div class="card-pic">
+
+                                    <img src="../assets/images/activity/upcoming-min.png" alt="">
+                                </div>
+                                <div class="card-detail">
+                                    <div class="title">賞櫻季</div>
+                                    <div class="date">活動日期：
+                                        <span>2024/01/01</span>
+                                    </div>
+                                    <button class="Btn">提醒我</button>
+
+
+                                </div>
+
+
+
                             </div>
-                            <button>提醒我</button>
+                            <div class="upcoming-card">
+                                <div class="card-pic">
+                                    <img src="../assets/images/activity/upcoming-min.png" alt="">
+                                </div>
+                                <div class="card-detail">
+                                    <div class="title">賞櫻季</div>
+                                    <div class="date">活動日期：
+                                        <span>2024/01/01</span>
+                                    </div>
+                                    <button class="Btn">提醒我</button>
+                                </div>
 
+                            </div>
+                            <div class="upcoming-card">
+                                <div class="card-pic">
+                                    <img src="../assets/images/activity/upcoming-min.png" alt="">
+                                </div>
+                                <div class="card-detail">
+                                    <div class="title">賞櫻季</div>
+                                    <div class="date">活動日期：
+                                        <span>2024/01/01</span>
+                                    </div>
+                                    <button class="Btn">提醒我</button>
+                                </div>
+
+                            </div>
 
                         </div>
-
-
-
                     </div>
-                    <div class="upcoming-card">
-                        <div class="card-pic">
-                            <img src="../assets/images/activity/upcoming-min.png" alt="">
-                        </div>
-                        <div class="card-detail">
-                            <div class="title">賞櫻季</div>
-                            <div class="date">活動日期：
-                                <span>2024/01/01</span>
-                            </div>
-                            <button>提醒我</button>
-                        </div>
-
-                    </div>
-                    <!-- <div class="upcoming-card">
-                        <div class="card-pic">
-                            <img src="../assets/images/activity/upcoming-min.png" alt="">
-                        </div>    
-                        <div class="card-detail">
-                            <div class="title">賞櫻季</div>
-                            <div class="date">活動日期：
-                                <span>2024/01/01</span>
-                            </div>
-                            <button>提醒我</button>
-                        </div>
-                    </div> -->
-                    <!-- <div class="upcoming-card">
-                        <div class="card-pic">
-                            <img src="../assets/images/activity/upcoming-min.png" alt="">
-                        </div>    
-                        <div class="card-detail">
-                            <div class="title">賞櫻季</div>
-                            <div class="date">活動日期：
-                                <span>2024/01/01</span>
-                            </div>
-                           
-                        </div>
-                    
-                    </div> -->
 
                 </div>
 
-                <!-- <div class="wish">
-                    許願池
-               </div> -->
-                <div class="contact">
-                    <div class="img-container">
 
-                        <img src="../assets/images/activity/icon_question.svg" alt="">
-                    </div>
-                </div>
+
 
             </div>
         </template>

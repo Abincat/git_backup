@@ -3,12 +3,12 @@
         <template #section-right-content>
             <main class="playground">
                 <div class="banner">
-                    <section class="left">
+                    <section class="s_left">
                         <h1>遊樂場</h1>
                         <p>經典復古小遊戲 免費無限暢玩</p>
                         <p>打敗名人榜 成為小遊戲小天才</p>
                     </section>
-                    <section class="right">
+                    <section class="s_right">
                         <img src="../assets/images/playground/player2.svg" alt="">
                     </section>
                 </div>
@@ -27,21 +27,18 @@
                         <h2>排行榜</h2>
                         <div class="rank-list">
                             <div class="ranking-item">
-                                <div class="ranking-img"></div>
                                 <img class="ranking-img" src="../assets/images/playground/image 11.svg" alt="">
-                                <img src="../assets/images/playground/player.jpeg" alt="">
+                                <img class="player_img" src="../assets/images/playground/player.jpeg" alt="">
                                 <p>王小明</p>
                             </div>
                             <div class="ranking-item">
-                                <div class="ranking-img"></div>
                                 <img class="ranking-img" src="../assets/images/playground/medal (1).svg" alt="">
-                                <img src="../assets/images/playground/player.jpeg" alt="">
+                                <img class="player_img" src="../assets/images/playground/player.jpeg" alt="">
                                 <p>王小明</p>
                             </div>
                             <div class="ranking-item">
-                                <div class="ranking-img"></div>
                                 <img class="ranking-img" src="../assets/images/playground/medal.svg" alt="">
-                                <img src="../assets/images/playground/player.jpeg" alt="">
+                                <img class="player_img" src="../assets/images/playground/player.jpeg" alt="">
                                 <p>王小明</p>
                             </div>
                         </div>
@@ -66,31 +63,28 @@
                    
                 </div>
                 <div class="ranking">
-                    <section class="right">
-                        <img src="../assets/images/playground/Rectangle 31.svg" alt="">
-                    </section>
                     <section class="left">
                         <h2>排行榜</h2>
                         <div class="rank-list">
                             <div class="ranking-item">
-                                <div class="ranking-img"></div>
                                 <img class="ranking-img" src="../assets/images/playground/image 11.svg" alt="">
-                                <img src="../assets/images/playground/player.jpeg" alt="">
+                                <img class="player_img" src="../assets/images/playground/player.jpeg" alt="">
                                 <p>王小明</p>
                             </div>
                             <div class="ranking-item">
-                                <div class="ranking-img"></div>
                                 <img class="ranking-img" src="../assets/images/playground/medal (1).svg" alt="">
-                                <img src="../assets/images/playground/player.jpeg" alt="">
+                                <img class="player_img" src="../assets/images/playground/player.jpeg" alt="">
                                 <p>王小明</p>
                             </div>
                             <div class="ranking-item">
-                                <div class="ranking-img"></div>
                                 <img class="ranking-img" src="../assets/images/playground/medal.svg" alt="">
-                                <img src="../assets/images/playground/player.jpeg" alt="">
+                                <img class="player_img" src="../assets/images/playground/player.jpeg" alt="">
                                 <p>王小明</p>
                             </div>
                         </div>
+                    </section>
+                    <section class="right">
+                        <img src="../assets/images/playground/Rectangle 31.svg" alt="">
                     </section>
                 </div>
             </main>

@@ -9,7 +9,7 @@
                 <form class="form">
                     <div class="input-effect">
                         <input v-model="loginData.userAccount" type="text" class="inputCommon" id="account" required
-                            @input="clearErrorMsg">
+                            @input="clearErrorMsg(), verifyAccount()">
                         <label for="account">帳號</label>
                         <p class="error-msg">{{ accountError }}</p>
                     </div>
@@ -47,7 +47,8 @@ export default {
                 userPassword: ''
             },
             accountError: '',
-            passwordError: ''
+            passwordError: '',
+            accountPass: false,
         }
     },
 
@@ -62,27 +63,35 @@ export default {
                 this.accountError = '請輸入帳號!';
             } else if (this.loginData.userPassword == '') {
                 this.passwordError = '請輸入密碼!';
+            } else {
+                this.verifyAccount();
             }
-            else {
 
-                //尚未連DB暫時註解起來
-                // axios
-                //     .post('api/login.php', JSON.stringify(this.loginData))
-                //     .then((response) => {
-                //         console.log(response.data);
-                //         if (response.data == 'Failed') {
-                //             alert("登入失敗");
-                //         }
-                //         else {
-                //             alert("登入成功");
-                //             // this.$router.push({ name: 'home' })
-                //         }
-                //     })
-                //     .catch(error => {
-                //         console.log(error);
-                //     });
+            if (this.accountPass) {
 
-                this.$router.push({ name: 'home' })
+                axios
+                    .post('api/login.php', JSON.stringify(this.loginData))
+                    .then((response) => {
+                        // console.log(response.data);
+                        if (response.data == '0') {
+                            alert("登入失敗");
+                        }
+                        else {
+                            alert("登入成功");
+                            // console.log(response.data);
+
+                            //將會員ID跟會員名稱 存入cookie
+                            let exdate = new Date();
+                            exdate.setTime(exdate.getTime() + (1 * 24 * 60 * 60 * 1000)); //過期設定為1日
+                            document.cookie = "userID" + "=" + response.data["ID"] + ";path=/;expires=" + exdate.toGMTString();
+                            document.cookie = "userName" + "=" + response.data["Fullname"] + ";path=/;expires=" + exdate.toGMTString();
+
+                            this.$router.push({ name: 'home' });
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
             }
         },
         clearErrorMsg() {
@@ -92,7 +101,16 @@ export default {
             if (this.loginData.userPassword != '') {
                 this.passwordError = '';
             }
-        }
+        },
+        verifyAccount() {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(this.loginData.userAccount)) {
+                this.accountError = 'Email格式不正確'
+            } else {
+                this.accountError = '';
+                this.accountPass = true;
+            }
+        },
     }
 }
 </script>

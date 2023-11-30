@@ -3,51 +3,51 @@
         <template #section-right-content>
             <div class="mypage_edit">
                 <div class="information">
-                    <form class="information_write">
+                    <div class="information_write">
                         <div class="head_sticker">
                             <div class="head_sticker_main">
                                 <div>
-                                    <img :class="head_sticker_img" src="../assets/images/mypage/TibameCAT.jpg"
-                                        alt="head_sticker">
+                                    <img :src="userImg" ref="head_sticker" alt="head_sticker" v-show="isUpload">
                                 </div>
                                 <label class="mypage_button">
                                     <span>編輯大頭貼</span>
-                                    <input type="file" class="upload_photos_input">
+                                    <input type="file" class="upload_photos_input" ref="imgInput" accept=".jpg,.png"
+                                        @change="uploadImg">
                                 </label>
                             </div>
                         </div>
                         <div class="short_input">
                             <div>
                                 <p>姓氏*</p>
-                                <input type="text" name="first_name">
+                                <input type="text" name="firstName" ref="firstName" v-model="first_Name">
                             </div>
                             <div>
                                 <p>名字*</p>
-                                <input type="text" name="last_name">
+                                <input type="text" name="lastName" ref="lastName" v-model="last_Name">
                             </div>
                         </div>
                         <div class="long_input">
                             <div>
-                                <p>電話*</p>
-                                <input type="tel" name="tel">
+                                <p>電話</p>
+                                <input type="tel" name="tel" ref="tel" v-model="tel">
                             </div>
                             <div>
-                                <p>Email</p>
-                                <input type="email" name="email" value="{{ member_mail@gmail.com }}" disabled>
+                                <p>Email*</p>
+                                <input type="email" name="email" ref="email" v-model="email" disabled>
                             </div>
                         </div>
                         <div class="short_input">
                             <div>
                                 <p>性別</p>
-                                <select name="gender">
+                                <select name="gender" ref="gender" v-model="gender">
                                     <option>-</option>
                                     <option>男</option>
                                     <option>女</option>
                                 </select>
                             </div>
                             <div>
-                                <p>星座*</p>
-                                <select name="constellation">
+                                <p>星座</p>
+                                <select name="constellation" ref="constellation" v-model="constellation">
                                     <option>-</option>
                                     <option>牡羊座</option>
                                     <option>金牛座</option>
@@ -66,53 +66,32 @@
                         </div>
                         <div class="short_input">
                             <div>
-                                <p>工作/職稱*</p>
-                                <input type="text" name="job">
+                                <p>工作/職稱</p>
+                                <input type="text" name="job" ref="job" v-model="job">
                             </div>
                             <div>
-                                <p>所在地區*</p>
-                                <select name="city">
-                                    <option>-</option>
-                                    <option>基隆市</option>
-                                    <option>台北市</option>
-                                    <option>新北市</option>
-                                    <option>桃園市</option>
-                                    <option>新竹市</option>
-                                    <option>新竹縣</option>
-                                    <option>苗栗縣</option>
-                                    <option>台中市</option>
-                                    <option>彰化縣</option>
-                                    <option>南投縣</option>
-                                    <option>雲林縣</option>
-                                    <option>嘉義市</option>
-                                    <option>嘉義縣</option>
-                                    <option>台南市</option>
-                                    <option>高雄市</option>
-                                    <option>屏東縣</option>
-                                    <option>宜蘭縣</option>
-                                    <option>花蓮縣</option>
-                                    <option>台東縣</option>
-                                    <option>離島地區</option>
-                                </select>
+                                <p>所在地區</p>
+                                <input type="text" name="city" ref="city" v-model="city">
                             </div>
                         </div>
                         <div class="short_input">
                             <div>
-                                <p>興趣1*</p>
-                                <input type="text" name="first_name">
+                                <p>興趣1</p>
+                                <input type="text" name="hobbyA" ref="hobbyA" v-model="hobbyA">
                             </div>
                             <div>
-                                <p>興趣2*</p>
-                                <input type="text" name="last_name">
+                                <p>興趣2</p>
+                                <input type="text" name="hobbyB" ref="hobbyB" v-model="hobbyB">
                             </div>
                         </div>
                         <div class="big_input">
                             <div>
                                 <p>個人簡介</p>
-                                <textarea type="text" name="Self_introduction"></textarea>
+                                <textarea type="text" name="SelfIntroduction" ref="SelfIntroduction"
+                                    v-model="SelfIntroduction"></textarea>
                             </div>
                         </div>
-                    </form>
+                    </div>
                     <div class="decorate">
                         <iframe src="https://my.spline.design/untitled-18d75517c6c7d24ac267703c26c745f5/"></iframe>
                         <div class="mask"></div>
@@ -133,16 +112,16 @@
                     <div class="preview">
                         <h4>虛擬角色人物</h4>
                         <div class="preview_face avatar_preview">
-                            <img :src="faceImageChange" id="faceImage" alt="">
+                            <img :src="faceImageChange" id="faceImage" alt="" ref="faceImage">
                         </div>
                         <div class="preview_hair avatar_preview">
-                            <img :src="hairImageChange" id="hairImage" alt="">
+                            <img :src="hairImageChange" id="hairImage" alt="" ref="hairImage">
                         </div>
                         <div class="preview_cloth avatar_preview">
-                            <img :src="clothImageChange" id="clothImage" alt="">
+                            <img :src="clothImageChange" id="clothImage" alt="" ref="clothImage">
                         </div>
                         <div class="preview_accessories avatar_preview">
-                            <img :src="accessoriesImageChange" id="accessoriesImage" alt="">
+                            <img :src="accessoriesImageChange" id="accessoriesImage" alt="" ref="accessoriesImage">
                         </div>
                         <!-- <div class="base_plate"></div> -->
                     </div>
@@ -231,10 +210,8 @@
                     </div>
 
                 </div>
-                <div>
-                    <router-link :to="{ name: 'mypage' }" class="submit">
-                        <input type="submit" value="儲存變更">
-                    </router-link>
+                <div class="submit_div">
+                    <button class="submit Btn" @click="submit" type="submit">儲存變更</button>
                 </div>
             </div>
         </template>
@@ -248,6 +225,7 @@
 //import 這頁需要的元件
 import layout from '@/components/layout.vue'
 import { gsap } from 'gsap'
+import axios from 'axios'
 import faceHehe from '@/assets/images/mypage_edit/face_hehe.png'
 import faceGrimace from '@/assets/images/mypage_edit/face_grimace.png'
 import faceUnhappy from '@/assets/images/mypage_edit/face_unhappy.png'
@@ -288,9 +266,86 @@ export default {
             hairImageChange: hairCurls,
             clothImageChange: clothBlack,
             accessoriesImageChange: accessoriesBachelorcap,
+            id: "7", //抓會員id編號,要是浮動的
+            first_Name: '',
+            last_Name: '',
+            tel: '',
+            email: '',
+            gender: '',
+            constellation: '',
+            job: '',
+            city: '',
+            hobbyA: '',
+            hobbyB: '',
+            SelfIntroduction: '',
+            isUpload: false,
+            userImg: ''
         };
     },
+    created() {
+        //載入頁面時先讀取用戶資訊填在input裡
+        this.getData();
+    },
     methods: {
+        async getData() {
+            console.log(this.id)
+            axios.post("api/mypage_edit.php", { id: this.id }).then((resData) => {
+                // console.log(resData); //我拿到資料之後要做什麼事
+                this.first_Name = resData.data[0].MEMBER_FIRST_NAME;
+                this.last_Name = resData.data[0].MEMBER_LAST_NAME;
+                this.tel = resData.data[0].MEMBER_PHONE;
+                this.email = resData.data[0].MEMBER_ACCOUNT;
+                this.gender = resData.data[0].MEMBER_GENDER;
+                this.constellation = resData.data[0].MEMBER_CONSTELLATION;
+                this.job = resData.data[0].MEMBER_JOB;
+                this.city = resData.data[0].MEMBER_CITY;
+                this.hobbyA = resData.data[0].MEMBER_HOBBY_TEXT_A;
+                this.hobbyB = resData.data[0].MEMBER_HOBBY_TEXT_B;
+                this.SelfIntroduction = resData.data[0].MEMBER_INTRODUCE;
+
+                const imageBlob = new Blob([resData.data[0].MEMBER_PIC], { type: 'image/jpeg' });
+                this.userImg = URL.createObjectURL(imageBlob);
+
+            }).catch((e) => {
+                console.log(e) //連線錯誤的時候會執行這邊
+            })
+        },
+        async submit() {
+            console.log(this.id)
+            axios.post("api/mypage_edit_return.php", {
+                id: this.id,
+                first_Name: this.first_Name,
+                last_Name: this.last_Name,
+                tel: this.tel,
+                gender: this.gender,
+                constellation: this.constellation,
+                job: this.job,
+                city: this.city,
+                hobbyA: this.hobbyA,
+                hobbyB: this.hobbyB,
+                SelfIntroduction: this.SelfIntroduction
+            }).catch((e) => {
+                console.log(e) //連線錯誤的時候會執行這邊
+            })
+
+            this.$router.push({ name: 'mypage' }) //存檔完導回個人頁面-測試完再取消註解
+        },
+
+        uploadImg(e) {
+            this.isUpload = true;
+            let file = e.target.files[0];
+            let url = '';
+            let reader = new FileReader();
+
+            reader.readAsDataURL(file);
+            reader.onload = (e) => {
+                // 使用 e.target.result 取得讀取的資料
+                url = e.target.result.substring(e.target.result.indexOf(',') + 1);
+                this.userImg = 'data:image/png;base64,' + url;
+            };
+        },
+
+
         ball_animation() {
             gsap.to(".ball", {
                 y: -300,
@@ -420,9 +475,3 @@ export default {
 
 
 </script>
-<style scoped>
-.active-button {
-    background-color: #66669A !important;
-    color: white;
-}
-</style>

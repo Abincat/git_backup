@@ -23,7 +23,7 @@
             flex-direction: column;
             // border: 1px solid black;
             padding-bottom: 40px;
-
+            height: 100%;
 
 
             img {
@@ -44,15 +44,19 @@
             }
 
 
-            .down {
+            .time_down {
                 width: 80%;
                 margin: 10px auto;
 
-                .text {
+                p {
                     font-size: $fs24;
                     color: $primary-color-1;
                     text-align: center;
                     margin-bottom: 20px;
+                }
+
+                .change_red {
+                    color: red;
                 }
 
                 .bar {
@@ -62,11 +66,15 @@
                     height: 21px;
                     background-color: #ffff;
 
-                    .bar-color {
-                        width: 0;
+                    div {
+                        width: 100%;
                         height: 21px;
                         border-radius: 10px;
                         background-color: $primary-color-2;
+                    }
+
+                    .change_barColor {
+                        background-color: red;
                     }
                 }
             }
@@ -96,9 +104,7 @@
 
             }
 
-            .active {
-                color: red;
-            }
+
 
             p {
 
@@ -110,6 +116,7 @@
             width: 50%;
             display: flex;
             flex-direction: column;
+
 
             // text-align: center;
             @include media-breakpoint-down(md) {

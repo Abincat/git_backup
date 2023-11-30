@@ -41,7 +41,7 @@ export default {
     },
     mounted() {
         // console.log(this.$router.currentRoute.value.name);
-        this.currentPage = this.$router.currentRoute.value.name;
+        this.currentPage = this.$route.path;
     }
 }
 </script>

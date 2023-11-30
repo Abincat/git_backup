@@ -3,12 +3,12 @@
         <div class="add-block-title">
             <h5 class="post-edit-title">發表貼文</h5>
             <div class="post-view-setting">
-                <img ref="friendViewSetting" src="../assets/images/icon/friend-view.svg" alt="" :class="{ select: false }"
-                    value="friend" @click="friendViewSetting">
-                <img ref="globalViewSetting" src="../assets/images/icon/global-view.svg" alt="" :class="{ select: false }"
-                    value="global" @click="globalViewSetting">
-                <img ref="privateViewSetting" src="../assets/images/icon/private-view.svg" alt="" :class="{ select: false }"
-                    value="private" @click="privateViewSetting">
+                <img ref="friendView" src="../assets/images/icon/friend-view-select.svg" alt=""
+                    :class="{ select: friendSelect }" value="friend" @click="friendViewSetting($event)">
+                <img ref="globalView" src="../assets/images/icon/global-view.svg" alt="" :class="{ select: globalSelect }"
+                    value="global" @click="globalViewSetting($event)">
+                <img ref="privateView" src="../assets/images/icon/private-view.svg" alt=""
+                    :class="{ select: privateSelect }" value="private" @click="privateViewSetting($event)">
             </div>
         </div>
         <textarea name="" id="post-content" rows="10" placeholder="輸入想說的話" ref="addPostContent"></textarea>
@@ -33,12 +33,21 @@
 </template>
 
 <script>
+import friendViewIcon from '@/assets/images/icon/friend-view.svg';
+import friendViewIconS from '@/assets/images/icon/friend-view-select.svg';
+import globalViewIcon from '@/assets/images/icon/global-view.svg';
+import globalViewIconS from '@/assets/images/icon/global-view-select.svg';
+import privateViewIcon from '@/assets/images/icon/private-view.svg';
+import privateViewIconS from '@/assets/images/icon/private-view-select.svg';
 export default {
     data() {
         return {
             addImages: [],
             post: {},
             keepBlock: false,
+            friendSelect: true,
+            globalSelect: false,
+            privateSelect: false,
         }
     },
     methods: {
@@ -94,16 +103,31 @@ export default {
 
             console.log(this.addImages);
             console.log(this.post);
-
-
         },
-        friendViewSetting() {
-
+        friendViewSetting(e) {
+            e.target.src = friendViewIconS;
+            this.$refs.globalView.src = globalViewIcon;
+            this.$refs.privateView.src = privateViewIcon;
+            this.friendSelect = true;
+            this.globalSelect = false;
+            this.privateSelect = false;
+            console.log(e.target.value);
         },
-        globalViewSetting() {
-
+        globalViewSetting(e) {
+            e.target.src = globalViewIconS;
+            this.$refs.friendView.src = friendViewIcon;
+            this.$refs.privateView.src = privateViewIcon;
+            this.friendSelect = false;
+            this.globalSelect = true;
+            this.privateSelect = false;
         },
-        privateViewSetting() {
+        privateViewSetting(e) {
+            e.target.src = privateViewIconS;
+            this.$refs.friendView.src = friendViewIcon;
+            this.$refs.globalView.src = globalViewIcon;
+            this.friendSelect = false;
+            this.globalSelect = false;
+            this.privateSelect = true;
 
         }
     },

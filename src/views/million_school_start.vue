@@ -7,18 +7,18 @@
                     <div class="left">
                         <img src="../assets/images/million_school/qapalytime.svg" alt="leftPic">
                         <!-- 下方時間條 -->
-                        <div class="down">
-                            <div class="text">
-                                {{ number }} of 30
-                            </div>
+                        <div class="time_down">
+                            <p :class="{ 'change_red': change }">時間：{{ timercount }}
+                            </p>
                             <div class="bar">
-                                <div class="bar-color" ref="barColor"></div>
+                                <div :class="{ 'change_barColor': changBar }" ref="barColor"></div>
                             </div>
                         </div>
                     </div>
                     <div class="right">
                         <div class="right_top">
-                            <span :class="{ 'active': change }">時間：{{ timercount }}</span>
+                            <span>
+                                題數:{{ number }} </span>
                             <span>分數：{{ this.score }}分</span>
                             <!-- <span v-for="i in heart">
                                 <p>剩餘次數:</p>
@@ -49,74 +49,47 @@
 
             </main>
 
-            <div class="million_school_end" v-else>
-                <div class="top">
+            <div class="million_school_end">
 
-                    <div class="top_cloth">
-                        <img src="../assets/images/million_school/cloth.svg" alt="cloth">
-                    </div>
-
-                    <div class="top_fireworks_left">
-                        <img src="../assets/images/million_school/fireworks.svg" alt="fireworks">
-                    </div>
-
-                    <div class="top_fireworks_right">
-                        <img src="../assets/images/million_school/fireworks.svg" alt="fireworks">
-                    </div>
-
-                </div>
-
-                <div class="down">
-
-
-                    <div class="down_bolloon_left">
-                        <img src="../assets/images/million_school/balloon.svg" alt="balloon">
-                    </div>
-
+                <div class="end_top">
+                    <div class="bg_img"></div>
 
                     <div class="member">
-
-
                         <div class="playerimg">
                             <img src="../assets/images/playground/player.jpeg" alt="player">
-                        </div>
+                            <div class="banner">
+                                <p>遊戲結束</p>
 
-                        <div class="banner">
-                            <img src="../assets/images/million_school/banner.svg" alt="">
+                            </div>
                         </div>
-
-                        <p class="banner_text">遊戲結束</p>
 
                         <p class="username">Wendy</p>
 
                         <div class="bottom">
                             <div class="score">
-                                <div>
-                                    <p>遊戲分數</p>
-                                    <p>{{ score }}題</p>
-                                </div>
+
+                                <p>最高紀錄</p>
+                                <p>98題</p>
 
                             </div>
 
                             <div class="rank">
-                                <p>最高紀錄</p>
-                                <p>98題</p>
+                                <p>分數</p>
+                                <p>{{ score }}</p>
                             </div>
                         </div>
 
                     </div>
 
-                    <div class="down_bolloon_right">
-                        <img src="../assets/images/million_school/balloon.svg" alt="balloon">
+                    <div class="button">
+                        <router-link class="mil-link" :to="{ name: 'million_school' }">再來一局</router-link>
+
+                        <router-link class="mil-link" :to="{ name: 'playground' }">遊戲首頁</router-link>
                     </div>
 
                 </div>
 
-                <div class="button">
-                    <router-link @click="reStart" class="mil-link" :to="{ name: 'million_school_start' }">再來一局</router-link>
 
-                    <router-link class="mil-link" :to="{ name: 'million_school' }">遊戲首頁</router-link>
-                </div>
 
 
             </div>
@@ -143,43 +116,49 @@ export default {
             number: 1,
             change: false,
             barColorElement: '',
-            totalQuestions: 30
+            totalQuestions: 30,
+            // 總時間數
+            timeLimit: 10,
+            changBar: false
         }
     },
     methods: {
         setTime(key, answer) {
             this.timer = setInterval(() => {
                 this.timercount--;
+                const bar = document.querySelector(".bar")
+                console.log(bar.offsetWidth);
+                // 計算時間百分比
+                const progress = (this.timercount / 10) * 100;
 
+                if (this.timercount <= 0) {
+                    this.$refs.barColor.style.width = '100%'
+                } else {
+                    this.$refs.barColor.style.width = progress + '%';
+                }
+                // console.log(progress)
                 if (this.timercount == 0) {
                     this.timercount = 10;
                     this.current_question++;
                     this.number++
 
-                    let widthToAdd = 15; // 计算要增加的宽度（父元素宽度的20%）
-                    let currentWidth = parseFloat(window.getComputedStyle(this.barColorElement).width);
-
-                    if (currentWidth + widthToAdd >= this.$refs.barColor.parentNode.offsetWidth) {
-                        this.barColorElement.style.width = '100%';
-                    } else {
-                        this.barColorElement.style.width = (currentWidth + widthToAdd) + 'px';
-                    }
-
                     this.change = false;
-                    this.gameEnd = false
+                    this.gameEnd = false;
+                    this.changBar = false;
                 }
                 if (this.timercount <= 5) {
-                    this.change = true
+                    this.change = true;
+                    this.changBar = true;
+                    console.log(this.change)
                 }
                 if (this.current_question == this.qa.length) {
                     if (!this.showAlert) {
                         this.showAlert = true;
                         // alert(`遊戲結束您獲得${this.score}分`);
                         clearInterval(this.setTime);
-
+                        this.gameEnd = !this.gameEnd;
                     }
                 }
-
 
             }, 1000)
         },
@@ -192,25 +171,18 @@ export default {
                 this.score++;
 
                 clearInterval(this.setTime);
+                this.$refs.barColor.style.width = '100%'
                 // alert("答對喽");
                 this.number++
-                this.change = false
-
+                this.change = false;
+                this.changBar = false;
             } else {
                 clearInterval(this.setTime);
                 // alert("答錯喽");
+                this.$refs.barColor.style.width = '100%'
                 this.number++
-                this.change = false
-            }
-
-
-            let widthToAdd = 15;
-            let currentWidth = parseFloat(window.getComputedStyle(this.barColorElement).width);
-
-            if (currentWidth + widthToAdd >= this.$refs.barColor.parentNode.offsetWidth) {
-                this.barColorElement.style.width = '100%'; // 如果宽度超出父元素宽度，则设为100%
-            } else {
-                this.barColorElement.style.width = (currentWidth + widthToAdd) + 'px'; // 否则增加20%的宽度
+                this.change = false;
+                this.changBar = false;
             }
 
             this.timercount = 10;

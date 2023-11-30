@@ -12,7 +12,6 @@
                     </div>
                     <div class="middle">
                         <h4>流浪倒數{{ minute }}:{{ second }}</h4>
-                        <!-- <h4>流浪倒數59:59</h4> -->
                         <div class="middle_campervan">
                             <div class="echaust">
                                 <img :class="{ 'start': dissipateA }" class="echaustA"
@@ -24,8 +23,8 @@
                                 src="../assets/images/wander/campervan.png" alt="campervan">
                         </div>
                         <div class="middle_start">
-                            <button @click="start" class="start" :disabled="countingDown">Start</button>
-                            <!-- <button class="start">{{ 00:00 }}</button> -->
+                            <button @click="start(); limit()" class="start Btn" :class="{ 'limit': cd }"
+                                :disabled="countingDown">Start</button>
                         </div>
 
                     </div>
@@ -42,7 +41,7 @@
                             </div>
                             <div class="collection_name">
                                 <span>恭喜獲得</span>
-                                <h4>Git王</h4>
+                                <h4>{{ gift.COLLECTION_NAME }}</h4>
                             </div>
                         </div>
                     </div>
@@ -61,9 +60,10 @@
                                     <img src="../assets/images/wander/stranger.png">
                                 </div>
                                 <div class="post_text">
-                                    <p>isBeforeNoon ? 'Breakfast' : 'Lunch'<br>
+                                    <p>{{ post.POST_CONTENT }}</p>
+                                    <!-- <p>isBeforeNoon ? 'Breakfast' : 'Lunch'<br>
                                         isBeforeNoon ? 'Breakfast' : 'Lunch'<br>
-                                        isBeforeNoon ? 'Breakfast' : 'Lunch'</p>
+                                        isBeforeNoon ? 'Breakfast' : 'Lunch'</p> -->
                                     <div class="interactive">
                                         <button @click="like" :class="{ 'like': likePost }">按讚</button>
                                         <button @click="addFriend" :class="{ 'addFriend': addHim }">加好友</button>
@@ -97,6 +97,7 @@
 <script>
 //import 這頁需要的元件
 import layout from '@/components/layout.vue'
+import axios from 'axios'
 
 export default {
     components: {
@@ -121,6 +122,10 @@ export default {
             minute: 59,
             second: 59,
             countdownInterval: null, //時間暫停
+            cd: false,
+            id: '',
+            post: null,
+            gift: null
         }
     },
     methods: {
@@ -129,13 +134,9 @@ export default {
             this.animationMove = true;
             this.dissipateA = true;
             this.dissipateB = true;
-            // setTimeout(() => {
-            // this.animationDrive = false;
-            // this.animationMove = false;
-            //     this.dissipateA = false;
-            //     this.dissipateB = false;
-            // }, 60000);
-            // }, 60000); //動畫停止時間-測試完改回正確數值
+            // if (this.countdownInterval) { //倒數結束前重複點擊不會有效果-測試期間先註解掉
+            //     return;
+            // }
             setTimeout(() => {
                 if (!this.giftRedDot) {
                     this.giftRedDot = true;
@@ -167,6 +168,7 @@ export default {
                     this.animationMove = false;
                     this.dissipateA = false;
                     this.dissipateB = false;
+                    this.cd = false; //倒數完成按鈕變回藍色
                 } else {
                     countdown -= 1;
                 }
@@ -174,23 +176,33 @@ export default {
             // }, 1000); //一秒更新一次-測試完改回正確數值
         },
 
+        limit() {
+            this.cd = true; //按鈕變成灰色
+        },
+
         //點選之後紅點消除,判斷有紅點才彈窗
-        readGift() {
+        async readGift() {
             if (this.giftRedDot == true) {
                 this.giftShow = true;
                 this.giftRedDot = false;
             } else {
                 this.giftShow = false;
-            }
+            };
+            axios.post("api/gift_card.php").then(response => {
+                this.gift = response.data[0];
+            })
         },
 
-        readLetter() {
+        async readLetter() {
             if (this.giftLetterDot == true) {
                 this.letterShow = true;
                 this.giftLetterDot = false;
             } else {
                 this.letterShow = false;
-            }
+            };
+            axios.post("api/post_card.php").then(response => {
+                this.post = response.data[0];
+            })
         },
 
         addFriend() {

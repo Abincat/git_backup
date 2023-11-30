@@ -109,7 +109,9 @@ export default {
         }
     },
     provide() {
-        const currentPage = this.$router.currentRoute.value.name;
+        let currentPage = '';
+        currentPage = this.$route.path;
+        // console.log(this.$route.path)
 
         if (currentPage.includes('wander')) {
             return {

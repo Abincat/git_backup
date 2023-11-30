@@ -9,14 +9,14 @@
                 <form class="form">
                     <div class="input-effect">
                         <input v-model="signUpData.userAccount" type="text" class="inputCommon" id="account" required
-                            @input="clearErrorMsg">
-                        <label for="account">帳號</label>
+                            @input="verifyAccount">
+                        <label for="account">帳號(Email)</label>
                         <p class="error-msg">{{ accountError }}</p>
                     </div>
                     <div class="input-effect">
                         <input v-model="signUpData.userPassword" type="password" class="inputCommon" id="password" required
-                            @input="clearErrorMsg(), verifyPassword()">
-                        <label for="password">密碼</label>
+                            @input="verifyPassword">
+                        <label for="password">密碼(至少6碼英數字)</label>
                         <p class="error-msg">{{ passwordError }}</p>
                     </div>
                     <div class="input-effect">
@@ -61,6 +61,8 @@
 </template>
 
 <script>
+import gBaseImg from '@/assets/images/login/girl-base.png';
+import bBaseImg from '@/assets/images/login/boy-base.png';
 export default {
     data() {
         return {
@@ -75,7 +77,9 @@ export default {
             passwordError: '',
             ckPasswordError: '',
             lastNameError: '',
-            firstNameError: ''
+            firstNameError: '',
+            accountPass: false,
+            passwordPass: false,
         }
     },
 
@@ -95,6 +99,35 @@ export default {
         },
         doSignUp() {
 
+            this.checkField();
+
+            if (this.accountPass && this.passwordPass) {
+                if (this.$refs.baseBImg.classList.contains('select')) {
+                    const img = fs.readFileSync(bBaseImg);
+                    this.signUpData.img = btoa(img);
+                } else {
+                    img = fs.readFileSync(gBaseImg);
+                    this.signUpData.img = btoa(img);
+                }
+
+                //進行註冊
+                axios
+                    .post('api/signUp.php', JSON.stringify(this.signUpData))
+                    .then(response => {
+                        console.log(response.data);
+                        if (response.data == '1') {
+                            alert("註冊成功");
+                            this.$router.push({ name: 'member_login' })
+                        }
+
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
+            }
+
+        },
+        checkField() {
             //驗證各種欄位未填寫的排列組合
             if (this.signUpData.userAccount == '' && this.signUpData.userPassword == '' && this.signUpData.lastName == '' && this.signUpData.firstName == '') {
                 this.accountError = '請輸入帳號!';
@@ -105,6 +138,7 @@ export default {
                 this.passwordError = '請輸入密碼!';
                 this.lastNameError = '請輸入姓氏!';
                 this.firstNameError = '請輸入名字!';
+                this.verifyAccount();
             } else if (this.signUpData.userAccount == '' && this.signUpData.lastName == '' && this.signUpData.firstName == '') {
                 this.accountError = '請輸入帳號!';
                 this.lastNameError = '請輸入姓氏!';
@@ -121,6 +155,7 @@ export default {
             } else if (this.signUpData.lastName == '' && this.signUpData.firstName == '') {
                 this.lastNameError = '請輸入姓氏!';
                 this.firstNameError = '請輸入名字!';
+                this.verifyAccount();
                 this.verifyPassword();
             } else if (this.signUpData.userAccount == '' && this.signUpData.userPassword == '') {
                 this.accountError = '請輸入帳號!';
@@ -130,40 +165,78 @@ export default {
                 this.verifyPassword();
             } else if (this.signUpData.userPassword == '') {
                 this.passwordError = '請輸入密碼!';
+                this.verifyAccount();
             } else if (this.signUpData.lastName == '') {
                 this.lastNameError = '請輸入姓氏!';
+                this.verifyAccount();
                 this.verifyPassword();
             } else if (this.signUpData.firstName == '') {
                 this.firstNameError = '請輸入名字!';
+                this.verifyAccount();
                 this.verifyPassword();
             } else {
+                this.verifyAccount();
                 this.verifyPassword();
-                //進行註冊
             }
         },
         verifyPassword() {
-            if (this.signUpData.userPassword != '' && this.$refs.checkPassword.value == '') {
+            const passwordRegex = /^(?=.*[a-z])(?=.*\d)[a-z\d]{6,}$/i; // 不區分英文大小寫+數字，至少6碼
+            if (this.signUpData.userPassword == '') {
+                this.passwordError = '請輸入密碼!';
+            } else if (!passwordRegex.test(this.signUpData.userPassword)) {
+                this.passwordError = '密碼格式不正確(至少6碼英數字)';
+            } else if (this.signUpData.userPassword != '' && this.$refs.checkPassword.value == '') {
+                this.passwordError = '';
                 this.ckPasswordError = '請再次輸入密碼!';
             } else if (this.signUpData.userPassword != '' && this.signUpData.userPassword != this.$refs.checkPassword.value) {
+                this.passwordError = '';
                 this.ckPasswordError = '輸入密碼不相符!';
             } else if (this.signUpData.userPassword == '') {
                 this.ckPasswordError = '請先輸入密碼!';
             } else {
                 this.ckPasswordError = '';
+                this.passwordPass = true;
             }
         },
-        clearErrorMsg() {
-            if (this.signUpData.userAccount != '') {
+        verifyAccount() {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (this.signUpData.userAccount == '') {
+                this.accountError = '請輸入帳號!';
+            } else if (!emailRegex.test(this.signUpData.userAccount)) {
+                this.accountError = 'Email格式不正確'
+            } else {
                 this.accountError = '';
+
+                //檢查帳號是否重複
+                axios
+                    .post('api/checkAccount.php', JSON.stringify(this.signUpData))
+                    .then(response => {
+                        // console.log(response.data);
+                        if (response.data == '1') {
+                            this.accountError = '此帳號曾經被註冊過!';
+                        } else {
+                            this.accountPass = true;
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
             }
-            if (this.signUpData.userPassword != '') {
-                this.passwordError = '';
-            }
+
+
+        },
+        clearErrorMsg() {
+            // if (this.signUpData.userAccount != '') {
+            //     this.accountError = '';
+            // }
+            // if (this.signUpData.userPassword != '') {
+            //     this.passwordError = '';
+            // }
             if (this.signUpData.lastName != '') {
-                this.passwordError = '';
+                this.lastNameError = '';
             }
             if (this.signUpData.firstName != '') {
-                this.passwordError = '';
+                this.firstNameError = '';
             }
         }
     }

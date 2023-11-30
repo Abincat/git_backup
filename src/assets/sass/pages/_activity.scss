@@ -20,6 +20,12 @@
             border-radius: 20px;
             background-color: #C3C4E5;
 
+            @include media-breakpoint-down(xl) {
+                height: auto;
+                text-align: center;
+                background-color: transparent;
+            }
+
             .top-text {
                 padding: 30px;
 
@@ -127,6 +133,12 @@
         // border: 1px solid green;
         width: 100%;
         height: 460px;
+
+        @include media-breakpoint-down(xl) {
+            width: 50%;
+            height: 1200px;
+            margin: 0 auto;
+        }
 
         .cards {
             width: 90%;
@@ -284,56 +296,153 @@
     .region-cards {
 
         // border: 1px solid blue;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        // margin: 0 auto;
+        // display: flex;
+        // gap: 20px;
+        // align-items: center;
+        // justify-content: center;
 
-        .region {
-            // border: 1px solid blue;
-            width: 240px;
-            align-items: center;
 
-            >a {
-                .region-pic {
-                    margin: 0 auto;
-                    height: 200px;
-                    width: 200px;
-                    overflow: hidden;
-                    border-radius: 50%;
+        .region-container {
+            margin: 0 auto;
+            overflow: auto;
+            width: 790px;
+            display: flex;
+            gap: 20px;
 
-                    >img {
-                        height: 100%;
-                        width: 100%;
-                        background-position: center;
-                        background-size: cover;
+            @include media-breakpoint-down(xl) {
+                width: 590px;
+            }
+
+            @include media-breakpoint-down(lg) {
+                width: 450px;
+            }
+
+            .region {
+                // border: 1px solid blue;
+
+
+                >a {
+                    .region-pic {
+                        margin: 0 auto;
+                        height: 180px;
+                        width: 180px;
+                        overflow: hidden;
+                        border-radius: 50%;
+
+                        >img {
+                            height: 100%;
+                            width: 100%;
+                            background-position: center;
+                            background-size: cover;
+                        }
+
+
+                    }
+
+                    .region-text {
+                        height: 10%;
+                        color: $black;
+                        font-size: $fs14;
+                        text-align: center;
+                        margin-top: 10px;
+
                     }
 
 
                 }
 
-                .region-text {
-                    height: 10%;
-                    color: $black;
-                    font-style: $fs14;
-                    text-align: center;
-                    margin-top: 10px;
-
-                }
-
-
             }
-
         }
 
     }
 
 
     .upcoming-cards {
-        // border: 1px solid purple;
-        display: flex;
-        gap: 32px;
-        justify-content: center;
 
+        // border: 1px solid purple;
+        // display: flex;
+        // height: 250px;
+        // justify-content: center;
+        .upcoming-container {
+            // border: 1px solid blue;
+            width: 810px;
+            margin: 0 auto;
+            overflow-x: auto;
+
+            @include media-breakpoint-down(xl) {
+                width: 100%;
+            }
+
+        }
+
+        .upcoming {
+            // border:1px solid green;
+            width: 1080px;
+            // overflow-x: auto;
+            display: flex;
+            gap: 15px;
+
+            // justify-content: center;
+            @include media-breakpoint-down(xl) {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                height: 700px;
+            }
+
+            .upcoming-card {
+                border: 1px soild purple;
+
+                // width: 300px;
+                .card-pic {
+                    border: 2px soild purple;
+                    width: 100%;
+                    // height: 200px;
+                    border-radius: 32px 32px 0 0;
+                    overflow: hidden;
+
+                    >img {
+                        width: 100%;
+                        height: 100%;
+                        background-position: center;
+                        background-size: cover;
+
+
+                    }
+                }
+
+                .card-detail {
+                    // border: 1px solid red;
+                    width: 100%;
+                    padding: 15px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    align-items: center;
+                    background-color: $white;
+                    border-radius: 0 0 32px 32px;
+
+                    .title {
+                        // border: 1px solid red;
+                        font-size: $fs20;
+                        color: $primary-color-1
+                    }
+
+                    .date {
+                        font-size: $fs14;
+                        color: $primary-color-1;
+                    }
+
+                    .Btn-dark {
+                        width: 140px;
+                        height: 30px;
+                        font-size: $fs20;
+
+                    }
+                }
+            }
+        }
 
         .upcoming-card {
             border: 1px soild purple;
@@ -389,23 +498,22 @@
     }
 
     .contact {
-        background-color: $primary-color-2;
-        width: 60px;
-        height: 60px;
-        padding-top: 5px;
-        position: absolute;
-        right: 60px;
-        bottom: 60px;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        .img-container {
-            >img {
-                width: 40px;
-                height: 40px;
-            }
-        }
+        //     background-color: $primary-color-2;
+        //     width: 60px;
+        //     height: 60px;
+        //     padding-top: 5px;
+        //     position:absolute;
+        //     right: 60px;
+        //     bottom:60px;
+        //     border-radius: 50%;
+        //    display: flex;
+        //    justify-content: center;
+        //    align-items: center;
+        //    .img-container{
+        //     >img{
+        //         width: 40px;
+        //         height: 40px;
+        //     }
+        //    }
     }
 }

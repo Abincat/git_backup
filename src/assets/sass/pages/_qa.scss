@@ -47,10 +47,17 @@
 
                 // border: 1px solid saddlebrown;
                 li {
-                    padding:20px 10px 10px 10px;
+                    // border: 1px solid darkblue;
+                    padding:24px 10px 10px 30px;
                     margin-bottom: 10px;
                     color: $primary-color-1;
                     cursor: pointer;
+                    transition-duration: .3s;
+
+                    &:hover{
+                        transform: scale(1.1);
+                    }
+                    
                 }
             }
         }
@@ -72,15 +79,6 @@
             .list {
 
                 // border: 2px solid darkblue;
-                li {
-                    padding-left: 10px;
-                    line-height: 2;
-
-                    &:hover {
-                        background-color: #eee;
-                        cursor: pointer;
-                    }
-                }
 
                 .title {
                     border-bottom: 2px solid black;
@@ -97,6 +95,18 @@
                     // border: 1px solid #ccc;
                     padding-left: 20px;
                     color: $primary-color-2;
+                }
+
+                li {
+                    // border: 1px solid darkblue;
+                    padding-top: 20px;
+                    padding-left: 10px;
+                    line-height: 2;
+                    transition-duration: 0.3s;
+
+                    &:hover {
+                        color:$primary-color-1 ;
+                    }
                 }
 
             }

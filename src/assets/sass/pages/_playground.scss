@@ -2,8 +2,8 @@
 
   width: 100%;
 
-  background-color: #eed0cc;
-  padding: 40px;
+  // background-color: #eed0cc;
+  padding: 20px;
   //   height: 100%;
   border-radius: 20px;
   margin-top: 20px;
@@ -17,6 +17,13 @@
     border-radius: 20px;
     margin-top: 20px;
 
+    @include media-breakpoint-down(md) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: transparent;
+    }
+
     @include media-breakpoint-down(sm) {
       flex-direction: column;
       justify-content: center;
@@ -24,16 +31,23 @@
       background-color: transparent;
     }
 
-    .left {
-      width: 50%;
+    .s_left {
+      // h1 | p | p
+      width: 80%;
 
       @include media-breakpoint-down(sm) {
         width: 100%;
         text-align: center;
+
+
       }
 
       h1 {
         margin-bottom: 40px;
+
+        @include media-breakpoint-down(md) {
+          text-align: center;
+        }
 
         @include media-breakpoint-down(sm) {
           font-size: $fs40;
@@ -63,16 +77,34 @@
           font-size: $fs20;
         }
 
+        @include media-breakpoint-down(md) {
+          font-size: $fs24;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+
 
         @include media-breakpoint-down(sm) {
           font-size: $fs24;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
         }
+
+
       }
     }
 
-    .right {
+    .s_right {
       width: 50%;
       text-align: center;
+
+      @include media-breakpoint-down(md) {
+        display: block;
+      }
 
       @include media-breakpoint-down(sm) {
         width: 100%;
@@ -93,7 +125,8 @@
         }
 
         @include media-breakpoint-down(sm) {
-          width: 70%;
+          width: 100%;
+
         }
 
 
@@ -116,6 +149,8 @@
 
     @include media-breakpoint-down(sm) {
       display: block;
+      border-top: 3px solid $primary-color-1;
+      padding-top: 40px;
     }
 
     .left-img {
@@ -197,346 +232,174 @@
   }
 
   .ranking {
-    // border: 1px solid red;
-    display: grid;
-    grid-template-columns: auto auto;
-    padding: 40px 0px;
-    border-top: 2px solid $secondary-color-4;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 30px 0px;
+    border-top: 2 solid $secondary-color-4;
     margin-top: 40px;
     gap: 50px;
-    align-items: center;
+
+    @include media-breakpoint-down(md) {
+      display: block;
+      gap: 0;
+    }
+
+    @include media-breakpoint-down(sm) {
+
+
+      display: flex;
+      align-items: center;
+      padding: 0;
+      border-top: 3px solid $primary-color-1;
+      padding: 50px;
+      justify-content: center
+    }
 
     .left {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      width: 50%;
 
-      h2 {
-        color: $primary-color-1;
-        text-align: center;
-        margin-bottom: 32px;
-      }
-
-      .rank-list {
-        display: flex;
-        background-color: #EED0CC;
+      @include media-breakpoint-down(md) {
         width: 100%;
-        padding: 40px;
-        // height: 100%;
-        border-radius: 20px;
-        margin-top: 20px;
 
-        @include media-breakpoint-down(sm) {
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          background-color: transparent;
-        }
-
-        .ranking-item {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          margin-bottom: 20px;
-
-          @include media-breakpoint-down(sm) {
-            width: 100%;
-            text-align: center;
-          }
-
-          h1 {
-            margin-bottom: 40px;
-
-            @include media-breakpoint-down(sm) {
-              font-size: $fs40;
-            }
-
-
-          }
-
-          p {
-            color: $primary-color-2;
-            font-size: $fs24;
-            margin-bottom: 8px;
-            // border: 1px solid red;
-
-            white-space: nowrap;
-
-            @include media-breakpoint-down(xxl) {
-              width: 100%;
-
-            }
-
-            @include media-breakpoint-down(xl) {
-              font-size: $fs20;
-            }
-
-            @include media-breakpoint-down(lg) {
-              font-size: $fs20;
-            }
-
-
-            @include media-breakpoint-down(sm) {
-              font-size: $fs24;
-            }
-          }
-
-        }
-
-        .right {
-          width: 50%;
-          text-align: center;
-
-          @include media-breakpoint-down(sm) {
-            width: 100%;
-          }
-
-          img {
-            width: 400px;
-
-            // height: 443px;
-
-            @include media-breakpoint-down(xl) {
-              width: 100%
-            }
-
-            @include media-breakpoint-down(lg) {
-
-              margin-top: 20px;
-            }
-
-            @include media-breakpoint-down(sm) {
-              width: 70%;
-            }
-
-
-          }
-
-          img.ranking-img {
-            width: 50px;
-          }
-
-          img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-          }
-
-          p {
-            color: $primary-color-1;
-            font-size: $fs24;
-            font-weight: $fw600;
-            margin: 0 30px;
-          }
-        }
       }
     }
 
-    .right {
-      // width: 500px;
-      // height: 375px;
+    h2 {
+      // 排行榜字
+      color: $primary-color-1;
+      text-align: center;
+      margin-bottom: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-      &:nth-child(4n) {
-        .left-img {
-          order: 2;
-        }
+      @include media-breakpoint-down(sm) {
+
+        width: 100%;
+
+      }
+    }
+
+    .rank-list {
+      // 獎牌 ｜ img ｜ 名稱 (外層)
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-left: 20px;
+      width: 100%;
+      margin: 20px auto;
+
+      @include media-breakpoint-down(md) {
+        width: 100%;
+
       }
 
 
       @include media-breakpoint-down(sm) {
-        display: block;
+        margin: 0;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
       }
 
-      .left-img {
-
-        // height: 473px;
-        width: 100%;
+      .ranking-item {
+        // 獎牌 ｜ img ｜ 名稱
+        // border: 3px solid purple;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
 
-        img {
-          width: 100%;
-
-
-          // @include media-breakpoint-down(lg) {
-          //     width: 240px;
-          // }
-
-          @include media-breakpoint-down(sm) {
-            width: 70%;
-
-          }
-
+        @include media-breakpoint-down(md) {
+          margin: 0 40px;
         }
-      }
 
-      .right-content {
-        width: 100%;
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        margin-top: 20px;
-        // width: 378px;
-        justify-content: space-between;
-
-
-        h2 {
-          margin-top: 20px;
-          color: $primary-color-1;
-          font-weight: $fw600;
-          margin-bottom: 40px;
-
-          @include media-breakpoint-down(lg) {
-            font-size: $fs24;
-          }
+        img.ranking-img {
+          // 獎牌
+          width: 50px;
 
           @include media-breakpoint-down(sm) {
-            font-size: $fs32;
+            margin: 10px 0;
+
+          }
+        }
+
+        .player_img {
+          // TA img
+          margin: 10px 10px 0 10px;
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+
+          @include media-breakpoint-down(sm) {
+            margin: 10px 0;
+            width: 100px;
+            height: 100px;
           }
         }
 
         p {
-          text-align: left;
-          font-size: $fs24;
+          // TA name
+          text-align: center;
           color: $primary-color-2;
-          margin-bottom: 80px;
+          font-size: $fs24;
+          margin: 8px 0;
+          white-space: nowrap;
 
-          @include media-breakpoint-down(sm) {
-            padding: 30px;
+          @include media-breakpoint-down(xxl) {
+            width: 100%;
+
           }
 
-        }
-
-        .mil-link {
-          text-align: center;
-          text-transform: uppercase;
-          // text-decoration: none;
-          // color: white;
-          // width: 143px;
-          // height: 65px;
-          padding: 20px 40px;
-
-          // border-radius: 48px;
-          // margin: 0 auto;
-          // background-color: $primary-color-1;
-
-          // font-size: $fs24;
-
-        }
-
-      }
-    }
-
-    .ranking {
-      // border: 1px solid red;
-      display: grid;
-      grid-template-columns: auto auto;
-      padding: 40px 0px;
-      border-top: 2px solid $secondary-color-4;
-      margin-top: 40px;
-      gap: 50px;
-      align-items: center;
-
-      @include media-breakpoint-down(md) {
-        display: block;
-      }
-
-      .left {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
-
-
-        h2 {
-          color: $primary-color-1;
-          text-align: center;
-          margin-bottom: 32px;
-        }
-
-        .rank-list {
-          display: flex;
-          justify-content: space-between;
-
-          .ranking-item {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
-            // border: 1px solid red;
-
-            img.ranking-img {
-              width: 50px;
-
-
-
-            }
-
-            img {
-              width: 80px;
-              height: 80px;
-              border-radius: 50%;
-
-
-
-
-
-
-
-            }
-
-            p {
-              color: $primary-color-1;
-              font-size: $fs24;
-              font-weight: $fw600;
-              margin: 0 30px;
-              // border: 1px solid green;
-              width: 100%;
-              text-align: center;
-
-              @include media-breakpoint-down(lg) {
-                font-size: $fs14;
-
-
-              }
-
-              @include media-breakpoint-down(md) {
-                font-size: $fs14;
-
-              }
-            }
+          @include media-breakpoint-down(xl) {
+            font-size: $fs20;
           }
-        }
-      }
-
-      .right {
-        // width: 500px;
-        // height: 375px;
-
-        img {
-          width: 100%;
-          // height: 100%;
 
           @include media-breakpoint-down(lg) {
-            width: 220px;
+            font-size: $fs20;
           }
 
-          @include media-breakpoint-down(md) {
-            display: none;
+
+          @include media-breakpoint-down(sm) {
+            font-size: $fs24;
           }
         }
+
+
       }
     }
 
+    .right {
+
+      // 獎牌右側的圖
+      // border: 4px solid green;
+
+
+
+      img {
+        width: 100%;
+
+        @include media-breakpoint-down(lg) {
+          width: 220px;
+        }
+
+        @include media-breakpoint-down(md) {
+          display: none;
+        }
+
+
+      }
+
+    }
+
+
+
   }
 
-  img {
-    width: 100%;
-    height: 100%;
-  }
+
 }

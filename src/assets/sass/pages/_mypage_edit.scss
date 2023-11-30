@@ -239,7 +239,7 @@
 
             h4 {
                 @include media-breakpoint-down(md) {
-                    text-align: center;
+                    display: none;
                 }
             }
 
@@ -330,12 +330,16 @@
                             width: 70px;
                         }
                     }
+
+                    .active-button {
+                        background-color: #66669A;
+                        color: white;
+                    }
                 }
             }
 
             .avatar_components_assemble {
                 position: relative;
-
 
                 .avatar_components_face {
                     background-color: white;
@@ -371,25 +375,29 @@
         }
     }
 
-    .submit {
-        padding: 20px 0;
-        width: 100%;
-        display: flex;
+    .submit_div {
+        text-align: center;
 
         @include media-breakpoint-down(sm) {
-            padding: 10px 0;
+            padding: 80px 0 0 0;
         }
 
-        input {
+        @media screen and (max-width: 411px) {
+            padding: 0;
+        }
+
+        .submit {
+            padding: 10px 0;
             width: 150px;
-            height: 40px;
             border-radius: 20px;
             border: none;
             background-color: $primary-color-1 ;
             color: white;
             margin: 30px auto;
+
+
         }
 
-
     }
+
 }

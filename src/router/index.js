@@ -185,7 +185,7 @@ const routes = [
 
     /*--------------------------  404 --------------------------*/
     {
-        path: '/:catchAll(.*)', // 任何不存在的路徑都會跳轉到首頁
+        path: '/:pathMatch(.*)*', // 任何不存在的路徑都會跳轉到首頁
         component: Home
     },
 
@@ -193,7 +193,7 @@ const routes = [
 
 
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHistory(import.meta.env.BASE_URL),
     routes
 })
 
