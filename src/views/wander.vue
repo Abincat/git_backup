@@ -57,7 +57,12 @@
                             </div>
                             <div class="post_information">
                                 <div class="avatar">
-                                    <img src="../assets/images/wander/stranger.png">
+                                    <!-- <img src="../assets/images/wander/stranger.png"> -->
+                                    <img :src="faceImageChange" id="faceImageChange" alt="" ref="faceImageChange">
+                                    <img :src="hairImageChange" id="hairImageChange" alt="" ref="hairImageChange">
+                                    <img :src="clothImageChange" id="clothImageChange" alt="" ref="clothImageChange">
+                                    <img :src="accessoriesImageChange" id="accessoriesImageChange" alt=""
+                                        ref="accessoriesImageChange">
                                 </div>
                                 <div class="post_text">
                                     <p>{{ post.POST_CONTENT }}</p>
@@ -124,8 +129,12 @@ export default {
             countdownInterval: null, //時間暫停
             cd: false,
             id: '',
-            post: null,
-            gift: null
+            post: '',
+            gift: '',
+            faceImageChange: '',
+            hairImageChange: '',
+            clothImageChange: '',
+            accessoriesImageChange: ''
         }
     },
     methods: {
@@ -202,7 +211,13 @@ export default {
             };
             axios.post("api/post_card.php").then(response => {
                 this.post = response.data[0];
-            })
+                this.postAvatar = response.data[0];
+                this.faceImageChange = response.data[0].MEMBER_AVATAR_FACE;
+                this.hairImageChange = response.data[0].MEMBER_AVATAR_HAIR;
+                this.clothImageChange = response.data[0].MEMBER_AVATAR_CLOTH;
+                this.accessoriesImageChange = response.data[0].MEMBER_AVATAR_ACCESSORIES;
+            });
+
         },
 
         addFriend() {

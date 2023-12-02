@@ -7,7 +7,7 @@
                         <div class="head_sticker">
                             <div class="head_sticker_main">
                                 <div>
-                                    <img :src="userImg" ref="head_sticker" alt="head_sticker" v-show="isUpload">
+                                    <img :src="'data:image;base64,' + userImg" ref="head_sticker" alt="head_sticker">
                                 </div>
                                 <label class="mypage_button">
                                     <span>編輯大頭貼</span>
@@ -112,18 +112,17 @@
                     <div class="preview">
                         <h4>虛擬角色人物</h4>
                         <div class="preview_face avatar_preview">
-                            <img :src="faceImageChange" id="faceImage" alt="" ref="faceImage">
+                            <img :src="faceImageChange" id="faceImage" alt="請選擇臉型" ref="faceImage">
                         </div>
                         <div class="preview_hair avatar_preview">
-                            <img :src="hairImageChange" id="hairImage" alt="" ref="hairImage">
+                            <img :src="hairImageChange" id="hairImage" alt="請選擇髮型" ref="hairImage">
                         </div>
                         <div class="preview_cloth avatar_preview">
-                            <img :src="clothImageChange" id="clothImage" alt="" ref="clothImage">
+                            <img :src="clothImageChange" id="clothImage" alt="請選擇服裝" ref="clothImage">
                         </div>
                         <div class="preview_accessories avatar_preview">
-                            <img :src="accessoriesImageChange" id="accessoriesImage" alt="" ref="accessoriesImage">
+                            <img :src="accessoriesImageChange" id="accessoriesImage" alt="請選擇配飾" ref="accessoriesImage">
                         </div>
-                        <!-- <div class="base_plate"></div> -->
                     </div>
 
                     <!-------------------------配件頁籤------------------------->
@@ -282,14 +281,14 @@ export default {
             userImg: ''
         };
     },
-    created() {
+    mounted() {
         //載入頁面時先讀取用戶資訊填在input裡
         this.getData();
     },
     methods: {
         async getData() {
-            console.log(this.id)
-            axios.post("api/mypage_edit.php", { id: this.id }).then((resData) => {
+            // console.log(this.id)
+            axios.post("api/member_information.php", { id: this.id }).then((resData) => {
                 // console.log(resData); //我拿到資料之後要做什麼事
                 this.first_Name = resData.data[0].MEMBER_FIRST_NAME;
                 this.last_Name = resData.data[0].MEMBER_LAST_NAME;
@@ -302,46 +301,74 @@ export default {
                 this.hobbyA = resData.data[0].MEMBER_HOBBY_TEXT_A;
                 this.hobbyB = resData.data[0].MEMBER_HOBBY_TEXT_B;
                 this.SelfIntroduction = resData.data[0].MEMBER_INTRODUCE;
+                this.faceImageChange = resData.data[0].MEMBER_AVATAR_FACE;
+                this.hairImageChange = resData.data[0].MEMBER_AVATAR_HAIR;
+                this.clothImageChange = resData.data[0].MEMBER_AVATAR_CLOTH;
+                this.accessoriesImageChange = resData.data[0].MEMBER_AVATAR_ACCESSORIES;
 
-                const imageBlob = new Blob([resData.data[0].MEMBER_PIC], { type: 'image/jpeg' });
-                this.userImg = URL.createObjectURL(imageBlob);
+                this.userImg = resData.data[0].MEMBER_PIC;
+                // console.log(this.userImg)
 
             }).catch((e) => {
                 console.log(e) //連線錯誤的時候會執行這邊
             })
         },
         async submit() {
-            console.log(this.id)
-            axios.post("api/mypage_edit_return.php", {
-                id: this.id,
-                first_Name: this.first_Name,
-                last_Name: this.last_Name,
-                tel: this.tel,
-                gender: this.gender,
-                constellation: this.constellation,
-                job: this.job,
-                city: this.city,
-                hobbyA: this.hobbyA,
-                hobbyB: this.hobbyB,
-                SelfIntroduction: this.SelfIntroduction
-            }).catch((e) => {
-                console.log(e) //連線錯誤的時候會執行這邊
-            })
+            // console.log(this.id)
+            const imageData = this.userImg.split(',')[1];
+            try {
+                const response = await axios.post("api/member_information_return.php", {
+                    id: this.id,
+                    first_Name: this.first_Name,
+                    last_Name: this.last_Name,
+                    tel: this.tel,
+                    gender: this.gender,
+                    constellation: this.constellation,
+                    job: this.job,
+                    city: this.city,
+                    hobbyA: this.hobbyA,
+                    hobbyB: this.hobbyB,
+                    SelfIntroduction: this.SelfIntroduction,
+                    faceImageChange: this.faceImageChange,
+                    hairImageChange: this.hairImageChange,
+                    clothImageChange: this.clothImageChange,
+                    accessoriesImageChange: this.accessoriesImageChange,
+                    imageData: imageData,
+                });
 
-            this.$router.push({ name: 'mypage' }) //存檔完導回個人頁面-測試完再取消註解
+                console.log(response.data); // 可以根據需要處理後端返回的數據
+            } catch (error) {
+                console.error("Error submitting data:", error);
+            }
+            // this.$router.push({ name: 'mypage' }) //存檔完導回個人頁面-測試完再取消註解
         },
 
-        uploadImg(e) {
+        async uploadImg(e) {
             this.isUpload = true;
             let file = e.target.files[0];
-            let url = '';
+            let imageData = '';
             let reader = new FileReader();
 
             reader.readAsDataURL(file);
-            reader.onload = (e) => {
+            reader.onload = async (e) => {
                 // 使用 e.target.result 取得讀取的資料
-                url = e.target.result.substring(e.target.result.indexOf(',') + 1);
-                this.userImg = 'data:image/png;base64,' + url;
+                // console.log(e.target.result);
+
+                imageData = e.target.result.substring(e.target.result.indexOf(',') + 1);
+                console.log(imageData)
+                this.userImg = imageData;
+
+                // 將圖片資料上傳到 upload_img.php
+                try {
+                    const response = await axios.post("api/upload_img.php", {
+                        id: this.id,
+                        imageData: imageData,
+                    });
+
+                    console.log(response.data); // 可以根據需要處理後端返回的數據
+                } catch (error) {
+                    console.error("Error uploading image:", error);
+                }
             };
         },
 

@@ -563,7 +563,6 @@
 
             .face {
                 z-index: 2;
-                background-image: url("@/assets/images/mypage/hehe.png");
                 background-size: 100%;
 
                 @include media-breakpoint-down(md) {
@@ -581,7 +580,6 @@
 
             .hair {
                 z-index: 3;
-                background-image: url("@/assets/images/mypage/purple_hair.png");
                 background-size: 100%;
 
                 @include media-breakpoint-down(md) {
@@ -598,7 +596,6 @@
 
             .cloth {
                 z-index: 4;
-                background-image: url("@/assets/images/mypage/pink_vest.png");
                 background-size: 100%;
 
                 @include media-breakpoint-down(md) {
@@ -615,7 +612,6 @@
 
             .accessories {
                 z-index: 5;
-                background-image: url("@/assets/images/mypage/bubble.png");
                 background-size: 100%;
 
                 @include media-breakpoint-down(md) {

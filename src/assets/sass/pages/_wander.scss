@@ -335,6 +335,7 @@
                 background-color: rgb(250, 239, 234);
                 box-shadow: 0 0 12px rgb(102, 102, 153);
                 width: 300px;
+                height: 360px;
                 margin: 0 auto;
                 border-radius: 20px;
                 z-index: 10;
@@ -353,7 +354,7 @@
 
                 @include media-breakpoint-down(sm) {
                     width: 250px;
-                    height: 350px;
+                    height: 330px;
                 }
 
                 .post_img {
@@ -374,10 +375,14 @@
 
                     .avatar {
                         width: 30%;
+                        position: relative;
 
                         img {
-                            width: 100%;
+                            width: 125%;
                             // border: 1px solid green;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
                         }
                     }
 
@@ -390,7 +395,7 @@
 
                         p {
                             color: $primary-color-1;
-                            font-size: 12px;
+                            font-size: 14px;
                             padding: 10px 0;
                             text-align: center;
                         }

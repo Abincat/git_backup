@@ -53,8 +53,7 @@
                         </router-link>
                         <div>
                             <img src="../assets/images/mypage/gold_coin.png">
-                            <p>持有金幣${{ "hold_coins" }}</p>
-                            <!-- <p>持有金幣${{ "HoldCoins" }}</p> --> <!--金幣值最大五位數-->
+                            <p>持有金幣${{ hold_coins }}</p>
                         </div>
                     </div>
                     <div class="my_introduction">
@@ -91,9 +90,7 @@
                         <span>更換大頭貼</span>
                         <input type="file" class="upload_photos_input">
                     </label>
-                    <!-- <p>{{ self_introduction }}</p> -->
-                    <p>嗨！我是工程師。工作中喜歡挑戰技術極限，<br>
-                        業餘時間熱衷極限運動，喜歡攀岩和跳傘。期待在技術和生活中不斷挑戰自己！</p>
+                    <p>{{ SelfIntroduction }}</p>
                 </div>
 
 
@@ -216,18 +213,18 @@
 
                 <!-------------------------------蒐藏品區塊------------------------------->
                 <div class="tag">
-                    <span> constellation </span>
-                    <span> job </span>
-                    <span> city </span>
-                    <span> hobby1 </span>
-                    <span> hobby2 </span>
+                    <span> {{ constellation }} </span>
+                    <span> {{ job }} </span>
+                    <span> {{ city }} </span>
+                    <span> {{ hobbyA }} </span>
+                    <span> {{ hobbyB }} </span>
                 </div>
                 <div class="custom_display">
                     <div class="show_role">
-                        <div class="face character_parts"></div>
-                        <div class="hair character_parts"></div>
-                        <div class="cloth character_parts"></div>
-                        <div class="accessories character_parts"></div>
+                        <img :src="faceImageChange" class="face character_parts">
+                        <img :src="hairImageChange" class="hair character_parts">
+                        <img :src="clothImageChange" class="cloth character_parts">
+                        <img :src="accessoriesImageChange" class="accessories character_parts">
                         <div class="base_plate"></div>
                     </div>
                     <div class="my_collect">
@@ -237,9 +234,6 @@
                             <hr>
                         </div>
                         <div class="collect">
-                            <!-- <div class="collectA">{{ collectA }}</div>
-                            <div class="collectB">{{ collectB }}</div>
-                            <div class="collectC">{{ collectC }}</div> -->
                             <div class="collectA"></div>
                             <div class="collectB"></div>
                             <div class="collectC"></div>
@@ -248,7 +242,7 @@
                 </div>
 
                 <!-------------------------------活動區塊------------------------------->
-
+                <!-- <editActivityScore></editActivityScore> -->
                 <div class="life">
                     <div class="activity">
                         <div class="activity_list">
@@ -263,15 +257,15 @@
                                 <span>歷史活動</span>
                             </div>
                             <ul class="past_activity_list">
-                                <li>
-                                    <!-- <li v-for="(activityItem, index) in activityItems"></li> -->
-                                    <p>活動名稱</p>
-                                    <div class="score_box" :class="add_score ? 'score-box-bg ' : ''">
-                                        <div v-if="add_score" class="score">
+
+                                <li v-for="(activityItem, index) in activityItems">
+                                    <p>{{ activityItem.name }}</p>
+                                    <div class="score_box">
+                                        <div class="score">
                                             <div class="star_box">
-                                                <div v-for="(score, index) in scores" :key="index">
-                                                    <svg class="star" :class="{ 'light': star }" @click="light"
-                                                        xmlns="http://www.w3.org/2000/svg" height="1em"
+                                                <div v-for="(score, dIndex) in scores" :key="index">
+                                                    <svg class="star" :class="{ 'light': dIndex < activityItem.star }"
+                                                        @click="light" xmlns="http://www.w3.org/2000/svg" height="1em"
                                                         viewBox="0 0 576 512">
                                                         <path
                                                             d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
@@ -280,19 +274,20 @@
                                             </div>
                                         </div>
                                         <div>
-                                            <button @click="add_score = !add_score" class="mypage_button">確定</button>
+                                            <button :value="index" @click="addScore($event)"
+                                                class="mypage_button">修改</button>
                                         </div>
                                     </div>
 
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <p>活動名稱</p>
                                     <button class="mypage_button">待評分</button>
                                 </li>
                                 <li class="cancel_activity">
                                     <p>活動名稱</p>
                                     <button class="mypage_button">已取消報名</button>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
                     </div>
@@ -318,7 +313,7 @@
                             <li>
                                 <div class="mission">
                                     <div>
-                                        <img src="../assets/images/mypage/Finish_icon.png">
+                                        <img src="../assets/images/mypage/unFinish_icon.png">
                                     </div>
                                     <p>流浪一次</p>
                                 </div>
@@ -386,12 +381,14 @@
 import layout from '@/components/layout.vue'
 import postItem from '@/components/postItem.vue'
 import addPost from '@/components/addPost.vue'
+import editActivityScore from '@/components/editActivityScore.vue'
 
 export default {
     components: {
         layout,
         postItem,
-        addPost
+        addPost,
+        editActivityScore
     },
 
     data() {
@@ -401,25 +398,51 @@ export default {
             add_score: false,
             selectedBoxes: [],
             maxSelection: 3,
+            id: '7',
+            hold_coins: '',
             star: false,
             scores: Array(5).fill(null),
-            // activityItems: [{
-            //     name: "活動名稱A",
-            //     star: 0,
-            // }, {
-            //     name: "活動名稱B",
-            //     star: 0,
-            // }, {
-            //     name: "活動名稱C",
-            //     star: 0,
-            // }],
+            activityItems: [{
+                name: "活動名稱A",
+                star: 0,
+            }, {
+                name: "活動名稱B",
+                star: 3,
+            }, {
+                name: "活動名稱C",
+                star: 5,
+            }],
             //buttonColor: false,
         };
     },
-
+    created() {
+        //載入頁面時先讀取用戶資訊填在input裡
+        this.getData();
+    },
     methods: {
+        async getData() {
+            axios.post("api/member_information.php", { id: this.id }).then((resData) => {
+                this.constellation = resData.data[0].MEMBER_CONSTELLATION;
+                this.job = resData.data[0].MEMBER_JOB;
+                this.city = resData.data[0].MEMBER_CITY;
+                this.hobbyA = resData.data[0].MEMBER_HOBBY_TEXT_A;
+                this.hobbyB = resData.data[0].MEMBER_HOBBY_TEXT_B;
+                this.SelfIntroduction = resData.data[0].MEMBER_INTRODUCE;
+                this.faceImageChange = resData.data[0].MEMBER_AVATAR_FACE;
+                this.hairImageChange = resData.data[0].MEMBER_AVATAR_HAIR;
+                this.clothImageChange = resData.data[0].MEMBER_AVATAR_CLOTH;
+                this.accessoriesImageChange = resData.data[0].MEMBER_AVATAR_ACCESSORIES;
+                this.hold_coins = resData.data[0].MEMBER_COIN;
+
+            }).catch((e) => {
+                console.log(e) //連線錯誤的時候會執行這邊
+            })
+        },
         light() {
             this.star = true;
+        },
+        addScore(e) {
+            console.log(e.target.value)
         },
 
         // light(e, i, star) {
