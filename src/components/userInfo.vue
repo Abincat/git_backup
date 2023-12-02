@@ -24,9 +24,11 @@
 </template>
 
 <script>
+import { useUserStore } from '@/store/user';
 
 export default {
     inject: ['hide'],
+
     data() {
         return {
             userData: {
@@ -34,27 +36,32 @@ export default {
                 userName: '',
                 userImg: ''
             },
-
         }
     },
     beforeMount() {
+        //將資料存到pinia
+        const userStore = useUserStore();
+
         let cookies = document.cookie.split("; "); //['userID=1', 'userName=王小明']
 
         for (let i = 0; i < cookies.length; i++) {
             let cookie = cookies[i].split("="); // ['userID', '1']、['userName', '王小明']
             if (cookie[0] == 'userName') {
                 this.userData.userName = cookie[1];
+                userStore.userName = this.userData.userName;
             } else if (cookie[0] == 'userID') {
                 this.userData.userID = cookie[1];
+                userStore.userID = this.userData.userID;
             }
         }
 
         axios
             .post('api/queryMember.php', JSON.stringify(this.userData))
             .then(response => {
-                console.log(response.data);
+                // console.log(response.data);
                 if (response.data != '0') {
                     this.userData.userImg = 'data:image/png;base64,' + response.data['img'];
+                    userStore.userImg = response.data['img'];
                 }
             })
 
@@ -106,6 +113,9 @@ export default {
                             this.$router.push({ name: 'member_login' });
                         }
                     })
+
+                const store = useUserStore();
+                store.$reset()
             }
         }
     }

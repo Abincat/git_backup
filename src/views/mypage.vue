@@ -383,6 +383,8 @@ import postItem from '@/components/postItem.vue'
 import addPost from '@/components/addPost.vue'
 import editActivityScore from '@/components/editActivityScore.vue'
 
+import { useUserStore } from '@/store/user';
+
 export default {
     components: {
         layout,
@@ -398,7 +400,7 @@ export default {
             add_score: false,
             selectedBoxes: [],
             maxSelection: 3,
-            id: '7',
+            id: '11',
             hold_coins: '',
             star: false,
             scores: Array(5).fill(null),
@@ -472,6 +474,17 @@ export default {
         isSelected(index) {
             return this.selectedBoxes.includes(index);
         },
-    }
+    },
+    mounted() {
+        //取得會員資料
+        const userStore = useUserStore();
+
+        this.userData = {
+            userId: userStore.userID,
+            userName: userStore.userName,
+            userImg: userStore.userImg,
+        }
+        this.getPostItems();
+    },
 }
 </script>

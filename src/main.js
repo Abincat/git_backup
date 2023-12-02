@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+import { createPinia } from 'pinia'
 
 //引用 bootstrap
 import "bootstrap/dist/css/bootstrap.css"
@@ -13,4 +14,7 @@ import '@/assets/sass/style.scss'
 import axios from 'axios'
 window.axios = axios;
 
-createApp(App).use(router).mount('#app')
+// 進行初始化
+const pinia = createPinia()
+
+createApp(App).use(router).use(pinia).mount('#app')

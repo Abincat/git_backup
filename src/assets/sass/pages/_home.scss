@@ -97,6 +97,7 @@
                     display: flex;
                     padding: 12px 12px 0 12px;
                     overflow-x: scroll;
+                    gap: 12px;
 
                     .add-post-images {
                         width: 100px;
@@ -104,8 +105,8 @@
 
                         .delete-img {
                             position: absolute;
-                            top: 0;
-                            left: 0;
+                            top: -10px;
+                            left: -10px;
                             width: 20px;
                             cursor: pointer;
                         }
@@ -333,6 +334,7 @@
                             display: flex;
                             align-items: center;
                             justify-content: flex-end;
+                            position: relative;
 
                             input {
                                 width: 100%;
@@ -345,6 +347,12 @@
                                 // &:focus-visible {
                                 //     outline: none;
                                 // }
+                            }
+
+                            p.show {
+                                position: absolute;
+                                left: 4px;
+                                top: 6px;
                             }
                         }
                     }

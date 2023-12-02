@@ -40,7 +40,7 @@
                         </div>
                     </div>
                     <div class="base-img">
-                        <div ref="baseBImg" class="boy select" @click="imgBSelect">
+                        <div ref="baseBImg" class="boy select" @click="imgBSelect($event)">
                             <img src="../assets/images/login/boy-base.png" alt="">
                         </div>
                         <div ref="baseGImg" class="girl" @click="imgGSelect">
@@ -61,8 +61,7 @@
 </template>
 
 <script>
-import gBaseImg from '@/assets/images/login/girl-base.png';
-import bBaseImg from '@/assets/images/login/boy-base.png';
+
 export default {
     data() {
         return {
@@ -80,35 +79,45 @@ export default {
             firstNameError: '',
             accountPass: false,
             passwordPass: false,
+            bBaseImg: '',
+            gBaseImg: '',
         }
     },
-
+    mounted() {
+        // console.log(this.$refs.baseBImg.firstChild.src);
+        this.bBaseImg = this.$refs.baseBImg.firstChild.src;
+    },
     methods: {
-        imgGSelect() {
+        imgGSelect(e) {
             if (this.$refs.baseBImg.classList.contains('select')) {
                 this.$refs.baseBImg.classList.remove('select');
                 this.$refs.baseGImg.classList.add('select');
             }
+            this.gBaseImg = e.target.src;
+            // console.log(this.gBaseImg);
         },
-        imgBSelect() {
+        imgBSelect(e) {
 
             if (this.$refs.baseGImg.classList.contains('select')) {
                 this.$refs.baseGImg.classList.remove('select');
                 this.$refs.baseBImg.classList.add('select');
             }
+            this.bBaseImg = e.target.src;
+            // console.log(this.bBaseImg);
         },
         doSignUp() {
 
             this.checkField();
 
             if (this.accountPass && this.passwordPass) {
+
                 if (this.$refs.baseBImg.classList.contains('select')) {
-                    const img = fs.readFileSync(bBaseImg);
-                    this.signUpData.img = btoa(img);
+                    this.signUpData.img = this.bBaseImg;
                 } else {
-                    img = fs.readFileSync(gBaseImg);
-                    this.signUpData.img = btoa(img);
+                    this.signUpData.img = this.gBaseImg;
                 }
+
+                // console.log(this.signUpData);
 
                 //進行註冊
                 axios

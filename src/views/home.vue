@@ -5,10 +5,11 @@
                 <div class="home-post">
                     <div class="add-post" ref="addPostBlock">
                         <p v-if="addPostTitleShow" @click="addPostBlock">我有話要說...</p>
-                        <addPost v-else @keepPostBlock="keepPostBlock"></addPost>
+                        <addPost v-else @keepPostBlock="keepPostBlock" @addPost="addPost"></addPost>
                     </div>
                     <div class="post-items">
-                        <postItem></postItem>
+                        <postItem :postItems="postItems" @addComment="addComment">
+                        </postItem>
                     </div>
                 </div>
                 <div class="home-info">
@@ -103,6 +104,14 @@ import postItem from '@/components/postItem.vue'
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, push, set, get, query, orderByKey, limitToLast, onValue } from 'firebase/database';
 
+import { useUserStore } from '@/store/user';
+
+import gBaseImg from '@/assets/images/login/girl-base.png';
+import bBaseImg from '@/assets/images/login/boy-base.png';
+import sampleImg from '@/assets/images/post/sample.jpeg';
+import sampleImg2 from '@/assets/images/post/sample2.jpeg';
+import sampleImg3 from '@/assets/images/post/sample3.jpeg';
+
 const firebaseApp = initializeApp({
     apiKey: "AIzaSyBLqg3ReSlc8ukkM6Fq3syretEb-zJ6MDs",
     authDomain: "grouptwo-5f7c1.firebaseapp.com",
@@ -127,13 +136,89 @@ export default {
             addPostTitleShow: true,
             chatroom: [],
             homeWidth: 0,
-            repliedMsgs: [
+            postItems: [
                 {
                     id: 1,
-                    content: '',
-                    time: '2023-11-11',
-                }
+                    userName: '林小美',
+                    userImg: gBaseImg,
+                    content: "今天天氣真好",
+                    status: 2, //設定狀態(公開 0/ 好友 1/私人 2)
+                    likes: 20,
+                    createTime: '2023/12/30 23:59',
+                    postImages: [
+                        {
+                            id: 1,
+                            src: sampleImg,
+                        },
+                        {
+                            id: 2,
+                            src: sampleImg2,
+                        },
+                        {
+                            id: 3,
+                            src: sampleImg3,
+                        },
+                        {
+                            id: 4,
+                            src: sampleImg3,
+                        },
+                    ],
+                    replieds: [
+                        {
+                            id: 1,
+                            commemtText: '好棒',
+                            name: '王小明',
+                            userImg: bBaseImg,
+                            createTime: '2023/12/31 23:50:59'
+                        },
+                        {
+                            id: 2,
+                            commemtText: 'Good!',
+                            name: '林小美',
+                            userImg: gBaseImg,
+                            createTime: '2023/12/31 23:59:59'
+                        },
+                        {
+                            id: 3,
+                            commemtText: 'Good!',
+                            name: '林小美',
+                            userImg: gBaseImg,
+                            createTime: '2023/12/31 23:59:59'
+                        },
+                        {
+                            id: 4,
+                            commemtText: '棒棒!',
+                            name: '蔡大頭',
+                            userImg: bBaseImg,
+                            createTime: '2023/12/31 23:59:59'
+                        },
+                    ],
+                },
+                {
+                    id: 2,
+                    userName: '林小美',
+                    userImg: gBaseImg,
+                    content: "今天天氣真好",
+                    status: 2, //設定狀態(公開 0/ 好友 1/私人 2)
+                    likes: 300,
+                    createTime: '2023/12/25 23:59',
+                    postImages: [],
+                    replieds: [
+                        {
+                            id: 1,
+                            commemtText: '羨慕',
+                            name: '王小明',
+                            userImg: bBaseImg,
+                            createTime: '2023/10/10 23:59:59'
+                        },
+                    ],
+                },
             ],
+            userData: {
+                userId: '',
+                userName: '',
+                userImg: '',
+            },
         }
     },
     methods: {
@@ -142,7 +227,7 @@ export default {
             this.addPostTitleShow = !this.addPostTitleShow;
         },
         keepPostBlock(keep) {
-            console.log(keep);
+            // console.log(keep);
 
             if (!keep) {
                 this.$refs.addPostBlock.classList.toggle('add-post-large');
@@ -155,6 +240,62 @@ export default {
             // 視窗滾到底部
             scrollContainer.scrollTop = scrollContainer.scrollHeight;
         },
+        addPost(post) {
+            const newPost = post;
+            this.postItems.unshift(newPost);
+            alert('新增完成');
+        },
+        addComment(e, i, postId, text) {
+
+            //取得會員資料
+            // const userStore = useUserStore();
+
+            //初始化日期
+            const Today = new Date();
+
+            const commentItem =
+            {
+                id: Date.now(),
+                commemtText: text,
+                userId: this.userData.userId,
+                name: this.userData.userName,
+                userImg: 'data:image/png;base64,' + this.userData.userImg,
+                createTime: Today.toLocaleString("zh-tw", { hour12: false }),
+                postId: postId,
+            };
+            this.postItems[i].replieds.push(commentItem);
+
+            // console.log(this.userData);
+
+            // 新增回覆資料至DB
+            axios
+                .post('api/addPostComment.php', JSON.stringify(commentItem))
+                .then(response => {
+                    // console.log(response.data);
+                    if (response.data != 1) {
+                        alert('saveToDb Error');
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        },
+        getPostItems() {
+            const memberId = {
+                userID: this.userData.userId,
+            }
+
+            //傳入memberID 取回相關自己及好友的貼文
+            axios
+                .post('api/getPostItems.php', JSON.stringify(memberId))
+                .then(response => {
+                    // console.log(response.data);
+
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        }
     },
     mounted() {
 
@@ -169,6 +310,15 @@ export default {
         // this.homeWidth = this.$refs.home.clientWidth;
         // console.log(this.homeWidth)
 
+        //取得會員資料
+        const userStore = useUserStore();
+
+        this.userData = {
+            userId: userStore.userID,
+            userName: userStore.userName,
+            userImg: userStore.userImg,
+        }
+        this.getPostItems();
     },
     watch: {
         chatroom() {

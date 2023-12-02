@@ -265,7 +265,7 @@ export default {
             hairImageChange: hairCurls,
             clothImageChange: clothBlack,
             accessoriesImageChange: accessoriesBachelorcap,
-            id: "7", //抓會員id編號,要是浮動的
+            id: "11", //抓會員id編號,要是浮動的
             first_Name: '',
             last_Name: '',
             tel: '',
