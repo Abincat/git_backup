@@ -1,0 +1,519 @@
+.activity {
+
+    // border: 1px solid red;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+
+    .banner {
+        // border: 1px solid orange;
+        margin: 0 auto;
+
+        @include media-breakpoint-down(xl) {
+            width: 80%;
+        }
+
+        &-top {
+            // border: 1px solid black;
+            width: 100%;
+            height: 300px;
+            border-radius: 20px;
+            background-color: #C3C4E5;
+
+            @include media-breakpoint-down(xl) {
+                height: auto;
+                text-align: center;
+                background-color: transparent;
+            }
+
+            .top-text {
+                padding: 30px;
+
+                .title {
+                    color: $primary-color-1;
+                    font-size: $fs40;
+                    line-height: 2;
+                    font-weight: $fw600;
+                }
+
+                .sub-title {
+                    color: $primary-color-1;
+                    font-size: $fs24;
+                    font-weight: $fw600;
+                    line-height: 1.5;
+                }
+
+
+            }
+        }
+
+        &-search {
+            // border: 1px solid black;
+            position: relative;
+            display: flex;
+
+            @include media-breakpoint-down(xl) {
+                flex-direction: column-reverse;
+
+            }
+
+            .search-container {
+                flex: 1;
+                margin-top: 10px;
+
+                .form {
+                    width: 50%;
+
+                    height: 50px;
+                    background-color: $white;
+                    border-radius: 100px;
+                    display: flex;
+                    padding: 1% 2%;
+
+                    @include media-breakpoint-down(xl) {
+                        width: 100%;
+                    }
+
+                    >input {
+                        background-color: transparent;
+                        border: 0;
+                        outline: none;
+                        flex: 1;
+
+                    }
+
+                    >button {
+                        background-color: transparent;
+                        border: 0;
+
+                        >img {
+
+                            width: 70%;
+                            background-color: transparent;
+                        }
+                    }
+                }
+            }
+
+            .search-pic {
+                position: absolute;
+                width: 50%;
+                bottom: 0;
+                right: 0;
+
+                @include media-breakpoint-down(xl) {
+                    position: static;
+                    width: 80%;
+                    margin: 0 auto;
+                }
+
+                >img {
+                    width: 100%;
+                    min-height: 300px;
+
+                    @include media-breakpoint-down(xl) {
+                        min-height: 100%;
+                    }
+                }
+            }
+
+        }
+
+        &-pic {
+            // border: 1px solid black;
+
+        }
+
+
+
+    }
+
+
+    .topic-container {
+        // border: 1px solid green;
+        width: 100%;
+        height: 460px;
+
+        @include media-breakpoint-down(xl) {
+            width: 50%;
+            height: 1200px;
+            margin: 0 auto;
+        }
+
+        .cards {
+            width: 90%;
+            height: 90%;
+            display: flex;
+            // flex-wrap: wrap;/* 新增：配合三個card換行 */
+            gap: 20px;
+            align-items: center;
+            margin: 0 auto;
+
+            @include media-breakpoint-down(xl) {
+                flex-direction: column;
+                margin: 0 auto;
+            }
+
+            .card {
+                // border: 2px solid yellow;
+                height: 100%;
+                width: 100%;
+                // width: calc(30% - 20px); /* 新增：每行顯示三張卡片，並設定間距 */
+                border-radius: 32px;
+                gap: 10px;
+
+                .card-pic {
+                    width: 100%;
+                    height: 75%;
+                    position: relative;
+
+                    >img {
+
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 32px 32px 0 0;
+                        background-position: center;
+                        background-size: cover;
+                    }
+
+                    .location {
+                        position: absolute;
+                        top: 30px;
+                        left: 30px;
+                        color: $white;
+                        height: 25px;
+                        display: flex;
+                        align-items: center;
+                        gap: 4px;
+
+                        >img {
+                            width: 25px;
+                            height: 25px;
+                        }
+
+                    }
+                }
+
+                .card-details {
+                    background-color: $white;
+                    border-radius: 0 0 32px 32px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                    justify-content: center;
+                    align-items: center;
+
+                    &-title {
+                        font-style: $fs24;
+                        font-weight: $fw600;
+                        color: $primary-color-1;
+                    }
+
+                    &-info {
+                        display: flex;
+                        gap: 4px;
+                        font-size: $fs14;
+                        color: $gray;
+                        align-items: center;
+
+                        >img {
+                            width: 20px;
+                            height: 20px;
+                        }
+
+                        >div {
+                            color: $primary-color-2
+                        }
+                    }
+
+                }
+
+            }
+
+
+            .arrow {
+                >img {
+                    width: 30px;
+                    height: 30px;
+                    cursor: pointer;
+
+                    @include media-breakpoint-down(xl) {
+                        display: none;
+                    }
+                }
+
+            }
+
+            .more {
+                display: none;
+
+                @include media-breakpoint-down(xl) {
+                    display: block;
+                    color: $primary-color-1;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+
+        }
+
+
+
+    }
+
+    .sub-bar {
+        // border: 1px solid purple;
+
+
+        >div {
+            margin: 20px 0 20px 0;
+            border-radius: 0 20px 20px 0;
+            width: 200px;
+            height: 45px;
+            background-color: $primary-color-2;
+
+            text-align: center;
+            line-height: 45px;
+            font-size: $fs24;
+            color: $white;
+
+            @include media-breakpoint-down(xl) {
+                margin: 20px auto;
+                border-radius: 20px;
+            }
+
+            @include media-breakpoint-down(md) {
+                margin: 20px auto;
+                border-radius: 20px;
+
+            }
+        }
+
+    }
+
+    .region-cards {
+
+        // border: 1px solid blue;
+        // margin: 0 auto;
+        // display: flex;
+        // gap: 20px;
+        // align-items: center;
+        // justify-content: center;
+
+
+        .region-container {
+            margin: 0 auto;
+            overflow: auto;
+            width: 790px;
+            display: flex;
+            gap: 20px;
+
+            @include media-breakpoint-down(xl) {
+                width: 590px;
+            }
+
+            @include media-breakpoint-down(lg) {
+                width: 450px;
+            }
+
+            .region {
+                // border: 1px solid blue;
+
+
+                >a {
+                    .region-pic {
+                        margin: 0 auto;
+                        height: 180px;
+                        width: 180px;
+                        overflow: hidden;
+                        border-radius: 50%;
+
+                        >img {
+                            height: 100%;
+                            width: 100%;
+                            background-position: center;
+                            background-size: cover;
+                        }
+
+
+                    }
+
+                    .region-text {
+                        height: 10%;
+                        color: $black;
+                        font-size: $fs14;
+                        text-align: center;
+                        margin-top: 10px;
+
+                    }
+
+
+                }
+
+            }
+        }
+
+    }
+
+
+    .upcoming-cards {
+
+        // border: 1px solid purple;
+        // display: flex;
+        // height: 250px;
+        // justify-content: center;
+        .upcoming-container {
+            // border: 1px solid blue;
+            width: 810px;
+            margin: 0 auto;
+            overflow-x: auto;
+
+            @include media-breakpoint-down(xl) {
+                width: 100%;
+            }
+
+        }
+
+        .upcoming {
+            // border:1px solid green;
+            width: 1080px;
+            // overflow-x: auto;
+            display: flex;
+            gap: 15px;
+
+            // justify-content: center;
+            @include media-breakpoint-down(xl) {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                height: 700px;
+            }
+
+            .upcoming-card {
+                border: 1px soild purple;
+
+                // width: 300px;
+                .card-pic {
+                    border: 2px soild purple;
+                    width: 100%;
+                    // height: 200px;
+                    border-radius: 32px 32px 0 0;
+                    overflow: hidden;
+
+                    >img {
+                        width: 100%;
+                        height: 100%;
+                        background-position: center;
+                        background-size: cover;
+
+
+                    }
+                }
+
+                .card-detail {
+                    // border: 1px solid red;
+                    width: 100%;
+                    padding: 15px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    align-items: center;
+                    background-color: $white;
+                    border-radius: 0 0 32px 32px;
+
+                    .title {
+                        // border: 1px solid red;
+                        font-size: $fs20;
+                        color: $primary-color-1
+                    }
+
+                    .date {
+                        font-size: $fs14;
+                        color: $primary-color-1;
+                    }
+
+                    .Btn-dark {
+                        width: 140px;
+                        height: 30px;
+                        font-size: $fs20;
+
+                    }
+                }
+            }
+        }
+
+        .upcoming-card {
+            border: 1px soild purple;
+            width: 350px;
+
+            .card-pic {
+                border: 2px soild purple;
+                width: 100%;
+                height: 200px;
+                border-radius: 32px 32px 0 0;
+                overflow: hidden;
+
+                >img {
+                    width: 100%;
+                    background-position: center;
+                    background-size: cover;
+
+
+                }
+            }
+
+            .card-detail {
+                // border: 1px solid red;
+                width: 100%;
+                padding: 15px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+                background-color: $white;
+                border-radius: 0 0 32px 32px;
+
+                .title {
+                    // border: 1px solid red;
+                    font-size: $fs20;
+                    color: $primary-color-1
+                }
+
+                .date {
+                    font-size: $fs14;
+                    color: $primary-color-1;
+                }
+
+                >button {
+                    @include btnColor($primary-color-1);
+                    width: 140px;
+                    font-size: $fs20;
+                }
+            }
+        }
+
+
+    }
+
+    .contact {
+        //     background-color: $primary-color-2;
+        //     width: 60px;
+        //     height: 60px;
+        //     padding-top: 5px;
+        //     position:absolute;
+        //     right: 60px;
+        //     bottom:60px;
+        //     border-radius: 50%;
+        //    display: flex;
+        //    justify-content: center;
+        //    align-items: center;
+        //    .img-container{
+        //     >img{
+        //         width: 40px;
+        //         height: 40px;
+        //     }
+        //    }
+    }
+}

@@ -1,0 +1,538 @@
+@charset "UTF-8";
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+@font-face {
+  font-family: "jfopen";
+  font-display: swap;
+  src: local("jfopen"), url("../fonts/jf-openhuninn-2.0.ttf");
+}
+html {
+  font-family: "jfopen", "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", "微軟正黑體", sans-serif, Arial, Helvetica;
+  font-size: 16px;
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 165%;
+}
+
+h2 {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 140%;
+}
+
+h3 {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 140%;
+}
+
+h4 {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 140%;
+}
+
+p {
+  font-size: 16px;
+  line-height: 120%;
+}
+
+a {
+  text-decoration: none;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+body {
+  background: linear-gradient(117deg, #FAD5C2 0%, #BDBEF4 99.3%);
+}
+
+h1 {
+  color: #343575;
+}
+
+body {
+  height: 100vh;
+}
+
+main,
+.main-block {
+  width: 100%;
+  max-width: 1440px;
+  height: 100vh;
+  margin: 0 auto;
+}
+main .main,
+.main-block .main {
+  height: 95%;
+  background-color: rgba(238, 238, 238, 0.6);
+  border-radius: 40px;
+  display: flex;
+  margin: 40px;
+}
+main .main .section-left,
+.main-block .main .section-left {
+  background-color: #FAEEE9;
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
+  padding: 0px;
+  flex-basis: 280px;
+  flex-shrink: 0;
+  overflow-y: scroll;
+}
+main .main .section-right,
+.main-block .main .section-right {
+  padding: 20px;
+  overflow-y: scroll;
+}
+
+nav.nav {
+  margin: 0 auto;
+}
+nav.nav .nav-brandlogo {
+  width: 150px;
+  margin: 10vh auto 0 auto;
+}
+nav.nav .nav-brandlogo img {
+  width: 100%;
+}
+nav.nav .nav-items {
+  margin: 10vh auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+nav.nav .nav-items a {
+  color: #343575;
+  line-height: 140%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+nav.nav .nav-items a img {
+  width: 30px;
+}
+nav.nav .statement {
+  margin-top: 5vh;
+}
+nav.nav .statement p {
+  font-size: 14px;
+  color: #343575;
+  padding: 0 20px;
+}
+
+.btn {
+  font-size: 20px;
+  line-height: 120%;
+  width: 150px;
+  padding: 8px 0;
+}
+.btn-dark {
+  background-color: #343575;
+  color: #fff;
+  border-radius: 32px;
+}
+.btn-dark:hover {
+  background-color: rgba(238, 238, 238, 0.8);
+  color: #343575;
+  border-color: #fff;
+}
+.btn-lg {
+  background-color: #343575;
+  color: #fff;
+  border-radius: 32px;
+  width: 200px;
+}
+.btn-lg:hover {
+  background-color: rgba(238, 238, 238, 0.8);
+  color: #343575;
+  border-color: #fff;
+}
+.btn-light {
+  background-color: rgba(238, 238, 238, 0.8);
+  color: #343575;
+  border-radius: 32px;
+  line-height: 140%;
+}
+.btn-light:hover {
+  background-color: #343575;
+  color: #fff;
+}
+
+.home {
+  display: flex;
+}
+
+.chatroom-start {
+  width: 1000px;
+  height: 100%;
+  opacity: 80%;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+.chatroom-start h1 {
+  margin-bottom: 40px;
+}
+.chatroom-start .user-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.chatroom-start input {
+  width: 350px;
+  height: 59px;
+  background-color: #FFFFFF;
+  font-size: 24px;
+  margin-right: 20px;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 16px;
+  margin-bottom: 40px;
+}
+.chatroom-start .chatbtn {
+  width: 350px;
+  height: 54px;
+  border-radius: 30px;
+  border: none;
+  background-color: #343575;
+  color: white;
+  font-size: 24px;
+}
+
+.chatroom {
+  border-radius: 40px;
+  width: 100%;
+  opacity: 80%;
+  padding: 50px;
+}
+.chatroom h1 {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.chatroom .chat-section ul {
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  margin: 20px;
+  padding: 20px;
+}
+.chatroom .chat-section ul span.top {
+  color: #343575;
+  display: flex;
+}
+.chatroom .chat-section ul .user-left {
+  margin-right: auto;
+}
+.chatroom .chat-section ul .user-right {
+  margin-left: auto;
+}
+.chatroom .chat-section ul .content-left {
+  background-color: #343575;
+  margin-right: auto;
+}
+.chatroom .chat-section ul .content-left li {
+  color: white;
+}
+.chatroom .chat-section ul .content-right {
+  background-color: #C3C4E5;
+  margin-left: auto;
+}
+.chatroom .chat-section ul li {
+  margin: 10px 0;
+  color: black;
+  font-size: 24px;
+}
+.chatroom .chat-section ul span.top {
+  margin-bottom: 20px;
+}
+.chatroom .chat-section ul span.top li {
+  color: #343575;
+  margin-right: 20px;
+}
+.chatroom .chat-section ul span.bottom {
+  width: 383.75px;
+  border-radius: 20px;
+  padding: 15px;
+}
+.chatroom .user-section {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  justify-content: center;
+  align-items: center;
+}
+.chatroom .user-section .user-content {
+  margin: 50px 0;
+}
+.chatroom .user-section input {
+  width: 650px;
+  height: 68px;
+  background-color: #C3C4E5;
+  font-size: 24px;
+  margin-right: 20px;
+  border: none;
+  border-radius: 30px;
+}
+.chatroom .user-section .chatbtn {
+  width: 195px;
+  height: 68px;
+  border-radius: 30px;
+  border: none;
+  background-color: #343575;
+  color: white;
+  font-size: 24px;
+}
+
+.million_school {
+  width: 100%;
+  height: 345px;
+  padding: 40px;
+  display: inline-block;
+  margin: 0 auto;
+}
+.million_school .member {
+  border: 1px solid black;
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 600px;
+  height: 260px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  border-radius: 30px;
+}
+.million_school .member .playerimg {
+  border-radius: 50%;
+  margin: 0 auto;
+  position: absolute;
+  left: 50%;
+  bottom: 200px;
+  transform: translateX(-50%);
+}
+.million_school .member .playerimg img {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+}
+.million_school .member .username {
+  font-size: 32px;
+  text-align: center;
+  color: #343575;
+  padding-top: 40px;
+}
+.million_school .member .bottom {
+  display: flex;
+  justify-content: space-around;
+  padding: 50px 0;
+}
+.million_school .member .bottom .score {
+  text-align: center;
+  color: #343575;
+  display: flex;
+}
+.million_school .member .bottom .score::after {
+  content: "";
+  border-right: 2px solid #66669A;
+  margin-left: 124px;
+}
+.million_school .member .bottom .score p {
+  font-size: 24px;
+}
+.million_school .member .bottom .rank {
+  text-align: center;
+  color: #343575;
+}
+.million_school .member .bottom .rank p {
+  font-size: 24px;
+}
+.million_school .mil-link {
+  text-decoration: none;
+  color: white;
+  width: 143px;
+  height: 65px;
+  padding: 21px 40px;
+  border-radius: 48px;
+  margin: 0 auto;
+  background-color: #343575;
+  font-size: 24px;
+}
+
+.playground {
+  width: 100%;
+  height: 345px;
+  background-color: #EED0CC;
+  padding: 40px;
+}
+.playground .banner {
+  display: flex;
+}
+.playground .banner .left {
+  width: 50%;
+}
+.playground .banner .left h1 {
+  margin-bottom: 40px;
+}
+.playground .banner .left p {
+  color: #66669A;
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+.playground .banner .right {
+  width: 50%;
+}
+.playground .banner .right img {
+  width: 460px;
+  height: 443px;
+}
+.playground .intro {
+  margin-top: 100px;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 50px;
+}
+.playground .intro .left-img {
+  height: 473px;
+}
+.playground .intro .left-img img {
+  width: 100%;
+}
+.playground .intro .right-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  width: 378px;
+  justify-content: space-between;
+}
+.playground .intro .right-content h3 {
+  margin-top: 20px;
+  font-size: 24px;
+  color: #66669A;
+  font-weight: 600;
+  margin-bottom: 41px;
+}
+.playground .intro .right-content p {
+  text-align: left;
+  font-size: 24px;
+  color: #66669A;
+  margin-bottom: 97px;
+}
+.playground .intro .right-content .mil-link {
+  text-decoration: none;
+  color: white;
+  width: 143px;
+  height: 65px;
+  padding: 21px 40px;
+  border-radius: 48px;
+  margin: 0 auto;
+  background-color: #343575;
+  font-size: 24px;
+}
+.playground .ranking {
+  display: grid;
+  grid-template-columns: auto auto;
+  padding: 100px 30px;
+  border-top: 2px solid black;
+  margin-top: 80px;
+  gap: 50px;
+}
+.playground .ranking .left .ranking-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 50px;
+}
+.playground .ranking .left .ranking-item img.ranking-img {
+  width: 41px;
+  height: 41px;
+}
+.playground .ranking .left .ranking-item img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+.playground .ranking .left .ranking-item p {
+  color: #343575;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 30px;
+}
+.playground .ranking .right {
+  width: 503px;
+  height: 375px;
+}
+
+main.snake {
+  width: 100%;
+  border: 1px solid black;
+  background-image: url("/src/assets/images/snake.svg");
+}
+main.snake div {
+  background: url("../../images/snake.svg");
+}/*# sourceMappingURL=style.css.map */

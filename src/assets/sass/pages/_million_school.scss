@@ -1,0 +1,178 @@
+.million_school {
+    padding: 100px 0 0 0;
+    width: 100%;
+    // height: 345px;
+    // background-color: #EED0CC;
+
+    // display: inline-block;
+    // margin: 0 auto;
+
+    @include media-breakpoint-down(sm) {
+        padding: 50px 20px;
+    }
+
+    .member {
+
+        border: 1px solid black;
+        background-color: rgba(255, 255, 255, 0.8);
+        width: 60%;
+        margin: 20px auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        border-radius: 30px;
+
+        @include media-breakpoint-down(sm) {
+            width: 80%;
+
+        }
+
+        .playerimg {
+            border-radius: 50%;
+            margin: 0 auto;
+            position: absolute;
+            left: 50%;
+            bottom: 200px;
+            transform: translateX(-50%);
+
+            @include media-breakpoint-down(sm) {
+                top: -50px;
+            }
+
+            img {
+                width: 110px;
+                height: 110px;
+                border-radius: 50%;
+
+                @include media-breakpoint-down(sm) {
+                    width: 80px;
+                    height: 80px;
+                }
+            }
+        }
+
+
+        .username {
+            font-size: $fs32;
+            text-align: center;
+            color: $primary-color-1;
+            padding-top: 40px;
+        }
+
+        .bottom {
+            // border: 1px solid red;
+            display: flex;
+            justify-content: space-around;
+            // margin: 40px 0;
+            padding: 50px 0;
+
+
+
+            @include media-breakpoint-down(sm) {
+                flex-direction: column;
+                padding: 30px 0;
+                justify-content: space-between;
+            }
+
+            .score {
+                text-align: center;
+                color: $primary-color-1;
+                display: flex;
+                flex-direction: column;
+
+                width: 50%;
+                border-right: 3px solid $primary-color-1;
+
+                @include media-breakpoint-down(sm) {
+                    border-bottom: 3px solid $primary-color-1;
+                    border-right: none;
+                    width: 80%;
+                    text-align: center;
+                    margin: 0 auto;
+                }
+
+                p {
+                    font-size: $fs24;
+
+                    @include media-breakpoint-down(sm) {
+
+                        margin-bottom: 10px;
+                        padding-bottom: 5px;
+                    }
+                }
+            }
+
+
+            .middle {
+                display: flex;
+                flex-direction: column;
+
+                p {
+                    font-size: $fs32;
+                }
+            }
+
+            .rank {
+
+                text-align: center;
+                color: $primary-color-1;
+                width: 50%;
+
+                @include media-breakpoint-down(sm) {
+                    margin: 0 auto;
+                    width: 80%;
+                    text-align: center;
+                }
+
+                p {
+                    font-size: $fs24;
+
+                    @include media-breakpoint-down(sm) {
+                        margin-top: 10px;
+                        padding-top: 5px;
+                    }
+                }
+
+
+
+            }
+        }
+
+
+    }
+
+    .millionimg {
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: -50px;
+
+        img {
+            width: 70%;
+
+            @include media-breakpoint-down(sm) {
+                margin-top: 30px;
+                width: 100%;
+
+            }
+        }
+    }
+
+    .mil-link {
+        text-decoration: none;
+        color: white;
+        width: 143px;
+        height: 65px;
+        padding: 21px 40px;
+        border-radius: 48px;
+        margin: 0 auto;
+        background-color: $primary-color-1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: $fs24;
+
+    }
+}

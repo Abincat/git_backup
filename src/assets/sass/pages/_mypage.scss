@@ -1,0 +1,1206 @@
+.mypage_button {
+    border-radius: 20px;
+    font-size: $fs14;
+    border: none;
+    background-color: $primary-color-1;
+    color: white;
+    height: 30px;
+}
+
+.mypage {
+    width: 100%;
+    position: relative;
+
+
+    //================ 貼文彈窗================//
+
+    .add-post-blur {
+        backdrop-filter: blur(2px);
+        width: 100%;
+        height: 100%;
+        z-index: 9;
+        position: absolute;
+        top: 0%;
+
+        .add-post {
+            // width: 600px;
+            border: 2px solid $primary-color-1;
+            border-radius: 30px;
+            border: 3px solid rgb(255, 255, 255);
+            background-color: rgb(250, 239, 234);
+            box-shadow: 0 0 12px rgb(102, 102, 153);
+            width: 70%;
+            margin: 0 auto;
+            border-radius: 20px;
+            z-index: 10;
+            position: absolute;
+            top: 12%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            p {
+                color: $primary-color-1;
+                padding: 16px;
+                cursor: pointer;
+            }
+
+            &-large {
+                // height: 350px;
+                border-radius: 16px;
+            }
+
+            .add-post-block {
+                display: flex;
+                flex-direction: column;
+                padding: 0 20px;
+
+                .add-block-title {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .post-edit-title {
+                        color: $primary-color-1;
+                        padding: 16px;
+                        font-weight: $fw500;
+                    }
+
+                    .post-view-setting {
+                        background-color: $primary-color-1;
+                        display: flex;
+                        padding: 4px 20px;
+                        border-radius: 100px;
+                        gap: 8px;
+
+                        img.select {
+                            padding: 4px;
+                            border-radius: 100px;
+                            background-color: $white;
+                        }
+                    }
+                }
+
+                #post-content {
+                    border: 0;
+                    border-radius: 16px;
+                    resize: none;
+                    padding: 12px;
+                    color: $primary-color-1;
+
+                    &:focus {
+                        // outline: none;
+                        outline-color: $primary-color-2;
+                        // border: ;
+                        color: $primary-color-1;
+                    }
+                }
+
+                .add-images-block {
+                    width: 100%;
+                    display: flex;
+                    padding: 12px 12px 0 12px;
+                    overflow-x: scroll;
+
+                    .add-post-images {
+                        width: 100px;
+                        position: relative;
+
+                        .delete-img {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 20px;
+                            cursor: pointer;
+                        }
+
+                        img {
+                            width: 100%;
+                        }
+                    }
+                }
+
+                .postImg {
+                    display: flex;
+                    align-items: center;
+                    gap: 4px;
+                    cursor: pointer;
+                    margin-top: 8px;
+                    color: $primary-color-1;
+                    width: 120px;
+                    padding: 8px;
+
+                    input[type=file] {
+                        display: none;
+                        outline: 0;
+                        opacity: 0;
+                        pointer-events: none;
+                        user-select: none;
+                    }
+
+                    &:hover {
+                        background-color: $primary-color-3;
+                        border-radius: 16px;
+                    }
+                }
+
+                .btn-block {
+                    display: flex;
+                    gap: 8px;
+                    justify-content: flex-end;
+                    margin: 8px 0;
+
+                    .Btn {
+                        font-size: $fs16;
+                        width: 100px;
+                    }
+
+                }
+            }
+        }
+    }
+
+    //================ 貼文彈窗end================//
+
+
+    .introduction_guided_tour {
+        width: 100%;
+
+
+
+        .property {
+            align-items: center;
+            justify-content: center;
+            text-align: end;
+            white-space: nowrap;
+            width: 100%;
+
+
+
+            div {
+                display: flex;
+                align-items: center;
+                margin: 10px 0 0;
+                justify-content: flex-end;
+            }
+
+            div img {
+                width: 30px;
+                height: 30px;
+            }
+
+            p {
+                color: $primary-color-1;
+                font-size: $fs14;
+            }
+
+            button {
+                width: 80px;
+                padding: 5px;
+                margin-top: 10px;
+            }
+        }
+
+        .my_introduction {
+            display: flex;
+            width: 70%;
+            margin: 0 auto;
+            align-items: center;
+
+            @include media-breakpoint-down(lg) {
+                width: 100%;
+            }
+
+            .new_post_button {
+                width: 130px;
+                height: 80px;
+                background-color: white;
+                color: $primary-color-1;
+                font-weight: bold;
+                border-radius: 10px;
+                border: none;
+                box-shadow: -4px 4px 4px $primary-color-2;
+                align-items: center;
+                position: relative;
+                z-index: 2;
+
+                &::before {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    width: 0;
+                    top: 40%;
+                    right: -10%;
+                    border: 2.5px solid white;
+                    width: 0;
+                    height: 0;
+                    border-style: solid;
+                    border-width: 10px 0 10px 15px;
+                    border-color: transparent transparent transparent white;
+                }
+
+                @include media-breakpoint-down(md) {
+                    display: none;
+                }
+            }
+
+            .new_post_button_RWD {
+                width: 130px;
+                height: 80px;
+                background-color: white;
+                color: $primary-color-1;
+                font-weight: bold;
+                border-radius: 10px;
+                border: none;
+                box-shadow: -4px 4px 4px $primary-color-2;
+                align-items: center;
+                position: relative;
+                z-index: 2;
+                display: none;
+
+                @include media-breakpoint-down(md) {
+                    display: block;
+                }
+            }
+
+
+
+            .head_sticker {
+                width: 400px;
+                height: 400px;
+                background-color: white;
+                border-radius: 50px;
+                box-shadow: 0 8px 6px $primary-color-1;
+                z-index: 1;
+                display: flex;
+                margin: 0 auto;
+
+                @include media-breakpoint-down(sm) {
+                    width: 250px;
+                    height: 250px;
+                }
+
+                @media screen and (max-width: 430px) {
+                    width: 200px;
+                    height: 200px;
+                }
+            }
+
+            .head_sticker img {
+                width: 400px;
+                height: 400px;
+                border-radius: 50px;
+
+
+                @include media-breakpoint-down(sm) {
+                    width: 250px;
+                    height: 250px;
+                }
+
+                @media screen and (max-width: 430px) {
+                    width: 200px;
+                    height: 200px;
+                }
+            }
+
+            .guide_button {
+                z-index: 2;
+
+                button {
+                    width: 130px;
+                    height: 40px;
+                    background-color: white;
+                    border-radius: 10px;
+                    margin: 7px;
+                    border: none;
+                    box-shadow: 4px 4px 4px $primary-color-2;
+                    color: $primary-color-1;
+                    font-weight: bold;
+                }
+            }
+        }
+
+    }
+
+    .mypage_info {
+        text-align: center;
+        margin: 50px auto;
+        width: 47%;
+
+        @include media-breakpoint-down(md) {
+            width: 80%;
+        }
+
+        @include media-breakpoint-down(sm) {
+            width: 100%;
+        }
+
+        // label {
+        //     width: 150px;
+        //     align-items: center;
+        //     justify-content: center;
+        //     display: flex;
+        //     margin: 40px auto;
+
+
+        //     input[type=file] {
+        //         display: none;
+        //         outline: 0;
+        //         opacity: 0;
+        //         // pointer-events: none;
+        //         // user-select: none;
+        //     }
+        // }
+
+        p {
+            text-align: start;
+            margin: 30px;
+            color: $primary-color-1;
+        }
+    }
+
+    //================編輯蒐藏品彈窗================//
+    .collection_window_blur {
+        backdrop-filter: blur(2px);
+        width: 100%;
+        height: 100%;
+        z-index: 9;
+        position: absolute;
+        top: 0%;
+
+
+        .collection_window {
+            border: 3px solid rgb(255, 255, 255);
+            background-color: rgb(250, 239, 234);
+            box-shadow: 0 0 12px rgb(102, 102, 153);
+            width: 60%;
+            margin: 0 auto;
+            border-radius: 20px;
+            z-index: 10;
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            @include media-breakpoint-down(sm) {
+                width: 80%;
+            }
+
+
+            .collection_window_title {
+                display: flex;
+                justify-content: space-between;
+                width: 90%;
+                margin: 10px auto;
+                color: $primary-color-1;
+                font-weight: bold;
+
+                img {
+                    width: 30px;
+                    height: 30px;
+                }
+            }
+
+            .collection_window_list {
+                width: 90%;
+                margin: 0 auto;
+
+
+
+                .collection_window_Classification {
+                    margin: auto 30px;
+
+                    h2 {
+                        color: $primary-color-1;
+                        font-weight: bold;
+                    }
+
+                    .collection_list {
+                        display: flex;
+                        margin: 20px auto;
+
+
+                        @include media-breakpoint-down(md) {
+                            display: block;
+                        }
+
+
+                        .collection_detailed {
+                            display: block;
+
+                            @include media-breakpoint-down(md) {
+                                display: flex;
+                                padding: 10px;
+
+                            }
+
+
+                            img {
+                                width: 100px;
+                                height: 100px;
+                                background-color: white;
+                                border-radius: 10px;
+                                margin: 0 15px;
+                                cursor: pointer;
+
+                                @include media-breakpoint-down(xl) {
+                                    width: 80px;
+                                    height: 80px;
+                                }
+
+                                @include media-breakpoint-down(lg) {
+                                    width: 60px;
+                                    height: 60px;
+                                }
+
+                            }
+
+                            h6 {
+                                color: $primary-color-1;
+                                font-weight: bold;
+                                text-align: center;
+                                white-space: nowrap;
+                            }
+                        }
+                    }
+
+                }
+            }
+
+            .collection_window_summit {
+                text-align: end;
+                width: 80%;
+                margin: 25px auto;
+
+                button {
+                    width: 100px;
+                }
+            }
+        }
+
+        .selected-box {
+            box-shadow: 0 0 10px #66669A;
+        }
+    }
+
+    //================編輯蒐藏品彈窗end================//
+
+
+    .tag {
+        width: 80%;
+        display: flex;
+        justify-content: space-around;
+        margin: 0 auto;
+
+        @include media-breakpoint-down(md) {
+            width: 90%;
+        }
+
+        @include media-breakpoint-down(sm) {
+            width: 100%;
+        }
+
+        span {
+            width: 100px;
+            height: 40px;
+            background-color: white;
+            text-align: center;
+            justify-items: center;
+            border-radius: 20px;
+            line-height: 40px;
+            color: $primary-color-1;
+            font-weight: bold;
+        }
+    }
+
+    .custom_display {
+        display: flex;
+        width: 80%;
+        margin: 40px auto;
+
+        @include media-breakpoint-down(lg) {
+            width: 100%;
+        }
+
+        @include media-breakpoint-down(md) {
+            width: 90%;
+            display: block;
+        }
+
+        .show_role {
+            display: flex;
+            position: relative;
+            width: 40%;
+
+            @include media-breakpoint-down(lg) {
+                margin: 10px;
+
+            }
+
+            @include media-breakpoint-down(md) {
+                margin: 0 auto;
+                width: 80%;
+            }
+
+            .character_parts {
+                width: 200px;
+                height: 200px;
+                border-radius: 30px;
+                position: absolute;
+                left: 50%;
+                transform: translate(-50%);
+
+                @include media-breakpoint-down(md) {
+                    width: 350px;
+                    height: 350px;
+                }
+
+                @include media-breakpoint-down(sm) {
+                    width: 300px;
+                    height: 300px;
+                }
+
+            }
+
+            .face {
+                z-index: 2;
+                background-size: 100%;
+
+                @include media-breakpoint-down(md) {
+                    width: 350px;
+                    height: 350px;
+                }
+
+                @include media-breakpoint-down(sm) {
+                    width: 300px;
+                    height: 300px;
+                }
+
+
+            }
+
+            .hair {
+                z-index: 3;
+                background-size: 100%;
+
+                @include media-breakpoint-down(md) {
+                    width: 350px;
+                    height: 350px;
+                }
+
+                @include media-breakpoint-down(sm) {
+                    width: 300px;
+                    height: 300px;
+                }
+
+            }
+
+            .cloth {
+                z-index: 4;
+                background-size: 100%;
+
+                @include media-breakpoint-down(md) {
+                    width: 350px;
+                    height: 350px;
+                }
+
+                @include media-breakpoint-down(sm) {
+                    width: 300px;
+                    height: 300px;
+                }
+
+            }
+
+            .accessories {
+                z-index: 5;
+                background-size: 100%;
+
+                @include media-breakpoint-down(md) {
+                    width: 350px;
+                    height: 350px;
+                }
+
+                @include media-breakpoint-down(sm) {
+                    width: 300px;
+                    height: 300px;
+                }
+
+            }
+
+            .base_plate {
+                width: 200px;
+                height: 200px;
+                border-radius: 30px;
+                background-color: white;
+                z-index: 1;
+                margin: 0 auto;
+
+                @include media-breakpoint-down(md) {
+                    width: 350px;
+                    height: 350px;
+                }
+
+                @include media-breakpoint-down(sm) {
+                    width: 300px;
+                    height: 300px;
+                }
+
+            }
+        }
+
+        .my_collect {
+            text-align: end;
+
+            @include media-breakpoint-down(md) {
+                width: 70%;
+                margin: 0 auto;
+            }
+
+            @include media-breakpoint-down(sm) {
+                width: 100%;
+                margin: 0 auto;
+            }
+
+            button {
+                position: relative;
+                width: 110px;
+                text-align: end;
+
+                @include media-breakpoint-down(md) {
+                    margin: 20px 0;
+                }
+
+                &::before {
+                    content: '';
+                    background-image: url("@/assets/images/mypage/writeIcon.png");
+                    background-size: 100%;
+                    position: absolute;
+                    left: 10px;
+                    top: 5px;
+                    width: 20px;
+                    height: 20px;
+                }
+
+                &::after {
+
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    border-radius: 4em;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    opacity: 0;
+                    transition: all 0.5s;
+                    box-shadow: 0 0 10px 40px white;
+                }
+
+                &:active {
+                    &::after {
+                        box-shadow: 0 0 0 0 white;
+                        position: absolute;
+                        border-radius: 32px;
+                        left: 0;
+                        top: 0;
+                        opacity: 1;
+                        transition: 0s;
+                    }
+                }
+            }
+
+            .my_collect_title {
+                display: flex;
+                align-items: center;
+
+
+                span {
+                    color: $primary-color-1;
+                    padding-right: 10px;
+                    white-space: nowrap;
+                }
+
+                hr {
+                    color: $primary-color-1;
+                    border: 2px solid $primary-color-1;
+                    width: 300px;
+                }
+            }
+
+            .collect {
+                display: flex;
+                justify-content: space-between;
+
+                div {
+                    width: 100px;
+                    height: 100px;
+                    background-color: white;
+                    border-radius: 20px;
+
+                    @include media-breakpoint-down(sm) {
+                        width: 80px;
+                        height: 80px;
+                        margin: 5px;
+                    }
+                }
+
+                .collectA {
+                    // background-image: url("@/assets/images/mypage/SSR_git.png");
+                    background-size: 100%;
+                    background-repeat: no-repeat;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                .collectB {
+                    // background-image: url("@/assets/images/mypage/SSR_MySQL.png");
+                    background-size: 100%;
+                    background-repeat: no-repeat;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                .collectC {
+                    // background-image: url("@/assets/images/mypage/SR_js.png");
+                    background-size: 100%;
+                    background-repeat: no-repeat;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+
+    }
+
+    .life {
+        background-color: rgba(255, 255, 255, 0.8);
+        display: flex;
+        padding: 15px;
+        margin-bottom: 20px;
+
+        @include media-breakpoint-down(lg) {
+            display: block;
+        }
+
+        .activity {
+            width: 70%;
+
+            @include media-breakpoint-down(lg) {
+                width: 90%;
+            }
+
+            @include media-breakpoint-down(md) {
+                width: 95%;
+            }
+
+            .activity_list {
+                height: 300px;
+                border-radius: 30px 30px 0 0;
+                // background-image: url("@/assets/images/mypage/rock_climbing.jpg");
+                background-size: cover;
+                text-align: end;
+                color: white;
+                background-repeat: no-repeat;
+                animation: changeBackground 15s infinite;
+                background-position: center;
+
+                @keyframes changeBackground {
+                    0% {
+                        background-image: url("@/assets/images/mypage/rock_climbing.jpg");
+                    }
+
+                    20% {
+                        background-image: url("@/assets/images/mypage/alpinism.jpg");
+                    }
+
+                    40% {
+                        background-image: url("@/assets/images/mypage/diving.jpg");
+                    }
+
+                    60% {
+                        background-image: url("@/assets/images/mypage/volleyball.jpg");
+                    }
+
+                    80% {
+                        background-image: url("@/assets/images/mypage/coldplay.png");
+                    }
+
+                    100% {
+                        background-image: url("@/assets/images/mypage/rock_climbing.jpg");
+                    }
+                }
+
+                @include media-breakpoint-down(sm) {
+                    background-size: cover;
+                }
+
+                h4 {
+                    padding: 20px 10px;
+                }
+
+                span {
+                    padding: 0 10px 5px 0;
+                }
+
+                p {
+                    padding: 5px 10px 5px 0;
+                }
+            }
+
+            .past_activity {
+                background-color: $secondary-color-4;
+                border-radius: 0 0 30px 30px;
+                color: $primary-color-1;
+                height: 270px;
+
+                .past_activity_title {
+                    text-align: end;
+                    padding: 10px;
+                    font-weight: bold;
+                }
+
+                .past_activity_list {
+                    width: 70%;
+                    margin: 0 auto;
+
+                    @include media-breakpoint-down(sm) {
+                        width: 90%;
+                    }
+
+                    li {
+                        background-color: white;
+                        box-shadow: 0px 4px 4px $primary-color-2;
+                        border-radius: 20px;
+                        height: 50px;
+                        margin: 20px 0;
+                        justify-content: space-between;
+                        align-items: center;
+                        display: flex;
+                        padding: 10px;
+
+                        .score-box-bg {
+                            background-color: $secondary-color-4;
+
+                        }
+
+                        .score_box {
+                            width: 160px;
+                            display: flex;
+                            justify-content: end;
+                            border-radius: 20px;
+                            position: relative;
+
+
+                            .score {
+                                align-items: center;
+                                justify-content: center;
+                                padding-left: 10px;
+                                justify-items: center;
+                                display: flex;
+
+                                .star_box {
+                                    display: flex;
+                                }
+
+                                div {
+                                    padding: 1px;
+
+                                    .star {
+                                        fill: rgb(153, 153, 153);
+
+                                        &.light {
+                                            fill: rgb(255, 255, 55);
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    li.cancel_activity {
+                        background-color: rgb(117, 117, 117);
+
+                        button {
+                            background-color: rgb(47, 45, 45);
+                            color: white;
+                        }
+                    }
+
+
+                }
+            }
+        }
+
+
+        .mission_board {
+            width: 30%;
+            background-color: $secondary-color-4;
+            border-radius: 30px;
+            margin-left: 10px;
+            color: $primary-color-1 ;
+
+            @include media-breakpoint-down(lg) {
+                width: 90%;
+                margin: 20px auto;
+                padding: 15px;
+            }
+
+            @include media-breakpoint-down(md) {
+                width: 95%;
+            }
+
+            .mission_list {
+                li {
+                    display: flex;
+                    padding: 10px 0;
+                    width: 90%;
+                    margin: 0 auto;
+
+
+
+                }
+
+                h4 {
+                    padding: 20px 10px;
+                }
+
+                .mission {
+                    width: 70%;
+                    display: flex;
+
+
+
+                    img {
+                        width: 20px;
+                        height: 20px;
+                    }
+
+                    p {
+                        padding-left: 5px;
+                    }
+                }
+
+                .mission_award {
+                    display: flex;
+                    width: 25%;
+                    justify-content: space-around;
+
+
+                }
+
+                .mission_award img {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+    }
+
+
+    /*==============貼文區域==============*/
+    .post-items {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+
+        .post-item {
+            background-color: $primary-color-3;
+            border-radius: 16px;
+
+            padding: 20px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            .post-user-info {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                color: $primary-color-1;
+
+                .post-user-image {
+                    width: 40px;
+
+                    img {
+                        width: 100%;
+                    }
+                }
+
+                .post-user-time {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 4px;
+
+                    .user-post-time {
+                        font-size: $fs14;
+                    }
+                }
+            }
+
+            .post-content {
+                color: $primary-color-2;
+            }
+
+            .post-images {
+                display: none;
+
+                .img-item {
+                    width: 300px;
+                    height: 250px;
+                    flex-shrink: 0;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        vertical-align: middle;
+                    }
+                }
+            }
+
+            .show {
+                display: flex;
+                gap: 12px;
+                overflow-x: scroll;
+            }
+
+            .post-feedback {
+                display: flex;
+                gap: 16px;
+                color: $primary-color-1;
+                padding-bottom: 12px;
+                border-bottom: 1px solid $primary-color-2;
+
+                p {
+                    font-size: $fs12;
+                }
+
+                .good-block {
+                    display: flex;
+                    align-items: center;
+                    gap: 4px;
+
+                    .good {
+                        cursor: pointer;
+                    }
+                }
+
+                .reply-block {
+                    display: flex;
+                    align-items: center;
+                    gap: 4px;
+                }
+            }
+
+            .post-reply {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+
+                .replied {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                    max-height: 125px;
+                    overflow-y: scroll;
+
+                    &.showScrollbar {
+                        &::-webkit-scrollbar {
+                            display: initial;
+                            width: 5px;
+                        }
+
+                        &::-webkit-scrollbar-thumb {
+                            background-color: $primary-color-1;
+                            border-radius: 100px;
+                        }
+
+                        &::-webkit-scrollbar-track {
+                            background-color: $secondary-color-4;
+                            border-radius: 100px;
+                        }
+                    }
+
+                    .replied-msg {
+                        display: flex;
+                        gap: 8px;
+
+                        .user-image {
+                            width: 30px;
+
+                            img {
+                                width: 100%;
+                            }
+                        }
+
+                        .replied-message {
+                            width: 100%;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 4px;
+
+                            .user-name {
+                                color: $primary-color-1;
+                            }
+
+                            .content {
+                                color: $primary-color-2;
+                                display: flex;
+                                justify-content: space-between;
+                                padding-right: 4px;
+
+                                .replied-time {
+                                    font-size: $fs12;
+                                    color: $primary-color-2;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .reply-message {
+                    display: flex;
+                    gap: 8px;
+
+                    .user-image {
+                        width: 30px;
+
+                        img {
+                            width: 100%;
+                        }
+                    }
+
+                    .reply-input {
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-end;
+
+                        input {
+                            width: 100%;
+                            // border: none;
+                            // border-radius: 32px;
+                            // line-height: 140%;
+                            // background-color: $white;
+                            // padding-left: 8px;
+
+                            // &:focus-visible {
+                            //     outline: none;
+                            // }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

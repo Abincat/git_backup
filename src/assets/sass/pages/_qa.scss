@@ -1,0 +1,119 @@
+.qa {
+    padding: 20px;
+
+    .qa-grid {
+        // border: 1px solid darkblue;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 300px auto;
+        column-gap: 50px;
+
+        @include media-breakpoint-only(lg) {
+            column-gap: 25px;
+            grid-template-columns: 250px auto;
+        } 
+
+        @include media-breakpoint-only(md) {
+            column-gap: 25px;
+            grid-template-columns:auto;
+            row-gap: 50px;
+        } 
+
+        @include media-breakpoint-only(sm) {
+            column-gap: 25px;
+            grid-template-columns:auto;
+            row-gap: 50px;
+        } 
+
+        @include media-breakpoint-only(xs) {
+            column-gap: 25px;
+            grid-template-columns:auto;
+            row-gap: 50px;
+        } 
+
+        .qa-left {
+            // border: 1px solid darkgreen;
+            border-radius: 20px;
+            background-color: $secondary-color-2;
+            padding: 20px;
+            box-shadow: 4px 4px 4px rgba($primary-color-1, 0.5);
+            height: 400px;
+
+            h1 {
+                font-size: $fs32;
+            }
+
+            ul {
+
+                // border: 1px solid saddlebrown;
+                li {
+                    // border: 1px solid darkblue;
+                    padding:24px 10px 10px 30px;
+                    margin-bottom: 10px;
+                    color: $primary-color-1;
+                    cursor: pointer;
+                    transition-duration: .3s;
+
+                    &:hover{
+                        transform: scale(1.1);
+                    }
+                    
+                }
+            }
+        }
+
+        .qa-right {
+            // border: 1px solid darkmagenta;
+            border-radius: 20px;
+            background-color: $secondary-color-2;
+            padding: 30px;
+            box-shadow: 4px 4px 4px rgba($primary-color-1, 0.5);
+
+            h1 {
+                border-bottom: 2px solid black;
+                font-size: $fs32;
+                padding-bottom: 28px;
+
+            }
+
+            .list {
+
+                // border: 2px solid darkblue;
+
+                .title {
+                    border-bottom: 2px solid black;
+                    padding: 32px 32px 32px 10px;
+                    cursor: pointer;
+                    font-size: 18px;
+                    font-weight: bold;
+                    color: $primary-color-1;
+
+                    
+                }
+
+                .item {
+                    // border: 1px solid #ccc;
+                    padding-left: 20px;
+                    color: $primary-color-2;
+                }
+
+                li {
+                    // border: 1px solid darkblue;
+                    padding-top: 20px;
+                    padding-left: 10px;
+                    line-height: 2;
+                    transition-duration: 0.3s;
+
+                    &:hover {
+                        color:$primary-color-1 ;
+                    }
+                }
+
+            }
+
+
+        }
+    }
+}
+
+
