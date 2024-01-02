@@ -23,8 +23,9 @@
                                 src="../assets/images/wander/campervan.png" alt="campervan">
                         </div>
                         <div class="middle_start">
+                            <!-- ===========開始按鈕============ -->
                             <button @click="start(); limit()" class="start Btn" :class="{ 'limit': cd }"
-                                :disabled="countingDown">Start</button>
+                                :disabled="countingDown">{{ buttonText }}</button>
                         </div>
 
                     </div>
@@ -53,7 +54,7 @@
                                 <img class="close" src="../assets/images/wander/X.png">
                             </button>
                             <div class="post_img">
-                                <img :src="'data:image;base64,' + postImg">
+                                <img :src="'data:image/*;base64,' + postImg">
                             </div>
                             <div class="post_information">
                                 <div class="avatar">
@@ -140,7 +141,9 @@ export default {
             clothImageChange: '',
             accessoriesImageChange: '',
             gift_img: '',
-            postImg: ''
+            postImg: '',
+            buttonText: 'Start',
+            ajax_url: import.meta.env.VITE_AJAX_URL,
         }
     },
     created() {
@@ -154,7 +157,7 @@ export default {
     },
     methods: {
         async getData() {
-            axios.post("api/member_information.php", { id: this.id }).then((resData) => {
+            axios.post(this.ajax_url + "member_information.php", { id: this.id }).then((resData) => {
                 const id = resData.data[0].MEMBER_ID;
                 this.id = resData.data[0].MEMBER_ID;
             }).catch((e) => {
@@ -184,6 +187,14 @@ export default {
 
             if (this.countdownInterval) {
                 clearInterval(this.countdownInterval);
+                if (this.buttonText === '100金幣') {
+                    axios.post(this.ajax_url + "luxury_wandering.php", { id: this.id }).then((resData) => {
+                        this.giftRedDot = true;
+                        this.giftLetterDot = true;
+                    }).catch((e) => {
+                        console.log(e);
+                    });
+                }
             }
 
             // 設定倒數計時
@@ -194,6 +205,8 @@ export default {
             this.countdownInterval = setInterval(() => {
                 this.minute = Math.floor(countdown / 60);
                 this.second = countdown % 60;
+                this.buttonText = '100金幣'
+
                 if (countdown === 0) {
                     clearInterval(this.countdownInterval); //倒數計時結束時停止計時器
                     this.animationDrive = false; //倒數結束全部動畫停止
@@ -201,11 +214,19 @@ export default {
                     this.dissipateA = false;
                     this.dissipateB = false;
                     this.cd = false; //倒數完成按鈕變回藍色
+                    this.buttonText = 'Start';
+
                 } else {
                     countdown -= 1;
                 }
             }, 5); //快轉
             // }, 1000); //一秒更新一次-測試完改回正確數值
+
+            axios.post(this.ajax_url + "warning_time_return.php", { id: this.id }).then((resData) => {
+
+            }).catch((e) => {
+                console.log(e) //連線錯誤的時候會執行這邊
+            });
         },
 
         limit() {
@@ -221,23 +242,26 @@ export default {
                 this.giftShow = false;
             };
 
-            axios.post("api/gift_card.php", { giftId: this.giftId }).then((resData) => {
-                const giftId = resData.data[0].COLLECTION_ID;
-                this.giftTitle = resData.data[0].COLLECTION_NAME;
-                this.gift_img = resData.data[0].COLLECTION_IMAGE;
+            try {
+                const response = await axios.post(this.ajax_url + "gift_card.php", { giftId: this.giftId });
+                const giftId = response.data[0].COLLECTION_ID;
+                this.giftTitle = response.data[0].COLLECTION_NAME;
+                this.gift_img = response.data[0].COLLECTION_IMAGE;
 
                 this.giftId = giftId;
 
-                console.log(this.giftId);
-            }).catch((e) => {
-                console.log(e) //連線錯誤的時候會執行這邊
-            });
+                // console.log(this.giftId);
+                // console.log(giftId);
 
-            const response = await axios.post("api/gift_card_return.php", {
-                id: this.id,
-                giftId: this.giftId
-            });
-            console.log(response.data);
+                const responseReturn = await axios.post(this.ajax_url + "gift_card_return.php", {
+                    id: this.id,
+                    giftId: this.giftId
+                });
+
+                console.log(responseReturn.data);
+            } catch (error) {
+                console.log(error); // 連線錯誤時執行這邊
+            }
         },
 
         async readLetter() {
@@ -248,7 +272,8 @@ export default {
                 this.letterShow = false;
             };
 
-            axios.post("api/post_card.php").then(response => {
+            axios.post(this.ajax_url + "post_card.php").then(response => {
+                console.log(response);
                 const postId = response.data.secondQuery[0].POST_ID;
                 const postMemberId = response.data.secondQuery[0].MEMBER_ID;
                 this.post = response.data.firstQuery[0];
@@ -265,13 +290,12 @@ export default {
                 console.error("Error fetching data:", error);
             });
 
-            //在加合併蒐集品的程式php
         },
 
         async addFriend() {
             this.addHim = true;
 
-            const response = await axios.post("api/add_stranger_friend.php", {
+            const response = await axios.post(this.ajax_url + "add_stranger_friend.php", {
                 id: this.id,
                 postMemberId: this.postMemberId
             });
@@ -280,7 +304,7 @@ export default {
         async like() {
             this.likePost = true;
 
-            const response = await axios.post("api/add_thumbs_up.php", {
+            const response = await axios.post(this.ajax_url + "add_thumbs_up.php", {
                 id: this.id,
                 postId: this.postId
             });
